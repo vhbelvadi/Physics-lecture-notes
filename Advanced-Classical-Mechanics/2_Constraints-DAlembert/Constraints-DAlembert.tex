@@ -1,0 +1,129 @@
+\documentclass[english,seminar,headertitle]{lecture}
+\usepackage{tikz}
+\usepackage{xr}
+\externaldocument{../Mechanics-system-of-particles/Mechanics-system-of-particles}
+\makeatletter%
+  \setcounter{equation}{11}%
+\makeatother
+
+\title{Advanced classical mechanics}
+\subtitle{Generalised co-ordinates \textit{\&} D'Alembert's principle}
+\shorttitle{Generalised co-ordinates, D'Alembert's principle}
+\ccode{16MSPAH101}
+\subject{Classical mechanics}
+\speaker{V.H. Belvadi}
+\spemail{vh@belvadi.com}
+\author{}
+\email{}
+\flag{}
+\season{Summer 2017}
+\date{}{}{}
+\dateend{}{}{}
+\conference{}
+\place{St Philomena's College}
+\attn{}
+\morelink{vhbelvadi.com/teaching}
+
+\begin{document}
+%
+\newcommand{\act}{S[\mathbf{r}]}
+\newcommand{\dt}{\textrm{d}t\;}
+\renewcommand{\th}[1]{#1$^\textrm{th}$}
+%
+\noindent\runin{Having discussed the} main laws of conservation in mechanics we now move on to a new territory that marks the beginning of our deviation from the `traditional' Newtonian approach. One may say that, from eq. (\ref{eq:newton-second-single-particle}), we can simply write $$m_i\mathbf{\ddot{r}}_i = \mathbf{F}_i^{(e)} - \sum_j\mathbf{F}_{ji}$$and substitute necessary forces in order to examine absolutely any system. However, this is an incomplete description. Not all systems are so generic, and one of the most important characteristics identifying a given system is the \textbf{constraint} placed on that system.
+
+\section{Constraint}\label{sec:constraint}
+
+A constraint is just that, a restriction placed on the movement of the constituent particles of a system. In case of rigid bodies, by definition, we saw that the constraint demands that the separation between two particles $\mathbf{r}_{ij}$ remain a constant. Another common constraint is that of a particle trapped inside a sphere. The constraint in this case is that the distance between the particle and the centre of the sphere can never exceed the radius of the sphere.
+
+Further, think of constraints as mathematical and physical conditions directly related to unknown forces. There may exist certain forces in a system about which we have no idea but their effects are clear: for example, we may not have known gravity at one point but we knew its effects and, as a result, could place a constraint on all objects released near the surface of the earth. This constraint may have been that, with time, the separation between the ground and that object would decrease. So we have a constraint which is the effect of an (as yet) unknown force acting on our system.
+
+When a constraint is a function of the co-ordinates of the particles constituting the entire system we say it is \textbf{holonomic}. Mathematically this can be represented as
+\begin{align}
+	f(\mathbf{r}_1, \mathbf{r}_2, \mathbf{r}_3, \ldots, t) = 0 \label{eq:holonomic}
+\end{align}%
+For rigid bodies the equation $\mathbf{r}_{ij} = c_{ij}$ or $\mathbf{r}_{ij} - c_{ij} = 0$ is the equation of its constraint for some constant distance $c_{ij}$ between the \th{i} and \th{j} particles.
+
+Not all constraints can be expressed this way. For a bird, the constraint is that it can exist anywhere at or beyond a distance of $r_\textrm{earth}$ from the centre of the Earth (where $r_\textrm{earth}$ is the radius of the Earth). That is, the position $r_\textrm{bird}$ of the bird must satisfy constraint $r_\textrm{bird} \ge r_\textrm{earth}$ or $r_\textrm{bird} - r_\textrm{earth} \ge 0$ which is no longer an equation but an inequality. Such constraints are said to be \textbf{non-holonomic}. Generally, it is safe to assume that a sufficiently choreographed system is governed by holonomic constraints although this is not naturally true by and large; and on the quantum scale parallels may be drawn to a quantum mechanical property of a system, e.g. spin, in which case classical constraints become mere approximations.
+
+While using constraints lets us look at the same problem in a different light it also comes with its own pitfalls. There are two important disadvantages with using constraints:
+
+\begin{itemize}
+	\item Since all $\mathbf{r}_i$ are connected (as we stated mathematically before) the equations of motion resulting from them too are no longer independent of each other.
+	\item The forces involved in a system are not known before hand; this is characteristic of the Newtonian approach and is not of great loss to us because we already said that we will not decipher a system through its forces.
+\end{itemize}
+
+These problems, particularly the first one, can be overcome if we choose to let go of specific co\"{o}rdinates in favour of what are called generalised co\"{o}rdinates.
+%
+\section{Generalised co\"{o}rdinates}\label{sec:generalised-coordinates}
+%
+Think of a system of particles as before. Say we have N particles and we exist in three-dimensional space. Each particle then has three (spatial) degrees of freedom associated with it. In all our system has 3N degrees of freedom, i.e. all things considered isolated we will need 3N independent co\"{o}rdinates to describe our system. This is a familiar example; in fact this is the world we live in, generically speaking.
+
+Now suppose that the particular system under consideration has $k$ constraints placed on it. Since $k$ equations are a given we now only need 3N-k degrees of freedom (or $3N-k$ independent co\"{o}rdinates) to describe our system. Let us represent these by $q_i$ so that our specific co\"{o}rdinates are now functions of these generalised co\"{o}rdinates:
+\begin{align}
+\mathbf{r}_i \equiv \mathbf{r}_i (q_1, q_2, q_3, \ldots, q_{3N-k},t) \label{eq:gen-coordn}
+\end{align}
+or, alternately, without $\mathbf{r}$ being a function of $t$. This is called the \textbf{transformation equation} as it helps us \textit{transform} from the specific to the generalised co\"{o}rdinates; it is also called the \textbf{parametric equation} of $\mathbf{r}$ in terms of $q$.
+
+Do not think of generalised co\"{o}rdinates like you would think of regular three-dimensional vectors. Do not even think of them as ordered sets, rather as mathematical entities that describe a system. Of course that does not mean that they are devoid of physicality; it simply means that being mathematical is our only point of concern here.
+
+For example, on a globe, latitudes and longitudes can be treated as generalised co\"{o}rdinates and they are co\"{o}rdinates in the true sense of the word. But in a double pendulum (a pendulum to whose bob is fixed another pendulum) the angles of swing of the two pendula can be treated as generalised co\"{o}rdinates. That is to say any quantity that describes the behaviour of a system may be treated as a generalised co\"{o}rdinates regardless of whether it is a `typical' Cartesian/polar/spherical polar/cylindrical co\"{o}rdinate or not.
+
+
+\section{Virtual displacement}\label{sec:virtual-work}
+
+Non-holonomic constraints, although encountered more often in everyday life, are often considered Holonomic when we study systems at the microscopic scale. This approximation is something that can be agreed upon in general since the ideas of analytical mechanics see use most commonly in the field of quantum mechanics. The $f(r_i,t) = 0$ form of Holonomic constraints has a time co\"{o}rdinate in which any change can be neglected for infinitesimal variations.
+
+Suppose a system undergoes an infinitesimal spatial displacement $\delta x$ over a time $\delta t$. When $\delta t$ is small enough we can claim that $\delta t = 0$ effectively stating that our displacement occurred \textit{without the passage of time}. Clearly this is not realistic, which is why we call such a displacement \textit{virtual displacement}. It is any infinitesimal displacement that is assumed to occur against a fixed time. Keep in mind that virtual displacements still cannot violate any constraints placed on the system.
+
+Another way to look at virtual displacement is through the forces acting on a system. While a system undergoes virtual displacement the forces acting on it remain unchanged. Realistically this need not be the case. As a result, if the forces acting on our system are in equilibrium while it undergoes a virtual displacement of $\delta \mathbf{r}_i$ we have $\sum_i \mathbf{F}_i = 0$ and, consequently,
+
+\begin{equation}
+\sum\displaylimits_i \mathbf{F}_i \cdot \delta \mathbf{r}_i = 0 \label{eq:virtual-displacement}
+\end{equation}
+
+For our convenience let us divide $\mathbf{F}_i$ into two components, an applied force $\mathbf{F}_i^{(a)}$ and a force due to the constraints (remember what constraints are: apparent effects of forces whose specific nature is unknown to us) placed on the system $\mathbf{F}_i^{(c)}$ so that we have $$\sum\displaylimits_i \mathbf{F}_i^{(a)} \cdot \delta \mathbf{r}_i + \sum\displaylimits_i \mathbf{F}_i^{(c)} \cdot \delta \mathbf{r}_i$$ at which point we place a condition on our system: the net work of constraint forces must be zero. 
+
+Let us take a moment to understand what this means. (Note that we will use the word `virtual' to refer to anything related to virtual displacement from here on.) If the constraint term of the form $\mathbf{F} \cdot \mathbf{r}$ in the above equation must be zero it means our virtual work is zero. For this to happen the constraint force and the virtual displacement must be perpendicular to each other (dot product), which means for a body moving, say, on a surface the virtual displacement must be tangential to the surface and the constraint force must be perpendicular to it. Suppose we have sliding frictional forces (macroscopic effects, not often a problem in quantum mechanics etc.) this is no longer true. However we will proceed under the agreement that the systems we consider are such that we can achieve $\sum_i \mathbf{F}_i^{(c)} \cdot \delta \mathbf{r}_i = 0$ so that the \textit{equilibrium of a system}
+%
+\begin{align}
+\sum\displaylimits_i \mathbf{F}_i^{(a)} \cdot \delta \mathbf{r}_i = 0 \label{eq:virtual-work}
+\end{align}
+%
+may be defined purely in terms of applied forces. This is called \textit{virtual work}.
+
+\section{D'Alembert's principle}\label{sec:d'alemberts-principle}
+It is now time to connect eq. (\ref{eq:gen-coordn}) and (\ref{eq:virtual-work}) to each other. Clearly we cannot let any $\mathbf{F}_i^{(a)} = 0$ because that would imply the virtual displacements $\delta \mathbf{r}_i$ are independent of each other. (Think of linear dependence and independence.) We can, however, transform (or rewrite) our $\mathbf{r}_i$ in terms of a set of independent co\"{o}rdinates. These are simply the generalised co\"{o}rdinates $q_i$ we discussed earlier.
+
+That is one problem solved, but there is yet another. There is no indication that eq. (\ref{eq:virtual-work}) describes a system in motion. For all we know it could only describe the equilibrium of a stationary object. Our next task is to bring motion into the picture.
+
+Consider the familiar equation $\mathbf{F}_i = \mathbf{\dot{p}}_i$ or, more conveniently, $\mathbf{F}_i - \mathbf{\dot{p}}_i = 0$ which says equilibrium arises when a force acting on our system is counteracted by an opposite force expressed in terms of the momentum of the body. It is this momentum that indicates that our system is in motion.
+
+We can now describe our (possible moving) system by rewriting eq. (\ref{eq:virtual-displacement}) as
+
+$$
+\sum\displaylimits_i \left( \mathbf{F}_i - \mathbf{\dot{p}}_i \right) \cdot \delta \mathbf{r}_i = 0
+$$
+%
+and, following the same reasoning as in section \ref{sec:virtual-work}, arrive at
+
+\begin{align}
+	\sum\displaylimits_i \left( \mathbf{F}_i^{(a)} - \mathbf{\dot{p}}_i \right) \cdot \delta \mathbf{r}_i = 0 \label{eq:d'alembert}
+\end{align}
+%
+which is known as \textit{D'Alembert's principle} after the French physicist who (along with Swiss James Bernoulli) came up with the idea.
+
+\\Our next task (in the next lecture) is to use the ideas developed here to arrive at a key set of equations called \textit{Lagrange's equations} that will lay the foundations for us to begin exploring analytical mechanics.
+
+%
+\begin{thebibliography}{1}
+	\bibitem{lanczos}
+	Lanczos, Cornelius, \textit{The Variational Principles of Mechanics}, University of Toronto Press, 1949.
+	
+	\bibitem{goldstein}
+	Goldstein, H., Poole, C., Safko, J., \textit{Classical mechanics}, 3rd edition, Addison Wesley, 2000.
+	
+	\bibitem{ivlev}
+	Ivlev, A.V., Bartnick, J., Heinen, C. et al., \textit{Statistical Mechanics where Newton's Third Law is Broken}, Phys. Rev. X 5, 011035, 26 March 2015.
+\end{thebibliography}
+\end{document}

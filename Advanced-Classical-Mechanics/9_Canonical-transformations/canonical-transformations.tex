@@ -1,0 +1,110 @@
+\documentclass[english,seminar,headertitle]{lecture}
+
+\newcommand{\lag}{\mathscr{L}}
+\newcommand{\ham}{\mathscr{H}}
+
+\title{Advanced classical mechanics}
+\subtitle{Canonical transformations}
+\shorttitle{}
+\ccode{16MSPAH101}
+\subject{Classical Mechanics}
+\speaker{V.H. Belvadi}
+\spemail{vh@belvadi.com}
+\author{}
+\email{}
+\flag{}
+\season{Autumn 2017}
+\date{}{}{}
+\dateend{}{}{}
+\conference{}
+\place{St Philomena's College}
+\attn{}
+\morelink{vhbelvadi.com/teaching}
+
+\begin{document}
+
+\[
+\begin{array}{lll}
+	\textrm{\textit{Generating function}} & \textrm{\textit{Derivatives}} & \textrm{\textit{Trivial case}}\\[0.35em]
+	\chi'(q,Q,t) & p_i = \partial_{q_i} \chi' \quad\textrm{and}\quad P_i = - \partial_{Q_i} \chi' & \chi' = q_iQ_i \\
+	\chi''(q,P,t) - Q_iP_i & p_i = \partial_{q_i} \chi'' \quad\textrm{and}\quad Q_i = \partial_{P_i} \chi'' & \chi' = q_iP_i \\
+	\chi'''(p,Q,t) + q_ip_i & q_i = - \partial_{p_i}\chi''' \quad\textrm{and}\quad P_i = - \partial_{Q_i}\chi''' & \chi' = p_iQ_i \\
+	\chi''''(p,P,t) + q_ip_i - Q_iP_i & q_i = - \partial_{p_i} \chi'''' \quad\textrm{and}\quad Q_i = \partial_{P_i} \chi'''' & \chi' = p_iP_i
+\end{array}
+\]
+
+\section{Examples of canonical transformations}
+
+\subsection{Some general results on $q$ and $p$}
+
+Consider the generating function $\chi'' = q_i p_i$ with the transformation equations $p_i = \partial_{q_i}\chi'' = P_i$ and $Q_i = \partial_{P_i} \chi''$ with $K=H$ since $\partial_t \chi'' = 0$. This is the trivial case of the $\chi''$ listed above. We already know that $P_i = \partial_{q_i}\chi''$ and $q_i = \partial_{P_i} \chi''$ which means $p_i = P_i$ and $q_i = Q_i$, leaving the new co\"{o}rdinates untouched.
+
+The general form of this arises from a generating function containing $f(q,t)$ as expected but along with some $g(q,t)$, a differentiable function of $q$ and possibly $t$. That is $\chi'' = f_i (q_1, \ldots, q_n; t) P_i + g(q_1,\ldots,q_n;t)$ which, when $g = 0$, satisfies $Q_i = \partial_{P_i}\chi'' = f_i(q_1,\ldots,q_n;t)$ and tells us that point transformations are always canonical.
+
+When $g \neq 0$ we end up with writing $p_i = \partial_{q_i}\chi''$ as $p_j = P_i\partial_{q_j}f_i + \partial_{q_j}g$. These are essentially matrices with $i$ rows and $j$ columns, which means we could rearrange this equation to get $P = \left[ \partial_{q} f \right]^{-1} \left( p - \partial_{q} g \right)$.\newline
+
+As a second exercise consider $\chi' = q_iQ_i$ which, as evinced by the single prime, is what we have defined as a generating function of the first kind. This trivially transforms surprisingly $p_i = \partial_{q_i} \chi' = Q_i$ and $P_i = - \partial_{Q_i} \chi' = -q_i$ which tells us that $p$ and $q$ are interconvertible. This result is ample proof that $q$ and $p$ differ only in name and that, celebrating the generality of analytical mechanics, they can transform into each other with considerable ease.\newline
+
+In a system with, say, two degrees of freedom with a generating function that is a combination like $\chi' + \chi'' = q_1Q_1 + q_2Q_2$ we end up with the relations $Q_1 = q_1$, $P_1 = p_1$, $Q_2 = p_2$ and $P_2 = -q_2$. Generating functions and their derivative co\"{o}rdinates and momenta are, therefore, superimposable.
+
+\subsection{Harmonic oscillators}
+
+This example will finally clarify just how and where we find use for the four generating functions discussed earlier. Consider a one-dimensional simple harmonic oscillator, i.e. an object simple harmonically moving to and fro along a single direction. The Hamiltonian, given by sum of the kinetic and potential energies, of such a system is known (from previous lectures) to be
+$$
+\ham = {p^2 \over 2m}+k\,{q^2 \over 2}
+$$
+If $\omega^2 = k/m$ we have
+$$
+\ham = {1 \over 2m} \left( p^2 + m^2\omega^2q^2 \right)
+$$
+The term inside the parentheses looks suspiciously like it is waiting to be written as $\cos^2 \theta + \sin^2 \theta$. To achieve this an appropriate substitution would be
+$$
+p = f(P) \cos Q \qquad\textrm{and}\qquad qm\omega = f(P) \sin Q
+$$
+naturally because we have no justification to claim that $p=\cos Q$ straight away. The correction function $f(P)$ is of course unknown. Substituting these we have
+$$
+\ham = {f^2(P) \over 2m} = \mathscr{K}
+$$
+and the only thing now left to do is to find $f(P)$.
+
+This is where our generating functions come in. The first type, $\chi'$, is of the form $\chi'(q,Q,t)$ with the trivial case $\chi' = q_iQ_i$ so that $Q_i = p_i$ and $P_i = -q_i$. These give rise to the following generating function:
+\begin{align*}
+	\chi' &= q_iQ_i \\
+		  &= q_ip_i \\
+		  &= {f^2(P)\sin Q \cos Q\over m\omega } \\
+		  &= {q^2 m^2 \omega^2 \sin Q \cos Q \over \sin^2 Q m\omega } \\
+		  &= q^2 m \omega \cot Q
+\end{align*}%
+\margintext{Recall that $\partial_\theta \cot \theta = -\csc \theta$.}
+We now use this in $p = \partial_q \chi'$ and $P = -\partial_Q \chi'$ to arrive at
+$$
+p = 2m\omega\cot Q \qquad\textrm{and}\qquad P = {m\omega q^2 \over \sin^2 Q}
+$$
+which gives us
+$$
+q = \sin Q \sqrt{P \over m\omega} \qquad\textrm{and}\qquad p = 2\cos Q \sqrt{pm\omega}
+$$
+Comparing this with $p = f(P) \cos Q$ we get $f(P) = 2\sqrt{Pm\omega}$ and the new Hamiltonian becomes
+$$
+\mathscr{K} = {f^2(P) \over 2m} = 2P\omega
+$$
+which, on further comparison to $P = E/m$ tells us the factor of 2 is extra and that our generating function needs to be corrected accordingly. Suppose we take the generating function
+$$
+\chi' = {q^2m\omega \cot Q \over 2 }
+$$
+we will end up with $\mathscr{K}(P,Q) = \omega P$ as expected, signalling that this is in fact the correct generating function. The new Hamiltonian is \textbf{cyclic in Q}. Consequently, Hamilton's equation for $Q$ is
+$$
+\dot{Q} = \partial_P K = \omega \implies Q = \omega t + \beta \textrm{ (say)}
+$$
+where $\beta$ is a constant of integration, and, on substituting this back into the equation for $q$ above we get
+$$
+q = \sin \left( \omega t + \beta \right) \sqrt{2E \over m\omega^2}
+$$
+The additional factor of $2$ comes once we rework the previous steps with the corrected generating function (which, if you recall, itself differs from our originally expected function by a factor of half).
+
+\vspace*{1.5cm}
+{\centering
+* \; * \; *
+
+}
+\end{document}

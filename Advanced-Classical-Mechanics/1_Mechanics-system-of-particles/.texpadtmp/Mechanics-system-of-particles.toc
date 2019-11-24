@@ -1,0 +1,4 @@
+\select@language {english}
+\contentsline {section}{\numberline {1}Conservation of momenta}{1}{section.1}
+\contentsline {subsection}{\numberline {1.1}Linear momentum}{1}{subsection.1.1}
+\contentsline {subsection}{\numberline {1.2}Angular momentum}{3}{subsection.1.2}

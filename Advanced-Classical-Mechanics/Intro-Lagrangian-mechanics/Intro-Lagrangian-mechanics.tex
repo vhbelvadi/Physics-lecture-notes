@@ -1,0 +1,98 @@
+\documentclass[english,seminar,headertitle]{lecture}
+\usepackage{tikz}
+
+\title{Advanced classical mechanics}
+\subtitle{Variational principles and Lagrangian mechanics}
+\shorttitle{Variational principles and Lagrangian mechanics}
+\ccode{16MSPAH101}
+\subject{Classical mechanics}
+\speaker{V.H. Belvadi}
+\spemail{vh@belvadi.com}
+\author{}
+\email{}
+\flag{101 -- 03}
+\season{Summer 2017}
+\date{}{}{}
+\dateend{}{}{}
+\conference{}
+\place{St Philomena's College}
+\attn{}
+\morelink{vhbelvadi.com/teaching}
+
+\begin{document}
+%
+\newcommand{\act}{S[\mathbf{r}]}
+\newcommand{\dt}{\textrm{d}t\;}
+%
+\noindent\runin{We are now} at a point where we can leave behind Newton's second law as the foundational idea of classical mechanics and embrace the new, sometimes better, approach formulated by Hamilton, Lagrange and others\margintext{Euler and Jacobi, for instance, also made contributions to this field.}. In fact, here is an overview of what we will be doing over the reminder of this course: we will examine various dynamic systems and extract information about them (their equations of motion, laws of conservation etc.) using only two quantities known as the `Lagrangian' and the `Hamiltonian'. These will lay the foundation for ideas you will come across again even in such modern fields as quantum mechanics.
+%
+\section{The principle of least action}
+\subsection{A verbal introduction}
+%
+For an object to go from point A to point B there can be several possible paths. To put it bluntly, the probability that such an object will, in fact, go from A to B is given by the sum of probabilities of all the paths it can take to go from A to B.
+
+Think of this through the perspective of a simpler, everyday example:\margintext{Do not get carried away by this example because, while it embodies the fundamental idea behind least action, it is not completely analogous to what we are interested in studying.} the probability that you will go from your house to the supermarket is the sum of probabilities of all paths you can potentially take to go from your house to the supermarket; of course you will only end up taking one path (at which point calculating probabilities loses meaning) but, at any given time before you reached your destination, the probability that you would reach was indeed the sum of probabilities of all paths.
+
+Now a few observations: Once you reach your destination, the probability of the path you actually took becomes a certainty and that of all alternative paths falls to zero. What is more, if you were clever (or if it was in your nature, all things else considered even) the path you took to get from your house to the supermarket was probably the shortest route as well.
+
+All of this can be described mathematically as well. The likelihood (strictly, the \textbf{probability amplitude}) of any path or trajectory $\mathbf{r}(t)$ is a function that depends on, say, some $\act$ which is known as the \textbf{action functional}. Whereas a function takes in a single variable, does something to it and gives out a value, a functional serves the same purpose but takes in a function itself and gives out a value. Exactly how this functional works will be the point of our discussion over the next couple of lectures but know that it varies from system to system.
+
+However, it can be shown that\margintext{It is alright if you do not understand all of this now since we will soon go over the mathematics involved.} a bulk of the probability may be attributed to certain `critical' paths, those paths surrounded by neighbours who do not change the functional $\act$ appreciably. In other words, to go from point A to point B, you can consider all possible paths and keep \textit{varying} them until you hit upon that path for which the action functional is least. Think of this as the minima of an action functional. This is known as the \textbf{variational principle} or the \textbf{principle of least action}.
+
+Treat this as an alternate approach that can serve in place of Newton's second law. You can choose to either identify the forces acting on a system and go on from there (as you have probably been doing all these years) or use the principle of least action, build the Lagrangian or Hamiltonian for the system and examine its properties---the latter is our intention at this moment. In fact, if you can somehow forget the Newtonian approach temporarily you will likely appreciate the rest of these notes greatly.
+%
+\subsection{A mathematical approach---the Euler--Lagrange equations}
+%
+Let us start from scratch. Our action functional $\act$ depends on a path that looks something like $x \equiv x(t)$ existing between points A and B at, say, times $t_1$ and $t_2$. In other words, our action functional is an integral between those two points and it somehow depends on the curve $x(t)$.
+
+We said above that a functional takes in a function and gives out a value, so what we need now is a formula to create some kind of function involving the variable $x(t)$. Let us call this formula the \textbf{Lagrangian} L of our system i.e. a formula that helps us develop a function dependent on time and which can be integrated over time to get our action functional (which we shall simply call `action' from now on).
+
+Firstly, we have the curve $x(t)$ as a function of time. Secondly, the kinetic energy of a system T is also a function of time; specifically, it is related to $\textrm{d}x/\textrm{d}t = \dot{x}$. Thirdly, recall from previous lectures that the potential V can also help us describe the energy of a system. To account for this let us assume that V is a function of time as well: $V \equiv V(t)$. We use this to define the L as  the sum $L = T-V$ which is an expression we will take for granted for the time being. (Why $L=T-V$ is rather complex so we will put it aside until later.)
+
+We start with
+\begin{align}
+L(x,\dot{x},t) = {1\over2}m\dot{\mathbf{x}} - V(x,t) \label{eq:L}
+\end{align}
+not defining V explicitly and simply treating it as a function of space and time, which is what it is after all. Therefore, for some curve $x \equiv \chi(t)$ (rather than $x(t)$ just so that our notation is clear), we have $\act$ as an integral of L over time:
+\begin{align}
+\act = \int\displaylimits_{t_1}^{t_2} \dt L \left( \chi(t), \dot{\chi}(t), t \right) \equiv \int\displaylimits_{t_1}^{t_2} \dt L(t) \label{eq:S}
+\end{align}%
+going, as we said before, from time $t_1$ to $t_2$. Unlike in eq. (\ref{eq:L}), where $x$ is an independent variable by itself, in eq. (\ref{eq:S}) $x\equiv\chi(t)$ is itself a function of time. The key point to note from these two equations then is that $L(x,\dot{x},t)$ is \textit{a function of three variables} while $L(t)$, which describes $\act$, is \textit{a function of one variable (time) alone}.
+
+Between two curves (or more) it is clear that the curves all become equivalent to each other close to the source point (at $t_1$) as well as when they approach the destination point ($t_2$). In other words $$\delta x(t_1) = \delta x(t_2) = 0$$where $\delta x$ are the `variations' we spoke of earlier and the fact that they are zeroes implies that there is no variation as we approach the positions at times $t_1$ and $t_2$. To use our crude analogy again, this is like saying, `as we approach the supermarket all different possible paths converge so that the difference between paths (the variation) is practically zero'. Again, do not take this analogy too seriously as its sole purpose is to give us a macroscopic idea based on an everyday experience. However, while we are discussing this, also note that the same statement holds true around your home: the various paths at your house \textit{converge} such that there is zero variation between them at the time when you leave home.
+
+Back to the mathematics: using $x = \chi(t) + \delta x(t)$ we should see no change in eq. (\ref{eq:S}) precisely because $\delta x(t_1) = \delta x(t_2) = 0$. We therefore have
+\begin{align*}
+\act = \int\displaylimits_{t_1}^{t_2} \dt L \left( \chi(t) + \delta x(t), \dot{\chi}(t) + \dot{\chi}(t), t \right)
+\end{align*}%
+\end{document}%
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,132 @@
+\documentclass[english,seminar,headertitle]{lecture}
+
+\newcommand{\lag}{\mathscr{L}}
+\newcommand{\ham}{\mathscr{H}}
+
+\title{Advanced classical mechanics}
+\subtitle{Introduction to Hamiltonian mechanics}
+\shorttitle{Hamilton's equations}
+\ccode{16MSPAH101}
+\subject{Classical Mechanics}
+\speaker{V.H. Belvadi}
+\spemail{vh@belvadi.com}
+\author{}
+\email{}
+\flag{}
+\season{Autumn 2017}
+\date{}{}{}
+\dateend{}{}{}
+\conference{}
+\place{St Philomena's College}
+\attn{}
+\morelink{vhbelvadi.com/teaching}
+
+\begin{document}
+
+\section{The Legendre transformation}
+
+\noindent\runin{We begin our} discussion of Hamiltonian mechanics with the a quick look at a mathematical technique known as the Legendre transformation. The Legendre transformation for some function $f(u_1,u_2,\ldots,u_n)$ generates another function $f'(u'_1,u'_2,\ldots,u'_n)$ where $u'$ and $u$ are related as $$u'_i = {\partial f \over \partial u_i}$$ and may be done using
+\begin{equation}
+	f' = u_iu'_i - f \label{eq:legendre-trans}
+\end{equation}%
+\margintext{These transformations are the work of the \textsc{xviii} century french mathematician Adrien-Marie Legendre.}%
+which is quite straightforward. Firstly this tells us that $f'$ is only a function of $u_i$ and not, interestingly, of $u'_i$. To see this consider the differential of the transformed function:
+\begin{align*}
+	\textrm{d}f' &= u_i \textrm{d}u'_i + u'_i \textrm{d}u_i - {\partial f \over \partial u_i} \textrm{d} u_i \\
+	&= u_i \textrm{d}u'_i + \left( u'_i - {\partial f \over \partial u_i} \right) \textrm{d} u_i
+\end{align*}
+However, since $u'_i = \partial f / \partial u_i$ as stated above we have simply $$\textrm{d}f' = u_i \textrm{d}u'_i$$
+which means $f'$ is not a function of $u'$, just of $u$.
+
+Secondly, we ask what would happen if $f'$ was in fact a function of $u'$? Its differential would then be given by $$\textrm{d}f' = {\partial f' \over \partial u'_i} \, \textrm{d} u'_i$$
+\margintext{Keep in mind that everywhere you see repeating indices, i.e. to instances of the same subscript, summation is implied. So, for example, eq. (\ref{eq:legendre-trans}) is actually written as $$f'=\sum_i^n u_iu'_i - f$$ but we omit the $\sum$ as agreed upon in Einstein's summation convention.}
+Compare the two equations we have for $\textrm{d}f'$ now and it is easy to see that $$u_i = {\partial f' \over \partial u'_i}$$
+In other words, this brings us back to the first equation we wrote down above and, consequently, a symmetric result follows eq. (\ref{eq:legendre-trans}) giving us
+\begin{equation}
+	f = u_iu'_i - f' \label{eq:legrendre-inverse}
+\end{equation}
+a sort of `reverse' Legendre transformation.
+
+Lastly, we need to account for the possibility that $f \equiv f(u,v)$ where the $u$s transform but the $v$s do not. In this case, as we did before, consider the differential of the transformed function:
+\begin{align*}
+	\textrm{d}f' &= ( u_i \textrm{d} u'_i + u'_i \textrm{d}u_i ) - \textrm{d} f(u,v) \\
+	&= ( u_i \textrm{d} u'_i + u'_i \textrm{d} u_i ) - { \partial f \over \partial u_i } \textrm{d} u_i - { \partial f \over \partial v_i } \textrm{d} v_i \\
+\therefore \textrm{d} f' &= u_i \textrm{d} u'_i - { \partial f \over \partial v_i } \textrm{d} v_i
+\end{align*}
+where the two terms get cancelled in the last step for the same reasons as they did earlier, telling us that $f'$ is a function of $u$ and $v$ both. Once again like we did before we now consider what would happen in $f'$ was in fact a function of $u'$ too. Its differential would then become $$\textrm{d} f' = {\partial f' \over \partial u_i } \textrm{d} u_i + {\partial f' \over \partial v_i } \textrm{d} v_i$$
+
+Compare the two equations we now have for $\textrm{d}f'$ and you will see that
+\begin{equation}
+{\partial f \over \partial v_i } = - {\partial f' \over \partial v'_i } \label{eq:non-participant}
+\end{equation}%
+This is the relation between any non-transforming variable, here $v$, and its transformed functions, $f \leftrightarrow f'$ undergoing a Legendre transformation.
+
+\section{The Hamiltonian}
+
+So far the Legendre transformation has largely been mathematical; it is now time for us to give it a more physical form. To start with, consider the Lagrangian of some system: $\lag ( q_k, \dot{q}_k, t )$. Following our discussion on the Legendre transformation we can transform $\lag$ into some $\ham$ using a transformation that involves the variable $\dot{q}_k$ alone. So our non-participants are $q_k$ and $t$ and our transformed function then is $$\ham \equiv \ham ( q_k, \partial \lag / \partial \dot{q}_k, t )$$
+
+However we know that $\partial \lag / \partial \dot{q}_k$ is nothing but the generalised momentum $p_k$ which means the function is actually given by
+$$
+	\ham \equiv \ham ( q_k, p_k, t )
+$$
+So if $\lag \rightarrow \ham$ we have, from eq. (\ref{eq:legendre-trans}), the transformation
+\begin{equation}
+\ham (q_k, p_k, t) = p_k \dot{q}_k - \lag (q_k, \dot{q}_k, t) \label{eq:hamiltonian}
+\end{equation}%
+\margintext{How did we choose $u_i$ and $u'_i$ in eq. (\ref{eq:hamiltonian})? Recall that $u_i$ and $u'_i$ are related by $u'_i = \partial f / \partial u_i$ which, here, refers to $p_k = \partial \lag / \partial \dot{q}_k$ making $u_i \equiv \dot{q}_k$ and $u'_i \equiv p_k$. As before, summation is implicit.}%
+where the function $\ham$ is known as the \textbf{Hamiltonian}.
+
+\section{The canonical equations}
+
+The reversible nature of the Legendre transformation described earlier allows us to use the relation
+\begin{equation}
+	p_k = {\partial \lag \over \partial \dot{q}_k } \label{eq:p-q}
+\end{equation}%
+to similarly transform from $\dot{q}_k$ to $p_k$, but this time via $\ham$, as
+\begin{align*}
+	\dot{q}_k = {\partial \ham \over \partial p_k } \tag{\ref{eq:p-q}}
+\end{align*}%
+At this point let us not forget that the Lagrangian is made up of two other non-participating variables $q_k$ and $t$. Their relations to the transformed function is given by eq. (\ref{eq:non-participant}) as
+\begin{equation}
+	{\partial \ham \over \partial q_k } = - {\partial \lag \over \partial q_k } \qquad \textrm{and} \qquad {\partial \ham \over \partial t } = - {\partial \lag \over \partial t } \label{eq:non-participant-L}
+\end{equation}
+
+Now recall the Euler-Lagrange equation
+$$
+{\textrm{d} \over \textrm{d} t } \left( \partial \lag \over \partial \dot{q}_k \right) = {\partial \lag \over \partial q_k }
+$$
+We can combine eq. (\ref{eq:p-q}) and (\ref{eq:non-participant-L}) with the Euler-Lagrange equation to arrive at two key equations. The first of these arises from the Euler-Lagrange equation given above where the parenthetical term is replaced by the generalised momentum and written using eq. (\ref{eq:non-participant}) as follows:
+\begin{align*}
+	\dot{p}_k &= {\partial \lag \over \partial q_k } \\
+	\Rightarrow \dot{p}_k &= - {\partial \ham \over \partial q_k } %\label{eq:pk-dot}
+\end{align*}%
+\margintext{As an exercise try deriving these canonical equations from Hamilton's principle.}
+and the second equation, for $\dot{q}_k$, is as given by eq. (\ref{eq:p-q}) above. Together these simple but powerful transformation equations
+\begin{equation}
+	 \dot{q}_k = {\partial \ham \over \partial p_k } \quad \textrm{and} \quad \dot{p}_k = - {\partial \ham \over \partial q_k } %\tag{\ref{eq:p-q}) and (\ref{eq:pk-dot}}
+\end{equation}%
+are known as \textbf{Hamilton's canonical equations}.
+
+All of this ties up nicely if we make one final observation: use the fact that so long as the Lagrangian is time-independent i.e. $\partial \lag / \partial t = 0$ in a conservative system we can write $$2T = \left( { \partial \lag \over \partial \dot{q}_k } \right) \dot{q}_k$$%
+\margintext{The intermediate result used here is easy to see if we consider a Cartesian system where $q_k \equiv x$ as follows:
+\begin{align*}
+	\lag (q_k, \dot{q}_k) &\equiv \lag (x, \dot{x}) \\
+	&= {m\dot{x}^2 \over 2} \\
+	\Rightarrow { \partial \lag \over \partial \dot{q}_k } &= m\dot{x} \\
+	\therefore \dot{q}_k \left( { \partial \lag \over \partial \dot{q}_k } \right) &= m\dot{x}^2 = 2T
+\end{align*}}%
+so that eq. (\ref{eq:hamiltonian}) reduces to
+\begin{align}
+	\ham &= p_k \dot{q}_k - \lag \nonumber\\
+	&= \left( { \partial \lag \over \partial \dot{q}_k } \right) \dot{q}_k - \lag \nonumber\\
+	&= 2T - ( T - V ) \nonumber\\
+\therefore \ham &= T + V = E \label{eq:HTV}
+\end{align}%
+In other words, for conservative systems the Hamiltonian gives us the total energy of a system. This fact becomes particularly useful in the domain of quantum mechanics where, often, we simply call the total energy of a system the `Hamiltonian' of that system.
+
+\vspace*{1.5cm}
+{\centering
+* \; * \; *
+
+}
+\end{document}

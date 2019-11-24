@@ -1,0 +1,186 @@
+\documentclass[english,seminar,headertitle]{lecture}
+
+\newcommand{\lag}{\mathscr{L}}
+\newcommand{\ham}{\mathscr{H}}
+
+\title{Advanced classical mechanics}
+\subtitle{Hamiltonian analysis of select systems}
+\shorttitle{Hamiltonian analysis}
+\ccode{16MSPAH101}
+\subject{Classical Mechanics}
+\speaker{V.H. Belvadi}
+\spemail{vh@belvadi.com}
+\author{}
+\email{}
+\flag{}
+\season{Autumn 2017}
+\date{}{}{}
+\dateend{}{}{}
+\conference{}
+\place{St Philomena's College}
+\attn{}
+\morelink{vhbelvadi.com/teaching}
+
+\begin{document}
+
+In previous lectures we saw the Lagrangian $\lag$ and examined some systems using $\lag$ to solve them. We will now do the same with the Hamiltonian $\ham$. Some of these systems will be repetitions while others will be new. In all cases we will go through them with brevity, keeping exposition to a minimum.
+
+As a quick overview, here is how we set-up the Hamiltonian equations for a system:
+\margintext{Shorten step \ref{step} by writing $\ham = T+V$ but only if $\lag$ is time-independent. In any case the standard equation $\ham = p_k\dot{q}_k - \lag$ is always valid regardless of the case.}%
+\begin{enumerate}
+	\item Choose generalised co\"{o}rdinates $q_k$ \vspace*{-0.7em}
+	\item Find $T$ and $V$ in terms of $q_k$ to set-up $\lag$ \vspace*{-0.7em}
+	\item Find generalised momenta $p_k$ using $\partial \lag / \partial \dot{q}_k$ \vspace*{-0.7em}
+	\item Solve for $\dot{q}_k$ in terms of $p_k$ and $q_k$ \vspace*{-0.7em}
+	\item Write down $\ham$ from $\ham = p_k \dot{q}_k - \lag$ \vspace*{-0.7em} \label{step}
+	\item Write the canonical equations---use $\dot{q}_k = \partial\ham/\partial p_k$ and $\dot{p}_k=-\partial\ham/\partial q_k$
+\end{enumerate}
+
+\section{Harmonic oscillator}
+
+A linear oscillator has a kinetic energy $T = m\dot{q}^2/2$ and potential energy $V = kq^2/2$ with the latter arising from the spring constant $k$. Its Lagrangian is
+$$
+\lag = T-V = {m\dot{q}^2 - kq^2 \over 2}
+$$
+and therefore the canonical momentum becomes
+$$
+p = {\partial \lag \over \partial \dot{q}} = m\dot{q}
+$$
+and this all comes together as the Hamiltonian:
+$$
+\ham = T+V = {p^2 \over 2m} + {kq^2 \over 2}
+$$
+Note that we have made use of the relation $\dot{q} = p/m$ in the first term above. This gives us our two Hamilton's equations as
+$$
+\dot{q} = {\partial \ham \over \partial p} = {p\over m} \qquad \textrm{and} \qquad \dot{p} = - {\partial \ham \over \partial q} = -kq
+$$
+We can combine these two considering the time derivative of $\dot{q}$ and substituting for $\dot{p}$ inside it:
+\begin{align}
+	\ddot{q} = {\dot{p} \over m} &= -{k\over m}q \nonumber\\
+	\Rightarrow \ddot{q} &= - \omega^2 q \nonumber \\
+	\therefore \ddot{q} + \omega^2 q &= 0 \label{eq:harmonic-osc}
+\end{align}
+where $\omega = \sqrt{k/m}$. What we have is the equation of simple harmonic motion.
+
+\section{Simple pendula}
+
+A simple pendulum is so called because we simplify a regular pendulum system by ignoring the effects of friction, air resistance and extension. That is to say we consider a mass at the end of a massless, inextensible string of some length $l$ and consider the pendulum at some random angle $\theta$ of its oscillation.
+$$
+T = {mv^2 \over 2} = {ml^2\dot{\theta}^2 \over 2} \qquad \textrm{and} \qquad V = mgl(1-\cos\theta)
+$$
+\margintext{We have already seen how the results for $T$ and $V$ come about while discussing the Lagrangian.}
+The Lagrangian as a result becomes
+$$
+\lag = {ml^2\dot{\theta}^2 \over 2} - mgl(1-\cos\theta)
+$$
+with $p = \partial \lag / \partial \dot{\theta} = ml^2\dot{\theta}$ or, consequently, with $\dot{\theta} = p/ml^2$. Substitute this in the Hamiltonian:
+$$
+\ham = {p^2 \over 2ml^2} + mgl(1-\cos\theta)
+$$
+as a result of which
+$$
+\dot{p} = -{\partial \ham \over \partial q} = -mgl\sin\dot{\theta} \qquad \textrm{and} \qquad \dot{\theta} = {\dot{p} \over ml^2} = -{g\over l}\sin\theta
+$$
+where, taking the time derivative of $\dot{\theta}$, just as we did with $\dot{q}$ in the case of the harmonic oscillator, we end up with
+\begin{equation}
+\ddot{\theta} + {g \over l} \sin\theta = 0	\label{eq:simple-pendulum}
+\end{equation}
+
+\section{Compound pendula}
+
+A compound pendulum is an oscillating mass. Unlike a simple pendulum there is no mass suspended from an inextensible, massless string; a compound pendulum is when a rigid mass is itself large and oscillatory. By large we mean it can no longer be reasonably considered a point particle, which automatically requires the centre of mass and the point of oscillation to be two points inside the oscillating mass because if the point of oscillation is outside (as in a simple pendulum) the mass can always be considered equivalent to a point particle.
+
+With that out of the way we write the kinetic and potential energies of a compound pendulum as
+$$
+T = {1\over 2}I\dot{\theta}^2 \qquad \textrm{and} \qquad V = -mgl\cos\theta 
+$$
+This gives us the generalised co\"{o}rdinate $\theta$ and the conjugate momentum
+$$
+p_k = \partial\lag/\partial\dot{\theta} = I\dot{\theta} \implies \dot{\theta} = {{p}_k \over I}
+$$
+The Hamiltonian therefore turns out to be
+\begin{align*}
+\ham &= {p_k^2 \over I} - {1\over 2}I\dot{\theta}^2 + mgl\cos\theta
+\end{align*}
+The canonical equations then turn out to be
+$$
+\dot{\theta} = \partial\ham/\partial p_k = {2p_k \over I} \qquad \textrm{and} \qquad \dot{p}_k = -\partial\ham/\partial \theta = mgl\sin\theta
+$$
+Therefore
+$$
+\ddot{\theta} = {2\dot{p}_k \over I} = {2mgl \sin\theta \over I}
+$$
+is the equation of motion of a compound pendulum.
+
+\section{A particle in an electromagnetic field}
+
+Solving the case of a charged particle in an electromagnetic field yields a particularly interesting result: a relativistic Hamiltonian. In previous lectures we have already seen that $\lag$ for the particle in question is
+$$
+\lag = {1\over 2}mv^2 - q\phi + q\mathbf{A}\cdot \mathbf{v}
+$$
+The generalised momentum is then
+$$
+p_x = m\dot{x} + qA_x \implies \dot{x} = {p_x - qA_x \over m}
+$$
+in one dimension. (We will keep to one dimension for simplicity.) The Hamiltonian follows from this:
+$$
+\ham = {p_x^2 \over m} - {qA_xp_x \over m} - {1\over 2}m\dot{x}^2 - q\phi + qA_x\dot{x}
+$$
+Note that the second and last terms are the same and cancel each other. We are then left, essentially, with the total energy of a particle. From this Hamilton's canonical equations follow as usual:
+\begin{equation}
+\dot{x} = {2p_x \over m} \qquad \textrm{and} \qquad \dot{p}_x = 0	\label{eq:charged-particle}
+\end{equation}
+Once again we see that linear momentum is conserved. Also, the canonical velocity (as we will see presently) is the same as for a free particle. This is the non-relativistic case; try the relativistic case yourself as an exercise.
+
+
+\section{A particle in a central force field}
+
+For a particle in a central force field angular momentum is conserved; this forces the particle into a planar orbit in which the particle's kinetic energy is given by
+$$
+T = {1\over 2} m (\dot{r}^2 + r^2\dot{\theta}^2)
+$$
+A particle in orbit has no potential energy, making $T = \lag$ and therefore
+$$
+p_r = {\partial \lag \over \partial \dot{r}} = m\dot{r} \qquad \textrm{and} \qquad p_\phi = {\partial \lag \over \partial \dot{\phi}} = mr^2\dot{\phi}
+$$
+As a result $\ham$ becomes
+$$
+\ham = {1\over 2m} \left( p_r^2 + {p_\phi^2 \over r^2} \right) + V(r)
+$$
+where we keep the potential term for generality. This now puts us in a position where we are able to compute the Hamiltonian equations, for $r$ and $p_r$, as follows:
+$$
+	\dot{r} = {\partial \ham \over \partial p_r} = {p_r \over m} \qquad \textrm{and} \qquad \dot{p}_r = - {\partial \ham \over \partial r} = {p_\phi^2 \over mr^3} - {\textrm{d}V \over \textrm{d}r}
+$$
+The final term arises since $V$ is explicitly only a function of $r$. The first equation is not a new result: we already obtained it a couple of steps ago. And the remaining two Hamiltonian equations, for $\phi$ and $p_\phi$, are
+$$
+\phi = {\partial\ham \over \partial p_\phi} = {p_\phi \over mr^2 } \qquad \textrm{and} \qquad \dot{p}_\phi = -{\partial\ham\over\partial\phi} = 0
+$$
+where, once again, the first equation is not new, and the second tells us that angular momentum is conserved.
+
+\section{A particle moving in free space}
+
+Single particles moving about in free space are the most basic case we considered while discussing the Lagrangian. We consider them now as well.
+\margintext{Keep in mind that point particles moving around in free space have no potential energy, only kinetic energy.}%
+$$
+T = {1\over 2}m\dot{x}^2
+$$
+where $x$ is our generalised co\"{o}rdinate $q_k$. Next we use $\lag$ to find $p_k$ as
+$$
+p_x = m\dot{x}
+$$
+and therefore our Hamiltonian becomes
+$$
+\ham = {p_x^2 \over m} - {1\over 2}m\dot{x}^2
+$$
+from which we can compute the usual canonical equations:
+\begin{equation}
+\dot{x} = {2p_x \over m} \qquad \textrm{and} \qquad \dot{p}_x = 0 \label{eq:free-particle}
+\end{equation}%
+The first result in eq. (\ref{eq:free-particle}) tells us that the momentum of a free particle is $mv/2$ and, more important, the second result says linear momentum is conserved.
+
+\vspace*{1.5cm}
+{\centering
+* \; * \; *
+
+}
+\end{document}

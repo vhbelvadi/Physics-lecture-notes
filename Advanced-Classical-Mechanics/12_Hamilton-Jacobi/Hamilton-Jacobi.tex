@@ -1,0 +1,111 @@
+\documentclass[english,seminar,headertitle]{lecture}
+
+\newcommand{\lag}{\mathscr{L}}
+\newcommand{\ham}{\mathscr{H}}
+\newcommand{\kam}{\mathscr{K}}
+
+\title{Advanced classical mechanics}
+\subtitle{Introduction to the Hamilton--Jacobi method}
+\shorttitle{Hamilton--Jacobi method}
+\ccode{16MSPAH101}
+\subject{Classical Mechanics}
+\speaker{V.H. Belvadi}
+\spemail{vh@belvadi.com}
+\author{}
+\email{}
+\flag{}
+\season{Winter 2017}
+\date{}{}{}
+\dateend{}{}{}
+\conference{}
+\place{St Philomena's College}
+\attn{}
+\morelink{vhbelvadi.com/teaching}
+
+\begin{document}
+	
+\noindent\runin{Our final discussion} regarding Hamiltonian mechanics has to do with the Hamilton--Jacobi equation. In our entire course this is about as close as we will get to quantum mechanics. Indeed the Hamilton--Jacobi equation is somewhat closely linked to the time-independent Schr\"{o}dinger equation \cite{hamil} but we will not be discussing this in such great detail here.
+
+\section{The Hamilton--Jacobi equation}
+
+\subsection{Introductory remarks}
+
+Hamilton's canonical equations can be solved in systems where energy is conserved (as we saw earlier) but they can also be solved in general albeit with some complications. The procedure to solve these equations, like the action integral, is centred around solving a differential equation involving a function $S$ known as \textit{Hamilton's principle function}. This method is not easy in practise but is historically important as the precursor to quantum mechanical studies of phase space and wave mechanics.
+
+First of all, what do we mean by a solution to the canonical equations? We intend to understand the generalised variables $q$ and $p$ of a system in terms of $q_0$ and $p_0$ the initial $t=0$ values of these variables, i.e. we need equations of the form $q \equiv q(q_0,p_0,t)$ and $p \equiv p(q_0,p_0,t)$.
+
+The other way of looking at this is to think of a transformation going from $q$ and $p$ to $q_0$ and $p_0$. However remember that $q_0$ and $p_0$, being the values at $t=0$, are constants. So our transformation must take us from variables $q$ and $p$ to constants $q_0$ and $p_0$.
+
+\subsection{Building a transformation}
+
+Recall our transformation equations discussed in previous lectures. To go from $\ham$ to $\kam$ we have $$\dot{Q} = \partial_P \kam \qquad\textrm{and}\qquad \dot{P} = - \partial_Q \kam \qquad\textrm{and}\qquad \kam = \ham + \partial_t \chi$$where $\chi$ is our generating function. None of this is new to us, rather a reminder of past discussions.
+
+Our transformation this time round comes with a constraint: $\dot{Q} = 0$ and $\dot{P} = 0$. This is because, as we said earlier, the new variables (effectively $q_0$ and $p_0$) should be constants. It is quite clear that these constraints can be solved by simply setting $K = 0$ which is precisely what we will do. We now have to solve $$\ham + \partial_t \chi = 0$$to find an appropriate generating function for our transformation.
+
+Since we want to transform $p \rightarrow P$ and $q \rightarrow Q$ we shall choose the generating function of the second type. Once again, to help you recall, this means $$\chi'' \equiv \chi''(q,P,t) \quad\textrm{with}\quad p = \partial_q \chi'' \;\textrm{,}\quad Q = \partial_P \chi'' \quad\textrm{and}\quad \kam = \ham + \partial_t \chi''$$It is this $\chi''$ that we will now represent as $S$, Hamilton's principle function.
+
+We have $\ham(q_1, q_2, \cdots, q_n, p_1, p_2, \ldots, p_n, t) + \partial_t S = 0$ which we can write as
+\begin{equation}
+	\ham(q_1, q_2, \ldots, q_n, \partial_{q_1}S, \partial_{q_2}S, \ldots, \partial_{q_n}S,t) + \partial_t S = 0 \label{eq:Hamilton-Jacobi}
+\end{equation}
+to get what is called the \textbf{Hamilton--Jacobi equation}. We can solve this equation, knowing $\ham$, to find the principle function $S$.
+
+Our transformation must yield a function of constants $P = \alpha$ and $Q = \beta$ (say), i.e. $S \equiv S(q,\alpha,t)$, which gives us the modified relations,
+\begin{equation}
+	p = \partial_q S(q,\alpha,t) \;\textrm{,}\qquad Q = \beta = \partial_\alpha S(q,\alpha,t) \label{eq:pQ}
+\end{equation}%
+The inverse, or reverse, of the equation for $\beta$ tells us that $q \equiv q(\alpha,\beta,t)$ so can write $p = \partial_q S(q(\alpha, \beta, t), \alpha, t)$ meaning, on inversion/reversal again, we have $p \equiv p(\alpha, \beta, t)$ as well. That is, we have solutions for $p$ and $q$ in terms of the constants $P_0$ and $Q_0$ (at $t=0$) following our transformation as expected.
+
+\section{The harmonic oscillator}
+
+An exercise of the sort that we did so far is only as good as the problems we solve using it, so we shall look at a harmonic oscillator to better understand the Hamilton--Jacobi equation.
+
+\subsection{Setting up the problem}
+
+The Hamiltonian of a harmonic oscillator is $$\ham = {1\over 2m} \left( p^2 + m^2\omega^2q^2 \right) \,\textrm{;}\;\; \omega = \sqrt{k/m}$$and what makes this problem simple is its independence of time.
+
+Substituting $p = \partial_q S$ we have \begin{align}\ham + \partial_t S &= 0 \nonumber\\ \therefore\; {1\over 2m} \left[ \left(\partial_q S\right)^2 + m^2\omega^2q^2 \right] &= - \partial_t S \label{eq:HJoscillator} \end{align}
+
+We proceed on the assumption that integrating this equation yields something that looks like $S(\alpha, q, t) \equiv W(\alpha, q) + V(\alpha, t)$. Substituting this into eq. \eqref{eq:HJoscillator} we get $${1\over 2m} \left[ \left(\partial_q W\right)^2 + m^2\omega^2q^2 \right] = - \partial_t V$$and this is where we make an interesting observation: the left-hand side is spatially variant and the right-hand side is temporally variant. They are both equal to each other and, consequently, to a common constant $\rho$, say. Therefore
+\begin{align}
+-V &= \rho t \nonumber\\
+\implies {1\over 2m} \left[ \left(\partial_q W\right)^2 + m^2\omega^2q^2 \right] &= \rho \label{eq:oscillatorW}
+\end{align}where the left-hand side of the last equation is $\ham = E$, the total energy, and, more important, we have now set up an equation for a harmonic oscillator in terms of $W$, Hamilton's principle function.
+
+\subsection{Solving for Hamilton's principle function}
+
+Solving for $W$ in eq. \eqref{eq:oscillatorW} means integrating it with respect to $q$. That is,
+$$
+W = \int \textrm{d}q \sqrt{2m\alpha - m^2\omega^2q^2}
+$$
+which we arrive at by simple rearrangement. Let us not forget that $S = W + V$ so we add $V$ and write
+$$
+S = -\rho t + \int \textrm{d}q \sqrt{2m\alpha - m^2\omega^2q^2}
+$$
+Using eq. \eqref{eq:pQ} we can compute $\beta$ as
+\begin{align*}
+\beta &= \partial_\alpha S \\
+		&= -t + \int \textrm{d}q {2m \over \sqrt{2m\alpha - m^2\omega^2q^2}} \\
+		&= -t + {1\over \omega} \arcsin \left( q\sqrt{m\omega^2\over 2\alpha} \right)
+\end{align*}%
+Which gives us, on rearranging again,
+\begin{equation}
+	q = \sqrt{2\alpha \over m\omega^2} \, \sin \left[ \omega \left( \beta + t \right) \right] \label{eq:qharmonic}
+\end{equation}
+and, rearranging to solve for $p$ we have (on substituting for $q$ in step three)
+\begin{align}
+p &= \partial_q S \nonumber\\
+		&= \sqrt{2m\alpha - m^2\omega^2q^2} \nonumber\\
+		&= \sqrt{2m\alpha}\left( \sqrt{1 - \sin^2 \left[ \omega \left( \beta + t \right) \right]} \right) \nonumber\\
+ \implies p &= \cos \left[ \omega \left( \beta + t \right) \right] \sqrt{2m\alpha} \label{eq:pharmonic}
+\end{align}%
+In eq. \eqref{eq:qharmonic} and \eqref{eq:pharmonic} we have solutions for $p$ and $q$ in terms of the constants $\alpha$ and $\beta$ as explained in the previous section. Arriving at $p_0$ and $q_0$ from this point on is simply a matter of substituting $t=0$ in these two equations. As an exercise try solving this for a free particle in which case you may end up dealing with multiple generalised co\"{o}rdinates thereby requiring subscripts.
+%
+\begin{thebibliography}{1}
+	\bibitem{hamil}
+	Hamil, P. \textit{A student's guide to Lagrangians and Hamiltonians}, Cambridge University Press, 2014.
+	
+	\bibitem{goldstein}
+	Goldstein, H., Poole, C., Safko, J., \textit{Classical mechanics}, 3rd edition, Addison Wesley, 2000.
+\end{thebibliography}
+\end{document}
