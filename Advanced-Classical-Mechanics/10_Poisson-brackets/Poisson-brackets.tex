@@ -3,28 +3,31 @@
 \newcommand{\lag}{\mathscr{L}}
 \newcommand{\ham}{\mathscr{H}}
 \newcommand{\kam}{\mathscr{K}}
+\newcommand{\diff}{\textrm{d}}
 
-\title{Advanced classical mechanics}
-\subtitle{Poisson brackets}
-\shorttitle{}
-\ccode{16MSPAH101}
+\usepackage{amsmath}
+
+\title{Poisson brackets}
+\subtitle{Advanced classical mechanics}
+\shorttitle{poisson brackets}
+%\ccode{}
 \subject{Classical Mechanics}
 \speaker{V.H. Belvadi}
 \spemail{vh@belvadi.com}
-\author{}
-\email{}
-\flag{}
-\season{Autumn 2017}
-\date{}{}{}
-\dateend{}{}{}
-\conference{}
-\place{St Philomena's College}
-\attn{}
+%\author{}
+%\email{}
+%\flag{}
+\season{Last updated November 2019}
+%\date{}{}{}
+%\dateend{}{}{}
+%\conference{}
+%\place{}
+%\attn{}
 \morelink{vhbelvadi.com/teaching}
 
 \begin{document}
 	
-\runin{One of the} most important tools at our disposal in Hamiltonian mechanics are Poisson brackets. These help us determine if transformations are canonical and, on a deeper level, they act as a sort of bridge between classical and quantum mechanics.
+\noindent\runin{One of the} most important tools at our disposal in Hamiltonian mechanics are Poisson brackets. These help us determine if transformations are canonical and, on a deeper level, they act as a sort of bridge between classical and quantum mechanics. Further, almost everything we have discussed so far about Hamiltonian mechanics can be rewritten in terms of Poisson brackets.
 
 \section{Poisson brackets}
 \subsection{Definition}
@@ -37,11 +40,11 @@ and may be generalised to
 \begin{equation}
 	[f, g] \equiv \partial_{q_i} f \partial_{p_i} g - \partial_{p_i} f \partial_{q_i} g \label{eq:pbrackets}
 \end{equation}%
-with summation implied as per Einstein's convention. And this gives us two important properties of the Poisson bracket:
+with summation over $i$ implied. This gives us two important properties of the Poisson bracket:
 \begin{equation}
 	[q_i,q_j] = 0 = [p_i,p_j] \qquad\textrm{and}\qquad	[q_i,p_j] = -[p_i,q_j] = \delta_{ij} \label{eq:basic-prop}
 \end{equation}%
-where $\delta_{ij}$ is the Kronecker delta function. But the property that makes Poisson brackets particularly useful for canonical transformations is that during a transformation Poisson brackets remain invariant:
+where $\delta_{ij}$ is the Kronecker delta function. But the property that makes Poisson brackets particularly useful for canonical transformations is that during a canonical transformation $(p, q) \rightarrow (P, Q)$ Poisson brackets remain invariant:
 \begin{equation}
 	[f,g]_{p,q} = [f,g]_{P,Q} \label{eq:invariance}
 \end{equation}
@@ -57,37 +60,32 @@ Poisson brackets, like any mathematical tool, adhere to certain rules that help 
 \end{equation}%
 The first two of these are the same as those mentioned in the previous section; and all four can be proven by simply expanding the brackets as in eq. \eqref{eq:pbrackets}.
 
-There is a fifth, extremely important cyclic relationship known as the Jacobi identity that Poisson brackets obey:
+There is a fifth extremely important cyclic relationship known as the \textit{Jacobi identity} that Poisson brackets obey:
 \begin{equation}
 	[f,[g,h]] + [g,[h,f]] + [h,[f,g]] = 0 \label{eq:jacobi-identity}
 \end{equation}
 
 \section{Equations of motion}
 
-In the same vein as the Newtonian approach, the Lagrangian approach (both of which involved second order derivatives), and the Hamiltonian approach (a first order derivative) we can write the equations of motion of a body in terms of Poisson brackets.
-
-For some $f$ we have
+In the same vein as the Newtonian approach, the Lagrangian approach (both of which involved second order derivatives), and the Hamiltonian approach (a first order derivative) we can write the equations of motion of a body in terms of Poisson brackets. For some $f$ we have
 $$
 \dot{f} = \partial_{q_i} f \dot{q_i} + \partial_{p_i} f \dot{p_i} + \partial_t f
 $$
 where $\dot{q}_i = \partial_{p_i} \ham$ and $\dot{p}_i = - \partial_{q_i} \ham$ giving us
-$$
-\dot{f} = \partial_{q_i} f \partial_{p_i} \ham - \partial_{p_i} f \partial_{q_i} \ham + \partial_t f
-$$
-which is nothing but
 \begin{equation}
-\dot{f} = [f,\ham] + \partial_t f \label{eq:dotted}
+\dot{f} = \partial_{q_i} f \partial_{p_i} \ham - \partial_{p_i} f \partial_{q_i} \ham + \partial_t f = [f,\ham] + \partial_t f \label{eq:dotted}
 \end{equation}%
 Now if $f$ is a constant in time $\dot{f} = 0$ and we have
 \begin{equation}
 	[f,\ham] = -\partial_t f \label{eq:motion}
-\end{equation}
-If, in eq. \eqref{eq:motion}, we replace $f$ by either $\dot{q}$ or $\dot{p}$ we end up with Hamilton's equation in Poisson brackets notation:
+\end{equation}%
+If, in eq. \eqref{eq:motion}, we replace $f$ by either $q$ or $p$ we end up with Hamilton's equation in Poisson brackets notation:
 $$
-\dot{q} = [q,\ham] \qquad\textrm{and}\qquad \dot{p} = [p,\ham]
+\dot{q_i} = [q_i,\ham] \qquad\textrm{and}\qquad \dot{p_i} = [p_i,\ham]
 $$
 And if, in the same equation, we replace $f$ by $\ham$ we get $\dot{\ham} = \partial_t \ham$ which is a result we have come across in previous lectures.
 
+\section{Transformations using Poisson brackets}
 \subsection{Infinitesimal transformations in space and time}
 
 Infinitesimal transformations are transformations going from $(p_i,q_i)$ to $(P_i,Q_i)$ with only an infinitesimal change: $Q_i = q_i + \delta q_i$ and $P_i = p_i + \delta p_i$, where $\delta p$ and $\delta q$, like $p$ and $q$, is any co\"{o}rdinate change, and not just virtual displacement.
@@ -97,49 +95,112 @@ $$
 \chi'' = q_iP_i + \epsilon G(q,P,t)
 $$
 and, using the normal transformation rules for a $\chi''$ type generating function, i.e. $p_k = \partial_{q_k} \chi''$ and $Q_k = \partial_{P_k} \chi''$, we get
-$$
-p_k = P_k + \epsilon \partial_{q_k} G \qquad\textrm{and}\qquad Q_k = q_k + \epsilon \partial_{P_k} G
-$$
-Subsequently we have $\delta q_k = Q_k - q_k = \epsilon \partial_{P_k} G$ which can be written equivalently as $\delta q_k = \epsilon \partial_{p_k}$ since $P_k$ and $p_k$ vary only as a first order transformation. Likewise $\delta p_k = P_k - p_k = -\epsilon \partial_{q_k} G$.
+\begin{equation}
+p_k = P_k + \epsilon \partial_{q_k} G \qquad\textrm{and}\qquad Q_k = q_k + \epsilon \partial_{P_k} G \label{eq:q-G-relation}
+\end{equation}%
+Consequently we have $\delta q_k = Q_k - q_k = \epsilon \partial_{P_k} G$ and $\delta p_k = P_k - p_k = -\epsilon \partial_{q_k} G$.
 
-In terms of the Hamiltonian this means any transformation $\xi = \eta + \delta \eta$ is a canonical transformation where, if $G \equiv \ham$, these transformations \textit{describe the growth of our generalised variables in time} e.g. $q(t), \ldots, p(t)$ going to some $q(t+\delta t),\ldots,p(t+\delta t)$.
+In terms of the Hamiltonian this means any transformation $\xi = \eta + \delta \eta$ is a canonical transformation where if $G \equiv \ham$ these transformations can just as well be thought of as describing the \textit{growth of our generalised variables in time} e.g. $q(t), \ldots, p(t)$ going to some $q(t+\delta t),\ldots,p(t+\delta t)$.
 
 It is worth taking a moment to discuss what these transformations will \textit{look} like. For starters going from $f(q,p)$ to $F(Q,P)$ purely spatially will not change the value of $f$ in any way, i.e. we end up with $f \equiv F$ in all cases for canonical transformations. However, as a mathematical equation $f$ will look different from $F$. This is not surprising: we have seen examples before of how the same system is described by different equations in, say, Cartesian and polar co\"{o}rdinates although the equations physically mean the same thing.
 
-With temporal transformations, though, things are quite the opposite. Since we remain in the same co\"{o}rdinate space but move in time from $f(t)$ to $f(T)$ the form of $f$ remains unchanged while its value changes and $f(t) \neq f(T)$. Let us give this a general representation: say we start from $f(q,p)$ at $q(t),\ldots,p(t)$ and go to $f(q',p')$ at $q(t+\delta t),\ldots,p(t+\delta t)$ and represent this as $f(A)$ and $f(B)$ respectively, we define some
+With temporal transformations, though, things are quite the opposite. Since we remain in the same co\"{o}rdinate space but move in time from $f(t)$ to $f(T)$ the form of $f$ remains unchanged while its value changes and generally $f(t) \neq f(T)$. Let us give this a general representation: say we start from $f(q,p)$ at $q(t),\ldots,p(t)$ and go to $f(q',p')$ at $q(t+\delta t),\ldots,p(t+\delta t)$ and represent this as $f(A)$ and $f(B)$ respectively, we define some
 $$
 \delta f = f(B) - f(A)
 $$
-and start using $f \equiv f(q,p)$ to solve this as
+and start using $f \equiv f(q,p)$ to solve this using eq. \eqref{eq:q-G-relation} as
 \begin{align}
 	\delta f &= \partial_{q_i} f \delta q_i + \partial_{p_i} f \delta p_i \nonumber\\
 			&= \epsilon \left( \partial_{q_i} f \partial_{p_i} G - \partial_{p_i} f \partial_{q_i} G \right) \nonumber\\
 \implies \delta f &= \epsilon [f, G] \label{eq:fB-A}
-\end{align}
+\end{align}%
+This is what a general infinitesimal transformation looks like.
 
 \subsection{Transforming the Hamiltonian}
 
-Finally, consider the transformation $\ham(A) \rightarrow \kam(B)$ of the Hamiltonian of some system related by $\kam(B) = \ham(A) + \partial_t \chi$. For an infinitesimal transformation we can consider the identity transformation $\chi'' = q_iP_i + \epsilon G(q,P,t)$ so that
+Finally, consider the transformation $\ham(A) \rightarrow \kam(B)$ of the Hamiltonian of some system related by the familiar result $\kam(B) = \ham(A) + \partial_t \chi$. For an infinitesimal transformation we can consider the identity transformation $\chi'' = q_iP_i + \epsilon G(q,P,t)$ so that
 $$
 \kam(B) = \ham(A) + \epsilon \partial_t G
 $$
 
-The change in the Hamiltonian $\ham(A)$ to $\ham(B)$ is related to the above transformation by some
+The change in the Hamiltonian $\ham(A)$ to another $\ham(B)$ is related to the above transformation by some $\delta \ham$ as
 \begin{align*}
 	\delta \ham &= \ham(B) - \kam(B) \\
 				&= \ham(B) - \ham(A) - \epsilon \partial_t G \\
-	\delta \ham &= \epsilon[\ham, G] - \partial_t G \qquad\qquad\textrm{from eq. \eqref{eq:fB-A}}
+	\delta \ham &= \epsilon \left( [\ham, G] - \partial_t G \right) \qquad\qquad\textrm{from eq. \eqref{eq:fB-A}}
 \end{align*}
 
-From eq. \eqref{eq:dotted} we have
+Based on eq. \eqref{eq:dotted} we can substitute
 $$
 \dot{G} = [G,\ham] + \partial_t G
 $$
-which can be substituted in the above result to get
+in the above result, recalling that $[f,g] = -[g,f]$, to arrive at
 \begin{equation}
-	\delta \ham = - \epsilon \partial_t G
-\end{equation}
+	\delta \ham = - \epsilon \partial_t G \label{eq:H-and-G}
+\end{equation}%
 which means if the generating function (on the right-hand side) is a constant of motion the Hamiltonian remains invariant and vice versa.
+
+\subsection{Angular momentum}
+
+A key application of infinitesimal canonical transformations has to do with angular momentum. Calling $\mathbf{L}$ the angular momentum over some rotation angle $\theta$ we can let, say, $L_z = G$ the generating function:
+\[
+G = L_z = \sum \left( \mathbf{r_i \times p_i} \right)_z = \sum \left( x_i p_{yi} - y_ip_{xi} \right)
+\]
+Rotation about some infinitesimal $\diff \theta$ looks like
+\[
+\delta x_i = -y_i \diff \theta \qquad\qquad \delta y_i = x_i\diff \theta \qquad\qquad \delta z_i = 0
+\]
+which can be written by simply imaging the transformation. Similarly,
+\[
+\delta p_{xi} = -p_{yi}\diff\theta \qquad\qquad \delta p_{yi} = p_{xi}\diff\theta \qquad\qquad \delta p_{zi} = 0
+\]
+where the z-axis terms go to zero as the rotation is considered to be about that axis as signified by $L_z = G$. Observe that using $\delta q = \epsilon \partial_p G$ and $\delta p = - \epsilon \partial_q G$ too we can arrive at the same results:
+\[
+\delta x_i = \epsilon \partial_{p_{xi}} G = \epsilon \partial_{p_{xi}} \left( \sum x_jp_{yj} - y_jp_{xj} \right) = \epsilon (-y) = -y_i\diff \theta
+\]
+
+Our next task is to try to write these in terms of Poisson brackets. We know from eq. \eqref{eq:fB-A} that $\delta f = \epsilon [f,G]$. And we also know, from eq. \eqref{eq:H-and-G} that where $\epsilon = \diff t$, any variation in time, $G$ is simply $\ham$ and tell us the change in $f$ over time. In our case we know that $G$ is something potentially not just the Hamiltonian---it is given by $G = \mathbf{\hat{n}\cdot L}$, the component of the angular moment along $\mathbf{\hat{n}}$, based on our definition above. If we now consider $\epsilon = \diff\theta$ we have
+\[
+\delta F_i = \diff\theta \left[ F_i, \mathbf{\hat{n}\cdot L} \right] \qquad \textrm{or} \qquad \delta \mathbf{F} = \diff\theta [\mathbf{F}, \mathbf{\hat{n}\cdot L}]
+\]
+where $f = F_i$, a component of some \textbf{system vector} that we shall call $\mathbf{F}$.
+
+Now we already know that if $\mathbf{\hat{n}} = \mathbf{\hat{L}}$ we can describe any change in our vector $\mathbf{F}$ due to rotation of $\diff\theta$ about the $\mathbf{\hat{n}}$ axis as
+\[
+\diff \mathbf{F} = \mathbf{\hat{n}}\diff\theta \times \mathbf{F}
+\]
+Compare the above two equations. They must be equal since they are simply different ways of describing the same rotation phenomenon mathematically:
+\begin{equation}
+	\therefore [\mathbf{F}, \mathbf{\hat{n}\cdot L}] = \mathbf{\hat{n} \times F} \label{eq:angular-momentum-poisson}
+\end{equation}%
+Using Poisson brackets then we have effectively erased any \textit{explicit} dependence on the rotation process by eliminating $\diff\theta$ from our equation. In component notation the same equation is
+\begin{equation}
+	[F_i, L_j] = \epsilon_{ijk}F_k \tag{\ref{eq:angular-momentum-poisson}}
+\end{equation}%
+where $\epsilon_{ijk} = 0$ if any two indices are equal, $+1$ for even permutations and $-1$ for odd permutations.
+
+We can also arrive at another interesting result if two systems are involved with system vectors $\mathbf{V}$ and $\mathbf{W}$ (say) just like $\mathbf{F}$ above:
+\begin{align}
+	[\mathbf{V\cdot W},\mathbf{\hat{n}\cdot L}] &= \mathbf{V} \cdot [\mathbf{W}, \mathbf{\hat{n}\cdot L}] + \mathbf{W} \cdot [\mathbf{V}, \mathbf{\hat{n}\cdot L}] \nonumber\\
+	&= \mathbf{V} \cdot \left(\mathbf{\hat{n} \times W} \right) + \mathbf{W} \cdot \left(\mathbf{\hat{n} \times V} \right) \nonumber\\
+	&= \left( \mathbf{V} \times \mathbf{\hat{n}} \right) \cdot \mathbf{W} + \mathbf{W} \cdot \left(\mathbf{\hat{n} \times V} \right) = 0 \label{eq:V-W-angular-momentum}
+\end{align}%
+We can now ask ourselves what happens if these system vectors are both angular momenta. From eq. \eqref{eq:angular-momentum-poisson} we have
+\[
+	[L_i, L_j] = \epsilon_{ijk} L_k
+\]
+which when combined with the result in eq. \eqref{eq:V-W-angular-momentum} gives
+\begin{equation}
+	[\mathbf{L}^2 , \mathbf{\hat{n}\cdot L}] = 0 \label{eq:L-2=0}
+\end{equation}%
+It is time to conclude our discussion on angular moment with a host of important and somewhat more general observations:
+\begin{enumerate}
+	\item The Poisson bracket of two constants of motion is also a constant of motion (Poisson's theorem) e.g. $[L_x,L_y] = L_z$ according to eq. \eqref{eq:angular-momentum-poisson}
+	\item Since the Poisson bracket of two canonical variables is zero (recall $[q_i,q_j] = 0 = [p_i,p_j]$) it is clear that no pair of $L_i$ is simultaneously a canonical variable as their Poisson bracket is not zero (see point above).
+	\item However, the Poisson bracket of the magnitude $L^2$ and any one component of $\mathbf{L}$ being zero according to eq. \eqref{eq:L-2=0}, we realise this is a pair of simultaneous canonical variables.
+	\item We can extend this idea: if a system has linear momentum $\mathbf{p}$ with $p_z$ being canonical then by eq. \eqref{eq:angular-momentum-poisson} $[p_z, L_x] = p_y$ and $[p_z, L_y] = p_x$ meaning the other components of $\mathbf{p}$ are also canonical. \margintext{Another way to see this: if $L_x$, $L_y$ and $p_z$ are constants then eqs. \eqref{eq:angular-momentum-poisson} and \eqref{eq:L-2=0} tell us that $\mathbf{L}$ and $\mathbf{p}$ are constants too since $L_z$, $p_x$ and $p_y$ will also be constants.} By Poisson’s theorem (see point one) then we realise that if any such pair is constant so too is another component as suggested by the above equations. 
+	\item Generally, especially in quantum mechanics, you will see that we understand these relationships as no two components of $\mathbf{L}$ can have the same eigenvalue, while $L^2$ and some $L_i$ may be simultaneously quantised and so on.
+\end{enumerate}
 
 \vspace*{1.5cm}
 {\centering
