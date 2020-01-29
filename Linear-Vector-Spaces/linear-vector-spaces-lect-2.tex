@@ -1,0 +1,296 @@
+\documentclass[english,seminar,headertitle]{lecture}
+\title{Linear vector spaces}
+\subtitle{Lecture 2 of 3\vspace*{-1em}}
+\shorttitle{}
+\ccode{YPH102}
+\subject{Physics}
+\speaker{}
+\spemail{}
+\author{V.H. Belvadi}
+\email{vh@belvadi.com}
+\flag{Gram--Schmidt theorem---Schwarz inequality---Triangle inequality---Subspaces---Linear operators---Matrix elements of linear operators---Active and passive transformation}
+\season{September 2018}
+\date{}{}{}
+\dateend{}{}{}
+\conference{}
+\place{Yuvaraja's College, University of Mysore}
+\attn{}
+\morelink{vhbelvadi.com/teaching}
+
+\usepackage{multicol}
+\usepackage{braket}
+\setcounter{theorem}{2} %1 and 2 are in lecture 1
+\setcounter{equation}{8}
+\setcounter{section}{5}
+
+\begin{document}
+\noindent\runin{We have so far}\margintext{Lecture 2, part 1} discussed what a vector space is, what vectors are, the Dirac notation and some fundamental mathematical procedures that help us handle these vectors. One of the ideas we discussed was that of orthonormal basis. We will begin this lecture by looking at a method to form such a basis.
+
+\section{Gram--Schmidt theorem}
+
+\begin{theorem}[Gram--Schmidt theorem]
+	Given a linearly independent basis we can obtain an orthonormal basis by forming linear combinations of the given basis vectors.
+\end{theorem}
+
+\begin{proof}
+	Broadly, our procedure will be as follows:
+	\begin{enumerate}
+		\item Scale the given vector and make it a unit vector to obtain the first basis vector.
+		\item Subtract the projection of the second vector along the first so we have only that part of the second vector that is perpendicular to the first.
+		\item Rescale by its own length the vector leftover from the previous step to obtain a second (normalised) basis vector perpendicular to the first.
+	\end{enumerate}
+	
+	And now we begin: let $\ket{U}, \ket{V}, \ket{W}, \ldots$ be a basis. The first vector of the orthonormal basis that we form using this (step 1) will be\margintext{To verify that the new orthonormal basis vector $\ket{1}$ is in fact normalised consider $\braket{1|1}$ which is simply $\braket{U|U}/\sqrt{\braket{U|U}}^2 = 1$.}
+	\[
+		\ket{1} = {\ket{U} \over \sqrt{\braket{U|U}}}
+	\]
+	For the second vector (step 2) consider $\ket{V}$ and subtract from it that part of $\ket{V}$ which is already pointing along $\ket{1}$, i.e. $\ket{1}\braket{1|V}$, so our second vector, still only orthogonal\margintext{Like we proved normality for $\ket{1}$ try to prove that $\ket{2'}$ is orthogonal to $\ket{1}$ i.e. show that $\braket{1|2'} = 0$.}, is
+	\[
+		\ket{2'} = \ket{V} - \ket{1}\braket{1|V}
+	\]
+	and we proceed to also normalise it (step 3) as follows:
+	\[
+		\ket{2} = {\ket{2'} \over \sqrt{\braket{2'|2'}}}
+	\]
+	Repeat these steps for the third orthonormal basis vector:
+	\begin{align*}
+		\ket{3'} &= {\ket{W} - \ket{1}\braket{1|W} - \ket{2}\braket{2|W}} \\
+		\ket{3} &= {\ket{3'} \over \sqrt{\braket{3'|3'}}}
+	\end{align*}
+	The procedure can be repeated for as many orthonormal basis vectors as will fit into our set. This is known as the \textbf{Gram-Schmidt theorem}.
+\end{proof}
+
+\section{Inequalities}
+
+Next we prove two exceptional theorems based on inequalities:
+
+\begin{theorem}[Schwarz inequality]
+	The (dot/inner) product of two vectors cannot exceed the product of their lengths:
+	\begin{equation}
+		|\braket{U | V}| \le |U||V| \label{eq:schwarz}
+	\end{equation}%
+\end{theorem}
+
+\begin{proof}
+	We saw in our last lecture that the inner product is positive semidefinite i.e. $\braket{Z|Z} \ge 0$. Let us work on this starting with the observation we have already made that $\braket{Z|Z} = 0 \iff \ket{Z} = 0$ as follows:
+	\begin{align*}
+		\ket{Z} &= 0 \\
+				&= 1-1 = 1-{\braket{V|V}\over\sqrt{\braket{V|V}}^2} \\
+				&= \ket{U} - {\braket{V|U}\over|V|^2}\ket{V} \\
+\implies\braket{Z|Z} &= \braket{U - {\braket{V|U}\over |V|^2} V | U - {\braket{V|U}\over|V|^2} V} \\
+				&= \braket{U|U} - {\braket{V|U}\braket{U|V}\over|V|^2} - {\braket{V|U}\braket{V|U}\over|V|^2} + {\braket{V|U}\braket{V|U}\braket{V|V}\over|V|^4}
+				&\ge 0
+	\end{align*}
+	In the penultimate step we have opened all brackets and taken the complex conjugate of all bra terms. Finally we get
+	\begin{align*}
+		\braket{U|U} &\ge {\braket{V|U}\braket{U|V}\over|V|^2} \\ 
+\therefore \sqrt{\left(\sqrt{\braket{V|V}}\right)^2} \sqrt{\braket{U|U}} &\ge \sqrt{\braket{V|U}}\sqrt{\braket{U|V}} \\
+\implies |V||U| &\ge |\braket{V|U}| \tag{\ref{eq:schwarz}}
+	\end{align*}
+	Hence proved.
+\end{proof}
+
+\begin{theorem}[Triangle inequality]
+	The length of a sum of vectors cannot exceed the sum of the lengths of those vectors:
+	\begin{equation}
+		|U + V| \le |U| + |V| \label{eq:triangle}
+	\end{equation}%
+\end{theorem}
+
+\begin{proof}
+	Start with the square of the left-hand side and use the familiar expansion of a vector $U^2$ into $U^* U$ a product of the vector itself and its complex conjugate.
+	\begin{align*}
+		 |U+V|^2 &= (U+V)^*(U+V) \\
+		 		 &= U^*U + U^*V + V^*U + V^*V \\
+		 		 &= U^2 + U^*V + V^*U + V^2
+	\end{align*}
+	Now we make two observations: First, for any complex number $z \equiv a+ib$ we know that $z + \bar{z} = 2a = 2\textrm{Re}(z)$. This can be applied to the middle terms on the right-hand side above i.e. $U^*V + V^*U = U^*V + \overline{U^*V}$ giving us $2\textrm{Re}(U^*V)$.
+	
+	Second, for any complex number $z$ we have $|z|^2 = a^2 + b^2 \ge a^2$ since $b^2$ is necessarily positive and removing that term will reduce the value of the right-hand side. Applying this to our $U^*V$ term we see that $|U^*V|^2 \ge \textrm{R}(U^*V)$.
+	
+	Combine the two observations to get
+	\begin{align*}
+		U^*V + V^*U &= 2\textrm{Re}(U^*V) \\
+					&\le 2 |U^*V|^2 = 2|U||V|
+	\end{align*}
+	Plug this into our previous result, the expansion of $|U+V|^2$, to get the triangle inequality:
+	\begin{align*}
+		|U+V|^2 &\le |U|^2 + 2|U||V| + |V|^2 = \left(|U|+|V|\right)^2 \\
+\implies |U+V| &\le |U| + |V| \tag{\ref{eq:triangle}}
+	\end{align*}
+	Hence proved. (A similar `backwards' inequality applies to the same equation but with minus signs\cite{backwardstriangle}.)
+\end{proof}
+
+\section{Subspaces}
+
+We will conclude this part of our lecture with a look at subspaces. As the name suggests these are vector spaces within vector spaces. To be precise, a \textbf{subspace} is a subset of elements of some vector space $\mathbb{V}$ which themselves form a vector space. Subsets are generally denoted by $\mathbb{V}^{n_i}_i$ where $\mathbb{V}$ is the parent space, the superscript $n_i$ is the dimensionality of the $i^\textrm{th}$ subspace and the subscript $i$ refers to the subspace itself.
+
+An example might clear things up further: given the vector space $\mathbb{R}^2$ in the $x$ and $y$ directions a possible subspace could be all vectors in the $\pm x$ direction or, alternatively, in the $\pm y$ direction---they are indistinguishable. Had our parent space been $\mathbb{R}^3$ we could also have defined a subspace as the set of all vectors on the $yx$ plane. That said, in either case, all vectors in the positive $x$ direction alone (or negative or along the positive or negative $y$ direction for that matter) do not form a subspace because they will not carry additive inverses. All of the examples given here carry the null vector, the origin. As for representation we label the subspace of $\mathbb{R}^3$ in, for example, the $x$ direction as $\mathbb{R}^1_x$ and on the $yx$ plane as $\mathbb{R}^2_{yz}$ and so on.
+
+\section{Linear operators and matrices}
+\subsection{Introduction to linear operators}
+
+We now move on\margintext{Lecture 2, part 2} to the next big idea under this series of lectures: operators. An \textbf{operator} $\Omega$ is a rule or instruction that lets us transform one vector into another. It can be represented generally as follows:
+\[
+	\Omega \ket{V} = \ket{V'}
+\]
+We call this a \textbf{transformation} by $\Omega$ from $\ket{V}$ to $\ket{V'}$. Linear operators can be scaled, i.e. $\Omega a\ket{U} = a\Omega\ket{U}$, and distributed over vectors, i.e. $\Omega \left(a\ket{U} + b\ket{V}\right) = a\Omega\ket{U} + b\Omega\ket{V}$. The same holds for bra vectors too.
+
+The simplest linear operator is the identity operator: $\textrm{I}\ket{U} = \ket{U}$. Its operation is to keep a vector untouched.
+
+Another important operator is the rotation operator $\textrm{R}(\theta)$ which rotates a vector by $\boldsymbol{\theta}$ making it finally point along $\hat{\theta}$. Here is an example: if $\boldsymbol{\theta}$ lies on the $yz$ plane and is equal to $\pi/2$ then it rotates our $\mathbb{R}^3$ basis vectors as follows:
+\begin{align*}
+	\textrm{R}(\pi/2)\ket{1} &= \ket{1} \quad\textrm{because $\hat{x}$ rotates around itself as $\hat{\theta}$ lies along the $yz$ plane.} \\
+	\textrm{R}(\pi/2)\ket{2} &= \ket{3} \quad\textrm{because $\hat{y}$ rotates into $\hat{z}$ along the $yz$ plane.} \\
+	\textrm{R}(\pi/2)\ket{3} &= -\ket{2} \quad\textrm{because $\hat{z}$ rotates into $-\hat{y}$ along the $yz$ plane.}
+\end{align*}
+
+In general when we know how an operator transforms a basis we can determine how it transforms any set of vectors in that vector space. Generally,
+\[
+	\Omega\ket{V} = \sum_i\Omega v_i \ket{i} = \sum_i v_i\Omega\ket{i} = \sum_i v_i\ket{i'}
+\]
+Once again using $\mathbb{R}^3$ as an example if we have some vector $\ket{V}$ written as
+\[
+	\ket{V} = a\ket{1} + b\ket{2} + c\ket{3}
+\]
+we can write down the operation of $\Omega$ on it, known how $\Omega$ operates on the basis vectors of $\mathbb{R}^3$, as follows:
+\[
+	\Omega\ket{V} = a\ket{1} + b\ket{3} - c\ket{2}
+\]
+
+\subsection{Properties of linear operators}
+There are a few handy properties for linear operators:
+\begin{enumerate}
+	\item Their \textit{product} simply means a sequential application of operators:\nl $\Omega\Lambda\ket{U} = \Omega\left(\Lambda\ket{U}\right) = \Omega\ket{\Lambda U}$.
+	\item The order of operations is important as operators do not commute. Mathematically,\nl $\left[\Omega , \Lambda \right] \neq 0$ where $\left[\Omega , \Lambda \right] \equiv \Omega\Lambda - \Lambda\Omega$.
+	\item But there are commutator identities that can prove to be of use:
+		\begin{enumerate}
+			\item $\left[\Omega , \Lambda\theta \right] = \Lambda\left[\Omega , \theta \right] + \left[\Omega , \Lambda \right]\theta$
+			\item $\left[\Lambda\Omega , \theta \right] = \Lambda\left[\Omega , \theta \right] + \left[\Lambda , \theta \right]\Omega$
+		\end{enumerate}
+	\item Not all operators have inverses; those that do satisfy these two criteria:
+		\begin{enumerate}
+			\item $\Omega\Omega^{-1} = \textrm{I} = \Omega^{-1}\Omega$
+			\item $\left(\Omega\Lambda\right)^{-1} = \Lambda^{-1}\Omega^{-1}$
+		\end{enumerate}
+\end{enumerate}
+
+\subsection{Linear operators as matrices}
+
+So far we have seen how a vector, in its most abstract form, can be represented in a basis by nothing more than a set of $n$ numbers, called its components. We will now similarly represent a linear operator in a basis using $n^2$ numbers, specifically as an $n \times n$ square matrix.
+
+One observation we ought to make at the outset is that, like vector components rely on a basis, matrix elements of an operator rely on a basis.
+
+We begin by assuming we know how an operator $\Omega$ acts on the basis vectors $\ket{i}$ of some $\ket{V}$:
+\[
+	\Omega\ket{i} = \ket{i'}
+\]
+We may write this down as a matrix $\Omega_{ij}$ using the now familiar identity
+\[
+	\braket{j|i'} = \braket{j|\Omega | i} := \Omega_{ji}
+\]
+where $\Omega_{ij}$ are $n^2$ elements forming the matrix of $\Omega$ \textit{in this basis}.
+
+Knowing this we can determine the elements of $\ket{V}$ as well. That is, we can write a matrix with elements $\ket{v'}$ as follows:
+\begin{align*}
+	v_i' &= \braket{i|V'} = \braket{i|\Omega|V} \\
+		&= \sum_j v_j \braket{i|\Omega|j} \qquad\textrm{Since }\ket{V} = \sum_j  v_j\ket{j} \\
+		&= \sum_j \Omega_{ij} v_j
+\end{align*}
+Written as a matrix this is
+\begin{equation}
+	\begin{bmatrix}
+		v_1' \\ v_2' \\ \vdots \\ v_n'
+	\end{bmatrix}
+	=
+	\begin{bmatrix}
+		\braket{1|\Omega|1} & \braket{1|\Omega|2} & \ldots & \braket{1|\Omega|n} \\
+		\braket{2|\Omega|1} & & & \\
+		\vdots & & & \vdots \\
+		\braket{n|\Omega|1} & \ldots & & \braket{n|\Omega|n}
+	\end{bmatrix}
+	\begin{bmatrix}
+		v_1 \\ v_2 \\ \vdots \\ v_n
+	\end{bmatrix}
+	\label{eq:operator-as-matrix}
+\end{equation}%
+On the left-hand side are the components of the transformed vector and on the extreme right-hand side are those of the original vector. In-between them, on the right-hand side, are the components of the operator written as $\braket{\textrm{row}|\Omega|\textrm{column}}$ where each $j^\textrm{th}$ column denotes the result of the action of $\Omega$ on the $j^\textrm{th}$ basis vector. This also holds true for bra vectors with $\bra{v''} = \bra{v'}\Omega$.
+
+\vspace{0.35cm}
+
+\noindent\fbox{\parbox{\textwidth}{\textsc{exercise.}\nl Find the matrix components of the $\textrm{R}(\pi/2)$ operator discussed earlier.\\[-0.75em]
+
+\textsc{solution.}\nl We know that $\textrm{R}_{ij} = \braket{i | \textrm{R} | j}$ are the elements of the matrix. We therefore have the first element as $\braket{1 | \textrm{R} | 1}$ which is $\braket{1 | 1}$ or just $1$. The second element will be $\braket{1 | \textrm{R} | 2}$ which is $\braket{1 | 3}$ or zero. In a like manner we can determine all the other elements. Of particular interest is $\braket{2| \textrm{R} |3}$ which is $\braket{2 | -2}$ or $-\braket{2 | 2}$ giving us R$_{23} = -1$. In the end R turns out to be
+\[
+\textrm{R}(\pi/2) = 
+\begin{bmatrix}
+	1 & 0 & 0 \\
+	0 & 0 & -1 \\
+	0 & 1 & 0
+\end{bmatrix}
+\]
+}}\\
+
+\noindent\fbox{\parbox{\textwidth}{\textsc{exercise.}\nl Find the matrix components of the cyclic operator that cycles $\ket{1} \rightarrow \ket{2} \rightarrow \ket{3}$.
+}}\\
+
+\section{More about operators}
+\subsection{A couple of important operators}
+
+The \textbf{identity operator} is one we are already quite familiar with. It works as follows:
+\begin{equation}
+	\textrm{I}_{ij} = \braket{i \textrm{I} | j} = \braket{i|j} = \delta_{ij} \label{eq:identitiy-operator}
+\end{equation}
+In other words it is a diagonal matrix with $\delta_{ii} = 1$ as its only elements.
+
+The \textbf{projection operator} is another important operator. Consider the following expansion:
+\[
+	\ket{V} = \sum_i \ket{i}\braket{i|V}
+\]
+Here we call the object $\sum_i \ket{i}\bra{i}$ the projection operator and represent it as $\mathbb{P}$. If we compare this to eq. \eqref{eq:identitiy-operator} and we realise that $\mathbb{P}$ is an operator that can best be described using the identity operator:
+\begin{equation}
+	\textrm{I} = \sum_i \ket{i}\bra{i} = \sum_i \mathbb{P} \label{eq:completeness}
+\end{equation}
+where $\mathbb{P} = \ket{i}\bra{i}$ is called the projection operator for $\ket{i}$ and eq. \eqref{eq:completeness} is an important equation known as the \textbf{completeness relation}. It expresses the identity operator as a sum over projection operators.
+
+Here is what the projection operator does:
+\[
+	\mathbb{P}_i\ket{V} = \ket{i}\braket{i|V} = \ket{i}\braket{i | v_i i} = \ket{i} v_i
+\]
+Verbally, $\mathbb{P}_i$ projects out the $\ket{i}$ component of $\ket{V}$ i.e. $v_i$.
+
+Finally we need to find the matrix elements of $\mathbb{P}_i$ for which we use the technique we discussed earlier for operators in general: $\Omega_{ij} = \braket{i | \Omega | j}$. Thus,
+\[
+	\left(\mathbb{P}_i\right)_{kl} = \braket{k|i}\braket{i|l} = \delta_{ki}\delta_{il}
+\]
+Written as an actual matrix we get
+\[
+	\mathbb{P}_i =
+	\begin{bmatrix}
+		0 & & & \ldots & & & 0 \\
+		& \ddots & & & & & \\
+		& & 0 & & & & \\
+		\vdots & & & 1 & & & \\
+		& & & & 0 & & \\
+		& & & & & \ddots & \\
+		0 & & & & & & 0 
+	\end{bmatrix}
+\]
+where only the $i = k = l$ term will be 1 and the rest will be zeroes. You can also arrive at this considering $\ket{i}\bra{i}$ as generic $n\times 1$ column and $1\times n$ row matrices with the $j=i$ element 1 and other elements 0s to get an $n\times n$ square matrix like the one shown above.
+
+\subsection{Operator products}
+
+Operators $\Omega$ and $\Lambda$ can be multiplied and still be represented as matrices:
+\[
+	(\Omega\Lambda)_{ij} = \braket{i | \Omega\Lambda | j} = \braket{i | \Omega \textrm{I} \Lambda | j} = \sum_k \braket{i | \Omega | k}\braket{k | \Lambda | j} = \sum_k \Omega_{ik}\Lambda_{kj}
+\]
+First, observe how we have introduced completeness here. Second, the matrix representing the product of operators is the product of the matrices representing their respective factors.
+
+\begin{thebibliography}{1}
+	\bibitem{backwardstriangle}
+	Matrix analysis and applied linear algebra. C.D. Meyer: \url{bit.ly/2N49mao}.
+	\bibitem{shankar}
+	R. Shankar. Principles of Quantum Mechanics, 2ed. Springer.
+\end{thebibliography}
+
+\end{document}

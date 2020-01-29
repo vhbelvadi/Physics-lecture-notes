@@ -1,0 +1,321 @@
+\documentclass[english,seminar,headertitle]{lecture}
+\title{Linear vector spaces}
+\subtitle{Lecture 1 of 3\vspace*{-1em}}
+\shorttitle{}
+\ccode{YPH102}
+\subject{Physics}
+\speaker{}
+\spemail{}
+\author{V.H. Belvadi}
+\email{vh@belvadi.com}
+\flag{Introductory ideas---Linear dependence and independence---inner product spaces---Dirac notation---Expansion in an orthonormal basis---Adjoint operation}
+\season{September 2018}
+\date{}{}{}
+\dateend{}{}{}
+\conference{}
+\place{Yuvaraja's College, University of Mysore}
+\attn{}
+\morelink{vhbelvadi.com/teaching}
+
+\usepackage{multicol}
+\usepackage{braket}
+
+\begin{document}
+\noindent\runin{In trying to define a}\margintext{Lecture 1, part 1} useful subset of quantities that come handy while studying quantum mechanics we define some requirements which have to be fulfilled by a given quantity before it can be included in this set. In the process you will end up seeing your idea of a vector being deepened---the existence of a direction and magnitude, you will soon see, is not only an incomplete requirement it is also not a compulsory one for a quantity to be called a vector. The language used in the last few sentences may seem abstract to you right now but the idea will clear itself as we progress over these lectures.
+
+\section{Linear vector spaces}
+
+What is important to know right now is that such a set is called a linear vector space. To be more precise, a \textbf{linear vector space} $\mathbb{V}$ is a set of objects, called \textbf{vectors} (e.g. $\mathbf{U, V, W}\ldots$), in which the following rules are compulsorily valid:
+\begin{multicols}{2}
+\begin{enumerate}
+	\item \textit{Closure} is satisfied:\nl$\mathbf{U + V} \in \mathbb{V}$
+	\item Scalar multiplication is \textit{distributive} over vectors and scalars:\nl$a\left(\mathbf{U + V}\right) = a\mathbf{U} + a\mathbf{V}$\nl$\left(a + b\right)\mathbf{U} = a\mathbf{U} + b\mathbf{U}$
+	\item Scalar multiplication with a vector is \textit{associative}:\nl$a\left(b\mathbf{U}\right) = ab\mathbf{U} $
+	\item Addition is \textit{associative}:\nl$\mathbf{U + \left(V + W\right) = \left(U + v\right) + W}$
+	\item Addition is \textit{commutative}:\nl$\mathbf{U + V} = \mathbf{V + U}$
+	\item A \textit{null vector} must exist:\nl$\mathbf{U} + 0 = \mathbf{U}$
+	\item An \textit{additive inverse} must exist:\nl$\mathbf{U + (-U)} = 0$
+\end{enumerate}
+\end{multicols}
+
+As is common in print the use of \textbf{boldface} when writing a quantity tells us that that quantity is a vector. In the next lecture we will be introducing a new representation for vectors.
+
+Besides simply defining what vectors are we also need to define a \textbf{field} of quantities over which this vector space is defined. A field can comprise quantities $a, b, c, \ldots$, which are scalars, and which may be real or complex. If the scalar field---over which a vector space is defined---is complex we call the vector space a \textit{complex vector space}; we also similarly define a \textit{real vector space}.
+
+\vspace{0.35cm}
+
+\noindent\fbox{\parbox{\textwidth}{\textsc{exercise.}\nl To see why direction and magnitude do not always feature in our definition of vectors as members of a vector space consider the matrices
+\[
+\mathbf{M} = \left[
+\begin{array}{cc}
+	2	&	4	\\
+	3	&	6
+\end{array}
+\right]
+\qquad\textrm{and}\qquad
+\mathbf{N} = \left[
+\begin{array}{cc}
+	1	&	3	\\
+	5	&	2
+\end{array}
+\right]
+\]
+which are members of the set of $2\times 2$ matrices. Do they satisfy all conditions (1--7) required to be called vectors? Do they have a magnitude and direction?
+}}
+
+\section{Linear dependence and independence}
+\subsection{Definitions}
+
+Consider the following linear\footnote{A linear relation is one that is of first order i.e. without squares, cubes etc. and with only power one in all its terms, e.g. $2x + 5y = 0$.} relation:
+\begin{equation}
+	\sum_{i=1}^n \alpha_i \mathbf{U}_i = 0 \label{eq:linear-independence}
+\end{equation}
+Clearly there is no $\ket{0}$ on the left-hand side. If there is it can be moved to the right-hand side. For example if we have the equation
+\[
+\alpha_i\mathbf{U}_i + \alpha_j\mathbf{U}_j + \ldots + \alpha_m (0) + \ldots + \alpha_p\mathbf{U}_p = 0
+\]
+we can always rewrite it as
+\[
+\alpha_i\mathbf{U}_i + \alpha_j\mathbf{U}_j + \ldots + \alpha_p\mathbf{U}_p = 0 + \alpha_m (0) = 0
+\]
+which is similar to the general form given in eq. \eqref{eq:linear-independence} with $\mathbf{U}_i \neq 0$. A given set of vectors is said to be \textbf{linearly independent} if the only way eq. \eqref{eq:linear-independence} can be written is with all $\alpha_i = 0$, i.e. if $\sum_{i=1}^n \alpha_i \mathbf{U}_i = 0$ iff all $\alpha_i = 0$. If we can write eq. \eqref{eq:linear-independence} with at least one $\alpha_i \neq 0$ then the set of vectors is \textbf{linearly dependent}. For example in the term $\alpha_j \mathbf{U}_j$ if $\alpha_j \neq 0$ we can write $\sum_{i=1}^n \alpha_i \mathbf{U}_i = 0$ as $\mathbf{U}_j = \sum_{i=1, \neq 3}^n -\alpha_i \mathbf{U}_i / \alpha_j$ since $\alpha_j \neq 0$.
+
+\noindent\fbox{\parbox{\textwidth}{\textsc{exercise.}\nl Show that $(1, 0, 1)$, $(1, 1, 0)$ and $(3, 2, 1)$ are linearly dependent. Also show that $(1, 1, 0)$, $(1, 0, 1)$ and $(0, 1, 1)$ are linearly independent.\\[-0.75em]
+
+\textsc{solution.}\nl If $\mathbf{U}_1 \equiv (1, 0, 1)$, $\mathbf{U}_2 \equiv (1, 1, 0)$ and $\mathbf{U}_3 \equiv (3, 2, 1)$ we can write $\mathbf{U}_1 + 2\mathbf{U}_2 + \left( - \mathbf{U}_3 \right) = 0$ showing that $\alpha_1 \neq 0$, $\alpha_2 \neq 0$ and $\alpha_3 \neq 0$ making the set $\mathbf{U}_i$ linearly dependent. On the other hand if $\mathbf{V}_1 \equiv (1, 0, 1)$, $\mathbf{V}_2 \equiv (1, 1, 0)$ and $\mathbf{V}_3 \equiv (0, 1, 1)$ the only way $\sum \alpha \mathbf{V} = (0, 0, 0)$ is if all $\alpha = 0$. (Try various linear combinations to check.)
+}}\\
+
+\noindent The next idea we have to define is that of a \textbf{basis}. A basis is simply a set of $n$ linearly independent vectors in an $n$ dimensional space. Mathematically if
+\begin{equation}
+	\mathbf{U} = \sum_{i=1}^n a_i\mathbf{u}_i \label{eq:basis}
+\end{equation}
+then we say that the vectors $\mathbf{u}_i$ form a basis of the set $\mathbf{U}$. Another term worth keeping in mind is that if every vector in a set $\mathbf{U}$ can be written as a linear combination of all other vectors $\mathbf{u}_i$ in the set then we say this set of vectors $\mathbf{u}_i$ \textbf{spans} the set $\mathbf{U}$. Therefore the basis for a vector space is a set of vectors that span that vector space and are linearly independent.
+
+Here is a simple example: for the space $\mathbb{R}^3$---our regular three-dimensional space or, alternatively, a space of 3 dimensional column vectors with real elements---the set $\{i, j, k \}$ forms a basis. That is $i \equiv \mathbf{r}(1,0,0)$, $j \equiv \mathbf{r}(0,1,0)$ and $k \equiv \mathbf{r}(0,0,1)$ are linearly independent (since $a_1(1,0,0) + a_2(0,1,0) + a_3(0,0,1) = (0,0,0)$ is possible only when $a_1 = a_2 = a_3 = 0$) and their linear combination gives other elements of $\mathbb{R}^3$ (e.g. $2i + j + 3k = (2, 1, 3) \in \mathbb{R}^3$).
+
+\subsection{Theorems}
+\begin{theorem}
+	Any vector $\mathbf{U}_k$ in an $n$ dimensional space can be expressed as a linear combination of $n$ linearly independent vectors $\mathbf{U}_1, \ldots, \mathbf{U}_n$.
+\end{theorem}
+
+\begin{proof}
+	We will reason in reverse to understand this statement\footnote{Although the recommended text for this course, R. Shankar’s \textit{Principles of quantum mechanics}, does not show any proof for this there are multiple proofs. See \cite{theorem1} for others besides the one given in these notes.}. First let $\mathbf{U}_1, \mathbf{U}_2,\ldots,\mathbf{U}_{n+1}$ be a set of vectors in $n+1$ dimensional space. Let us now assume that the first $n$ vectors here form a linearly dependent set. By definition $\exists \; a_1, a_2, \ldots, a_n$, all scalars, such that at least one $a_i$ is non-zero. Consequently
+	\begin{align*}
+		a_1\mathbf{U}_1 + \ldots + a_n\mathbf{U}_n &= 0 \\
+		\implies a_1\mathbf{U}_1 + \ldots + a_n \mathbf{U}_n + 0 \cdot \mathbf{U}_{n+1} &= 0
+	\end{align*}
+		which means if we assume that the first $n$ vectors are linearly dependent then the set of $n+1$ vectors is also linearly dependent.
+		
+		What if the first $n$ are linearly independent? Then $\mathbf{U}_1, \ldots, \mathbf{U}_n$ form a basis. In this case we have all scalars $b_1, b_2, \ldots, b_n$ zeroes. Additionally, since they span the vector space their linear combination should give us the element $\mathbf{U}_{n+1}$ (see definition of spanning above) which we know is in the vector space:
+		\begin{align*}
+			b_1\mathbf{U}_1 + \ldots + b_n\mathbf{U}_n &= \mathbf{U}_{n+1} \\
+			\implies b_1\mathbf{U}_1 + \ldots + b_n\mathbf{U}_n + (-1) \mathbf{U}_{n+1} &= 0
+		\end{align*}
+		with all $b_i = 0$ except for $b_{n+1}$. In other words even if the first $n$ vectors are linearly independent the set of $n+1$ is still linearly dependent.
+		
+		In short, if there existed some vector $\mathbf{U}_k$ which we could not express as a linear combination of $n$ linearly independent vectors then that vector would form a set of $n+1$ linearly independent vectors in $n$ dimensional space which, as we proved above, is impossible.
+\end{proof}
+
+\begin{theorem}
+	Given a basis set its components are unique. Mathematically, in
+	\[
+		\mathbf{U} = \sum_{i=1}^n a_i \mathbf{u}_i \tag{\ref{eq:basis}}
+	\]
+	the components $\mathbf{u}_i$ are unique.
+\end{theorem}
+
+\begin{proof}
+	Once again we provide a negative proof: say we have an alternate definition like
+	\[
+		\mathbf{U} = \sum_{i=1}^n b_i \mathbf{u}_i
+	\]
+	we can simply subtract the two definitions to get
+	\[
+		0 = \sum_{i=1}^n (a_i-b_i) \mathbf{u}_i \implies a_i = b_i
+	\]
+	Therefore, an alternate definition is identical to the original one; in other words, given a basis to a vector space, its components are unique.
+\end{proof}
+
+It is worth keeping in mind that as soon as we change the basis set e.g. $\mathbf{u}_i \rightarrow \mathbf{v}_i$ the components need not be unique i.e. $a_i = b_i$ is not necessarily true.
+
+\subsection{Vector arithmetic}
+
+Vectors $\mathbf{U} = \sum_i a_i \mathbf{m}_i$ and $\mathbf{V} = \sum_i b_i \mathbf{m}_i$ can be added or scaled straightforwardly:
+\begin{equation}
+	\mathbf{U} + \mathbf{V} = \sum_i (a_i + b_i) \mathbf{m}_i \label{eq:vector-addition}
+\end{equation}
+\begin{equation}
+	p \mathbf{U} = p \sum_i a_i \mathbf{u}_i = \sum_i pa_i \mathbf{u}_i \label{eq:vector-scalar-multiplication}
+\end{equation}
+
+\section{Inner product spaces}
+
+Although scaling vectors is simple multiplying them is not, particularly because, in the past, when we multiplied vectors we relied heavily upon the idea of direction. Recall, for example, the dot product $\mathbf{A \cdot B} = AB \cos \theta$ which required knowledge of the angle $\theta$ between the vectors thereby indirectly requiring knowledge of the directions of said vectors. Earlier in this lecture, however, we said that the idea of associating directions and magnitudes to vectors is unnecessary. As a result we will have to somewhat better define the dot product.
+
+Recall also the component definition of the dot product which said $\mathbf{A \cdot B} = A_xB_x + A_yB_y + A_zB_z$ which requires knowledge of the exact components of these vectors and therefore their orientations even if not their mutual angle itself. The dot product, regardless of how you define it, obeys three properties:
+\begin{multicols}{2}
+\begin{enumerate}
+	\item \textit{Symmetry} exists:\nl$\mathbf{U \cdot V} = \mathbf{V \cdot U}$
+	\item It is \textit{positive semidefinite}:\nl$\mathbf{U\cdot U} \ge 0 \textrm{ in general;}$\nl But $\mathbf{U\cdot U} = 0 \iff \mathbf{U} = 0$
+	\columnbreak
+	\item Shows \textit{linearity}:\nl$\mathbf{U}\cdot \left(a\mathbf{V} + b\mathbf{W}\right) = a\mathbf{U \cdot V} + b\mathbf{U \cdot W}$
+\end{enumerate}
+\end{multicols}
+
+\subsection{Dirac notation}
+
+We will quickly deviate from inner products to set up a simple notation which will help us write down the inner product of two vectors. We showed earlier how matrices can be vectors too since they satisfy all requirements necessary for them to be elements inside a linear vector space. We find that any `traditional' vector with $n$ components can be represented as a column (or row) matrix of rank $n$. For example\footnote{Keep in mind that in this example we say these representations are equivalent `$\equiv $' and not equal `$=$'. They are certainly \textit{not} equal: we get to choose between either representation so long as we remember to keep things consistent. We will see their real relationship soon. }
+\[
+	\mathbf{V} \equiv (1, 0, 0) \equiv
+	\begin{bmatrix}
+		1 \\ 0 \\ 0
+	\end{bmatrix}
+	\equiv
+	\begin{bmatrix}
+		1 & 0 & 0
+	\end{bmatrix}
+\]
+as is convenient for us in a given scenario. Consequently this allows us to represent the matrix notation of a vector in two forms: the column vector $\mathbf{V}$ is represented as $\ket{V}$ and read as \textbf{ket V} while its row vector is represented as $\bra{V}$ and read as \textbf{bra V}. This is called \textbf{Dirac notation} in honour of its creator the English theoretical physicist P.A.M. Dirac.
+
+\subsection{Inner products and other definitions}
+
+The definition of inner products is not a complex one. When we have matrices we know that we can only multiply a matrix with another if the column count of the first matches the row count of the second. So in multiplying two vectors represented as matrices---for their inner product---since they can only be column or row matrices, we will have to make sure we multiply a row matrix with a column matrix. Therefore we represent the inner product of two vectors as $\braket{U | V}$. Analogous to the properties of the dot product we have
+\begin{multicols}{2}
+\begin{enumerate}
+	\item \textit{Skew-symmetry}:\nl$\braket{U | V} = \braket{V | U}^*$
+	\item \textit{Positive semidefiniteness}:\nl$\braket{U | U} \ge 0 \textrm{ in general;}$\nl But $\braket{U | U} = 0 \iff \ket{U} = \ket{0}$
+	\columnbreak
+	\item \textit{Linearity} (in ket):
+		\begin{align*}
+			&\bra{U} \left(a\ket{V} + b\ket{W}\right) \\ \equiv &\braket{U | aV + bW} \\ = &a\braket{U | V} + b\braket{U | W}
+		\end{align*}
+\end{enumerate}
+\end{multicols}
+
+Note how the use of Dirac notation means we no longer use boldface to represent vectors. Also note how, as in property 2 above, we represent triviality (i.e. 0) with a ket as $\ket{0}$ whereas when we used boldface for vectors we simply wrote it as the number zero. This is because $\ket{0}$ stands for a null column matrix. Henceforth and throughout this course we will use Dirac notation exclusively and give up emboldening vectors altogether.
+
+An interesting result pops up on combining the first and third properties:
+\begin{align*}
+	\braket{aV + bW | U} &= \braket{U | aV + bW}^* \\
+						&= a^* \braket{U | V}^* + b^* \braket{U | W}^* \\
+						&= a^* \braket{V | U} + b^* \braket{W + U}
+\end{align*}
+This is known as \textit{antilinearity} in bra. It is thus important to keep in mind how we are multiplying our bra and ket vectors.\newline
+
+\noindent Inner products (also called scalar or dot products) give rise to a few important definitions that we will be using quite frequently henceforth:
+\begin{itemize}
+	\item[\textbf{Orthogonality.}] A pair of vectors is said to be orthogonal if $\braket{U | V} = 0$. Geometrically this means they form a mutual angle of $90^\circ$.
+	\item[\textbf{Norm.}] A vector $\ket{V}$ has the norm or length $\sqrt{\braket{V | V}} = |V|$. And a normalised vector is one with $\sqrt{\braket{V | V}} = 1$.
+	\item[\textbf{Orthonormal basis.}] A set of vectors that are orthogonal in pairs and that are all normalised are said to form an orthonormal basis.
+\end{itemize}
+
+\noindent\fbox{\parbox{\textwidth}{\textsc{exercise.}\nl The importance of orthonormal bases can be illustrated with a simple example. We know that the inner product ought not yield a result different from the regular dot product. Try then to multiply two ket vectors in terms of their components e.g. $\ket{U} = \sum_i a_i \ket{i}$ and $\ket{V} = \sum_j b_j \ket{j}$.\\[-0.75em]
+
+\textsc{solution.}\nl This is quite simple initially. We need to multiply (find the inner product of) these vectors as $\braket{U | V} = \sum_i \sum_j a_i^* b_j \braket{i | j}$ which is based on the definition of an inner product. If this has to end up looking like the dot product $u_xv_x + \ldots$ in component form then in multiplying $\braket{i | j}$ only the diagonal elements must remain i.e. all $\braket{i | j}$ terms must vanish (orthogonality) and only $\braket{i | i}$ diagonal terms must remain and be equal to 1 (normality). In other words $\braket{i | j}$ must be an orthonormal basis\footnotemark.
+}}\footnotetext{To see this orthonormality more clearly try actually multiplying $\braket{i | j}$ as matrices.}\\
+
+\section{Dual spaces}
+
+The inner product,\margintext{Lecture 1, part 2} being no different in spirit than the dot product, yields a number. Although we have already discussed the bra vector earlier it is worth revisiting it to understand what motivates us to write such a vector.
+
+Conventionally we begin by assuming all vectors to be kets. This is not required and looking at them as columns will work too but convention simplifies things. Say there exists a column matrix in some basis which is associated with an abstract entity called a `ket vector' $\ket{U}$. To multiply two such vectors would require us to multiply two column matrices which is impossible. We must therefore associate with every ket vector a row matrix, or a bra vector, and find a way to convert between the two. This is what we referred to as an equivalence earlier. There is, however, also an equality:
+\begin{equation}
+	\ket{U}
+	\leftrightarrow
+	\begin{bmatrix}
+		u_1 \\ u_2 \\ \vdots \\ u_n
+	\end{bmatrix}
+	\leftrightarrow
+	\begin{bmatrix}
+		u_1^* & u_2^* & \ldots & u_n^*
+	\end{bmatrix}
+	\leftrightarrow
+	\bra{U}
+	\label{eq:braket-adjoint}
+\end{equation}%
+In other words bra and ket are related by their adjoints or transpose conjugates. From a broader perspective one can look at this as two separate vector spaces: one with kets (where multiplying two kets gives you their scalar product) and another, called the \textbf{dual space}, with bra vectors and a ket vector associated with each bra vector (and vice versa)---the space in which we will be working primarily as evinced by our definition of inner products as products between bras and kets. Bras and kets have their own basis vectors $\bra{i}$ and $\ket{i}$ respectively.
+
+\section{Operations}
+
+\subsection{Expansion in an orthonormal basis}
+
+Having discussed what vectors and bases are and what an orthonormal basis is we will now try to understand how we can find the components (of an orthonormal basis) into which we can expand a given vector.
+
+Given $\ket{U} = \sum_i u_i \ket{i}$\margintext{To help you recall, $\ket{U}$ is a vector, $u_i$ are scalars of field over which our vector space is defined, and $\ket{i}$ are vectors using which we can expand the vector $\ket{U}$.} we can write its inner product with the required component. For instance to find the $k^\textrm{th}$ component we take the inner product of $\ket{U}$ with $\bra{k}$ as follows:
+\[
+	\braket{k | U} = \sum_i u_i \braket{k | i} = u_k
+\]
+This works because if $i$ and $k$ in fact form an orthonormal bases then, by definition, $\braket{k | i} = \delta_{ik}$, i.e. all $u_i$ terms vanish except $u_k$.
+
+This idea is not new. You would have done the same in case of the more familiar dot product too: given $\mathbf{U} = U_x \hat{i} + U_y \hat{j} + U_z \hat{k}$ we can find, say, $U_y$ by taking the dotproduct of $\mathbf{U}$ with $\hat{j}$ as $\hat{j} \cdot \mathbf{U} = U_y $ since all other terms on the right-hand side go to zero.
+
+The congruence between dot product and inner product is no surprise to us but what will the basis vectors in the above equations look like when we write them as matrices? Consider $\ket{U} = \sum_i u_i \ket{i}$ which may also be written as $\ket{U} = \sum_i \ket{i} u_i$ which is nothing but $\ket{U} = \sum_i \ket{i}\braket{i | U}$ based on the expansion discussed above. If, in this final expression, we now substitute $\ket{U} = \ket{j}$ we get
+\[
+	\ket{j} = \sum_i \ket{i}\braket{i | j} = \sum_i \ket{i}\delta_{ij}
+\]
+In other words the column vector on the left hand side has all elements as zeroes except for the 1 in its $j^\textrm{th}$ row. Again, this is not new: we already know the $\mathbb{R}^3$ basis vectors $\ket{i}$, $\ket{j}$ and $\ket{k}$ have their first, second and third elements as 1 respectively with all others as zeroes. These two equations are then the same:
+\begin{equation}
+	\ket{U} = \sum{u_i}\ket{i} \Leftrightarrow
+	\begin{bmatrix}
+		u_1 \\ u_2 \\ \vdots \\ u_n
+	\end{bmatrix}
+	=
+	u_1
+	\begin{bmatrix}
+		1 \\ 0 \\ \vdots \\ 0
+	\end{bmatrix}
+	+
+	u_2
+	\begin{bmatrix}
+		0 \\ 1 \\ \vdots \\ 0
+	\end{bmatrix}
+	+
+	\ldots
+	+
+	u_n
+	\begin{bmatrix}
+		0 \\ 0 \\ \vdots \\ n
+	\end{bmatrix}
+\end{equation}
+
+\subsection{Adjoint operation}
+
+The last idea we discuss is that of an adjoint. This word too is not new to you---we used earlier in this lecture too and you would have learnt this in your previous years as well. In defining the relationship between bra and ket vectors we used the adjoint---see eq. \eqref{eq:braket-adjoint}---so we know, for instance, that
+\[
+	a\ket{U} = \ket{aU} \equiv
+	\begin{bmatrix}
+		au_1 \\ au_2 \\ \vdots \\ au_n
+	\end{bmatrix}
+	\equiv
+	\begin{bmatrix}
+		a^*u_1^* & a^*u_2^* & \ldots & a^*u_n^*
+	\end{bmatrix}
+	\equiv
+	\bra{aU} = \bra{U}a^*
+\]
+Note especially the final relation in comparison with its ket analogue:
+\begin{subequations}
+\begin{eqnarray}
+	\bra{aU} = \bra{U} a^* \label{eq:bra-adjoint} \\
+	\ket{aU} = a\ket{U} \label{eq:ket-adjoint}
+\end{eqnarray}	
+\end{subequations}
+
+These two equations are called \textbf{adjoints} of each other. We can also extend it to $n$ terms: $a\ket{U} = b\ket{V} + c\ket{W} + \ldots$ is the adjoint of $\bra{U}a^* = \bra{V}b^* + \bra{W}c^* + \ldots$. In a typical physicist’s fashion let us write down a general expansion for this:
+\begin{equation}
+	\ket{U} = \sum_i u_i \ket{i} \quad \textrm{has the adjoint} \quad \bra{U} = \sum_i \bra{i} u_i^* \label{eq:adjoint-expansion}
+\end{equation}%
+Alternately,\margintext{To see why consider $\bra{U} = \sum u_i^* \bra{i}$ which means the $u_k^{*\textrm{th}}$ component is given by $\braket{U | k} = \sum u_i^* \delta_{ik}$ which is simply $u_k^*$.} since $u_i = \braket{i | U}$ as we saw earlier and, similarly, since $u_i^* = \braket{U | i}$ we can quickly see that
+\begin{equation}
+	\ket{U} = \sum_i \ket{i}\braket{i | U} \quad \textrm{has the adjoint} \quad \bra{U} = \sum_i \braket{U | i} \bra{i} \tag{\ref{eq:adjoint-expansion}}
+\end{equation}%
+is a general expression for the adjoint operation on bra and ket vectors. The steps to take an adjoint is quite simple: reverse the order by switching bras and kets and take complex conjugates of all coefficients.
+
+\begin{thebibliography}{1}
+	\bibitem{theorem1}
+	Math 23A solution set 3. Harvard: \url{https://bit.ly/2zpbhD6}.
+	\bibitem{shankar}
+	R. Shankar. Principles of Quantum Mechanics, 2ed. Springer.
+\end{thebibliography}
+
+\end{document}
