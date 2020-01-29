@@ -11,7 +11,7 @@
 
 ### What is this?
 
-This collection of documents started off as a series of notes made from lectures delivered while teaching postgraduate and undergraduate classes in physics. Although they [have been available online](https://vhbelvadi.com/teaching) for years their source files were opened to public contribution in 2020 and this repo was born.
+This collection of documents started off as a series of notes made from lectures delivered while teaching postgraduate and undergraduate classes in physics. Although the notes themselves [have been available online](https://vhbelvadi.com/teaching) for years the source files for a large bunch (not all) of them were opened to public contribution in 2020 and this repo was born.
 
 ### How *you* can contribute
 
