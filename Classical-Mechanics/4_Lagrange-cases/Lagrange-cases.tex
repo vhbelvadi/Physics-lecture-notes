@@ -1,0 +1,184 @@
+\documentclass[english,seminar,headertitle]{lecture}
+
+\title{Advanced Classical Mechanics}
+\subtitle{Lagrangian analysis of simple systems}
+\shorttitle{Analysis of simple systems}
+\ccode{16MSPAH101}
+\subject{Classical Mechanics}
+\speaker{V.H. Belvadi}
+\spemail{vh@belvadi.com}
+\author{}
+\email{}
+\flag{}
+\season{Autumn 2017}
+\date{}{}{}
+\dateend{}{}{}
+\conference{}
+\place{St Philomena's College}
+\attn{}
+\morelink{vhbelvadi.com/teaching}
+
+\begin{document}
+
+\noindent\runin{Having discussed various} ideas over the previous lectures that led us to the Lagrangian equation we are now in a position to see how this equation can help us study various classical systems. As a reminder, the Lagrangian equation for the Lagrangian $L$ of a system defined in terms of its kinetic ($T$) and potential ($V$) energies and generalised co\"{o}rdinates $q_k$ as $L = T - V$ is
+
+\begin{equation}
+{\textrm{d} \over \textrm{d} t } \left( {\partial L \over \partial \dot{q}_k} \right) - {\partial L \over \partial q_k} = 0
+\label{eq:lagrangian}
+\end{equation}%
+
+Naturally we will prefer to start with simple systems, those we are already familiar with from a Newtonian perspective. In the process we will cover the following four systems: a single particle moving freely in space, Atwood's pulley, a bead sliding harmonically along a wire that is rotating in space, and our trusty simple pendulum.
+
+\section{A single particle in space}
+
+Recall that all we need to study a system using analytical mechanics are two scalars: the kinetic and potential energies of a system. (This is as opposed to Newtonian mechanics which demands a knowledge of vectors e.g. forces.)  Assuming a Cartesian space, recall that a point particle in motion has no potential energy, making $V=0$ and $L=T$ where the kinetic energy is $$T = {m \over 2} \left( \dot{x}^2 + \dot{y}^2 + \dot{z}^2 \right)$$making $x$, $y$ and $z$ our generalised co\"{o}rdinates $q_k$. To solve the Lagrangian equation all we are now left with is to find the two terms in eq. \ref{eq:lagrangian}. These have simple solutions:
+$${\partial T \over \partial x} = {\partial T \over \partial y} = {\partial T \over \partial z} = 0$$
+and
+$${\partial T \over \partial \dot{x}} = m\dot{x} \; \textrm{,} \qquad {\partial T \over \partial \dot{y}} = m\dot{y} \quad \textrm{and} \quad {\partial T \over \partial \dot{z}} = m\dot{z}$$
+which gives us our final equation:
+$$
+	{\textrm{d} \over \textrm{d} t } m\dot{x} = 0 \quad \textrm{or} \quad \dot{x} = \textrm{constant}
+$$
+which is really a set of three equations (i.e. for $y$ and $z$) in three dimensions. In other words we have arrived at Newton's second law based purely on mathematical, analytical reasoning -- and a remarkably simple one at that.
+
+As an exercise, try this in polar, spherical polar and cylindrical co\"{o}rdinates. Use $x=r\cos\theta$, $y=r\sin\theta$ and other conversions. Remember that when polar co\"{o}rdinates (or equivalent) are involved angular motion enters the picture.
+
+\section{Atwood's pulley}
+
+Atwood's pulley -- sometimes Atwood's machine -- is simply a pulley with weights suspended on both sides. Say the a massless, inextensible string of length $l$ is hung over a massless, frictionless pulley; say two weights of masses $M_1$ and $M_2$ are suspended from each of them such that $M_1$ is suspended by a length $x$ and $M_2$ by $(l-x)$.
+
+First of all, observe the constraint we have placed by defining the position of $M_2$ with respect to the pulley as $(l-x)$. We could have called it a new letter $y$ but knowing $l$ is a constant defining $(l-x)$ not only reduces excess letters but also introduces the restriction that the lengths of suspension of our two masses are dependent on each other.
+
+The potential energy of our system is the sum of the potential energies of the two masses given in terms of the usual $V = mgh$ type formula where $h$ marks the separation between the pulley and the mass, i.e. the length of suspension.
+\begin{equation}
+-V = M_1 g x + M_2 g (l-x)
+\label{eq:atwood-V}
+\end{equation}%
+
+The negative sign preceding $V$ tells us that the potential energy is opposite to $\mathbf{g}$. Meanwhile the kinetic energy arises from a much simpler expression:
+\begin{equation}
+	T = {\dot{x}^2 \over 2} \left( M_1 + M_2 \right)
+	\label{eq:atwood-T}
+\end{equation}%
+
+We can now combine eq. (\ref{eq:atwood-V}) and (\ref{eq:atwood-T}) to get
+$$
+L = T-V = {\dot{x}^2 \over 2} \left( M_1 + M_2 \right) + M_1 g x + M_2 g (l-x)
+$$
+which in turn gives us the solution to Lagrange's equation, eq. (\ref{eq:lagrangian}) as follows:
+\begin{equation}
+	\ddot{x} = \left[ { M_1 - M_2 \over M_1 + M_2 } \right] g
+	\label{eq:atwood-result}
+\end{equation}%
+
+\section{Ring on a rotating loop}
+
+For our third case consider a ring on a wire. Imagine that the wire is straight along either the $x$ or the $y$ axis and is rotating about the $z$ axis perpendicular to it. A ring beaded onto this wire will slide from side to side periodically and coherently with the rotation of the wire itself. This is not the most realistic situation one might find oneself in but it is an example of a rheonomic system which is all we are interested in now. Needless to say we assume the complete absence of stray forces.
+
+Since the bead is constantly sliding around it has no potential energy. It does have a kinetic energy, though, in terms of the rotation of the wire. Say the bead, at any point of time (remember, this is a rheonomic system), is at a distance of $r$ from the $z$ axis of rotation and say the wire is rotating with an angular velocity $\omega$ over time $t$. We then have $\dot{\theta} = \omega$ at any point in time and
+$$
+x = r \cos \omega t \quad \textrm{and} \quad y = r \sin \omega t
+$$
+describing the position of the bead. These are the usual polar co\"{o}rdinates. The kinetic energy of the bead is therefore
+\begin{equation}
+	T = {m \over 2} \left( \dot{r}^2 + \dot{r}^2 \dot{\theta}^2 \right)
+	\label{eq:T-ring}
+\end{equation}%
+and our Lagrangian becomes
+\begin{equation}
+	\ddot{r} = r\omega^2
+	\label{eq:ring-result}
+\end{equation}%
+which is nothing but the equation describing simple harmonic motion.
+
+\section{Simple pendulum}
+
+A pendulum is a classic example of a system with constraints. The equation describing a pendulum are not simple to arrive at in the Newtonian fashion but things become comparatively simpler if we use the Lagrangian.
+
+Imagine a pendulum of mass $m$ at an arbitrary point in its swing (neither at the mean, nor at the extremes). There are three forces acting on the pendulum: a tension upwards, along the string; a weight downwards, perpendicular to the floor; and some force centripetally accelerating the pendulum back to its mean position. Say the length of the pendulum is some $x$ and its arbitrary angle of swing is $\theta$. As we proceed, keep in mind that the Lagrangian approach does not talk about friction and similar background forces on any level, which means they do not feature in our calculations.
+
+The potential energy of a pendulum in its mean position is $V = mgx$ but at its swing, the bob is at a slightly higher location than $x$ when considered vertically from the point of suspension. The new vertical height from suspension is $x \cos \theta$ which makes the new potential energy $V = mg(x\cos\theta)$. The net potential energy of the bob, which increases as it heads towards the extreme positions and vice versa, is
+\begin{equation}
+	V = mgx (1 - \cos\theta)
+	\label{eq:V-pulley}
+\end{equation}%
+
+The kinetic energy of a pendulum too can be derived from the fundamental $T = mv^2/2$ equation using $v = r\dot{\theta}$ since the displacement of the pendulum along its arc is $r\theta$ and the time-derivative of this displacement gives us the velocity of the pendulum. Therefore,
+\begin{equation}
+	T = {1\over2}mr^2\dot{\theta}^2
+	\label{eq:T-pulley}
+\end{equation}%
+
+From this point our problem is simply a matter of solving eq. (\ref{eq:lagrangian}) using eq. (\ref{eq:V-pulley}) and (\ref{eq:T-pulley}) above. Since $x$ is a constant our generalised co\"{o}rdinate is $\theta$ alone, giving us
+$$
+{\partial L \over \partial \theta} = -mgr \sin\theta \quad \textrm{and} \quad {\textrm{d} \over \textrm{d} t }{\partial L \over \partial \ddot{\theta}} = mr^2\dot{\theta}
+$$
+which, on substituting into eq. (\ref{eq:lagrangian}), leaves us with a familiar result:
+\begin{equation}
+	mr^2\ddot{\theta} = -mgr\sin\theta
+	\label{eq:pendulum-result}
+\end{equation}%
+
+\section{Systems without a potential function}
+
+As you may have noticed by now not all systems have a potential $V$ describing them. In some (not all) such cases the generalised force on the system may still be determined by
+\begin{equation}
+	Q_J = - {\partial U \over \partial q_j} + {\textrm{d} \over \textrm{d} t} \left( {\partial U \over \partial \dot{q}_j} \right)
+	\label{eq:Q_J}
+\end{equation}%
+for some $U$ which we normally call the \textbf{generalised potential}. In terms of $U$ our Lagrangian becomes $L=T-U$ and may be treated just like $L(T,V)$.
+
+A classic example of this type of case is that of a point charge $q$ of mass $m$ moving in an electromagnetic field described by $\mathbf{E}(x,y,z,t) \perp \mathbf{B}(x,y,z,t)$. We know that the charge, inside such a field, will experience a Lorentz force
+\begin{equation}
+	\mathbf{F}_L = q [ \mathbf{E} + ( \mathbf{v} \times \mathbf{B} ) ]
+	\label{eq:F_L-std}
+\end{equation}
+arising from the scalar potential $\phi(x,y,z,t)$ and vector potential $\mathbf{A}(x,y,z,t)$ as
+$$
+\mathbf{E} = -\nabla\phi - {\partial \mathbf{A} \over \partial t} \quad \textrm{and} \quad \mathbf{B} = \boldsymbol{\nabla} \times \mathbf{A}
+$$
+We now have
+$$
+\mathbf{F}_L = -q\nabla\phi - q{\partial \mathbf{A} \over \partial t} + q \left( \mathbf{v} \times \boldsymbol{\nabla} \times \mathbf{A} \right)
+$$
+where
+\begin{align*}
+	\mathbf{v} \times \boldsymbol{\nabla} \times \mathbf{A} &= v_y \left( {\partial A_y \over \partial x} - {\partial A_x \over \partial y} \right) - v_z \left( {\partial A_x \over \partial z} - {\partial A_z \over \partial x} \right) \\
+	&= v_y \left( {\partial A_y \over \partial x} \right) - v_y \left( {\partial A_x \over \partial y} \right) - v_z \left( {\partial A_x \over \partial z} \right) - v_z \left( {\partial A_z \over \partial x} \right) + v_x \left( {\partial A_x \over \partial x} \right) - v_x \left( {\partial A_x \over \partial x} \right)
+\end{align*}
+This equation is comparable to the total derivative
+$$
+{\textrm{d}A_x \over \textrm{d}t} = {\partial A_x \over \partial x} v_x + {\partial A_y \over \partial y} v_y + {\partial A_z \over \partial z} v_z + {\partial A_x \over \partial t}
+$$
+Consequently we can rewrite the triple cross product as
+$$
+{\textrm{d}A_x \over \textrm{d}t} = {\textrm{d}\over\textrm{d}t}\left[ {\partial \over \partial \dot{x}} (\mathbf{v} \cdot \mathbf{A}) \right]
+$$
+Therefore
+\begin{equation}
+	F_L = -q\nabla \left[ \phi - \mathbf{v} \cdot \mathbf{A} \right] + q {\textrm{d} \over \textrm{d} t} \left[ \boldsymbol{\nabla} ( \phi - \mathbf{v} \cdot \mathbf{A} ) \right]
+	\label{eq:F_LU}
+\end{equation}%
+Observe how eq. (\ref{eq:F_LU}) is of the form given by eq. (\ref{eq:Q_J}), which clearly suggests that
+\begin{equation}
+U = q \left( \phi - \mathbf{A}\cdot\mathbf{v} \right)
+\label{eq:U}
+\end{equation}%
+since  and we can use this new potential term to solve Lagrange's equation to examine what happens in circumstances when $V = 0$. Our Lagrangian is now
+$$
+L = {mv^2 \over 2} - q ( \phi - \mathbf{A}\cdot\mathbf{v} )
+$$
+
+The generalised momentum computed from the Lagrangian based on $p = \partial L / \partial \dot{q_k}$ gives us the result $p = m\mathbf{v} + q\mathbf{A}$ which tells us that the component of momentum associated with the electromagnetic field is conserved. The fact that eq. (\ref{eq:F_L-std}) and (\ref{eq:U}) are alike and in agreement with the form of eq. (\ref{eq:Q_J}) tells us that the Lorentz force too (and any force of a similar nature) can be derived using the Lagrangian approach.
+
+\begin{thebibliography}{1}
+	\bibitem{lanczos}
+	Lanczos, Cornelius, \textit{The Variational Principles of Mechanics}, University of Toronto Press, 1949.
+	
+	\bibitem{mit}
+	\textit{Simple Harmonic Motion} from MIT (elementary discussion) if you need a refresher in harmonic motion. Visit \url{web.mit.edu/8.01t/www/materials/modules/chapter23.pdf} for the document. (Refer to sections of your choice, do not attempt to read in order -- the document is lengthy.)
+	
+	\bibitem{goldstein}
+	Goldstein, H., Poole, C., Safko, J., \textit{Classical mechanics}, 3e, Addison Wesley, 2000.
+\end{thebibliography}
+\end{document}

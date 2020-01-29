@@ -1,0 +1,1712 @@
+\documentclass[11pt,oneside]{article}
+\usepackage[a4paper, margin=1in,top=1.2in,bottom=1.25in,left=1.05in]{geometry}
+\renewcommand{\baselinestretch}{1.35}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{mathtools}
+\usepackage{multicol}
+\usepackage{graphicx}
+\usepackage{wrapfig}
+\usepackage{float}
+\usepackage{sidecap}
+\usepackage[small]{titlesec}
+\usepackage{fancyhdr}
+\usepackage{listings}
+\usepackage{caption}
+\usepackage{wrapfig}
+\usepackage[most]{tcolorbox}
+\usepackage[hidelinks]{hyperref}
+\hypersetup{pageanchor=false}
+\usepackage{dirtree}
+\usepackage{flowchart}
+%\usepackage{fontspec}
+
+\newcommand{\stoptocentries}{\renewcommand{\addcontentsline}[3]{}}
+% \newcommand{\sectionbreak}{\clearpage}
+
+\newcommand{\hilight}[1]{\setlength{\fboxsep}{1pt}\colorbox{black!20!white}{#1}}
+\newcommand{\hlitem}{\stepcounter{enumi}\item[\hilight{\theenumi}]}
+
+\lstset{language=C,basicstyle=\ttfamily,numbers=left,numbersep=22pt,numberstyle=\ttfamily\color{black!50!white},firstnumber=last,showspaces=false,showstringspaces=false,belowskip=1.5em,aboveskip=1.5em,breaklines=true,xleftmargin=1.55em,frame=lr,framesep=8pt,framerule=0pt,captionpos=b,escapeinside={(*@}{@*)}}
+%escapechar=|}
+
+\renewcommand{\lstlistingname}{Program}
+
+\newcounter{exercise}
+\setcounter{exercise}{1}
+\newcommand{\theex}{\textbf{\scriptsize{\sffamily\addfontfeatures{LetterSpace=7}Exercise \theexercise \refstepcounter{exercise}}}}
+
+%\lstinline (was black!5!white, is black!10!white etc.)
+\DeclareTotalTCBox{\cbox}{ v }{verbatim,left=0em,right=0em,sharpish corners,colback=black!20!white, colframe=black!20!white}{#1}
+\DeclareTotalTCBox{\ebcbox}{ v }{verbatim,colback=black!20!white, colframe=black!20!white,sharpish corners,left=0em,right=0em}{#1}
+\DeclareTotalTCBox{\synt}{ v }{verbatim, colframe=black,left=0em,right=0em,sharpish corners,colback=black!20!white,boxrule=.2mm}{#1}
+\DeclareTotalTCBox{\ebsynt}{ v }{verbatim, colframe=black,left=0em,right=0em,sharpish corners,colback=black!20!white,boxrule=.2mm}{#1}
+
+% (was black!5!white, is black!10!white etc.)
+\newtcolorbox{errorbox}{colback=black!10!white, colframe=black!10!white,
+%fonttitle=\sffamily\MakeUppercase,coltitle=black,title={\footnotesize \addfontfeatures{LetterSpace=12} ERRORS }, boxsep=1em, 
+left=0.5em,right=0.5em,
+before skip=.75em,middle=0em,sharpish corners,oversize}
+
+\newcommand{\eb}[1]{\textbf{\scriptsize{\sffamily\addfontfeatures{LetterSpace=7} #1\\[.35em]}}}
+
+\usepackage{xltxtra}
+%\setmainfont{Adobe Caslon Pro}
+\setmainfont{Charter}
+%\setsansfont{Aktiv Grotesk Medium}
+\setsansfont{Avenir Next Medium}
+%\setmonofont{Latin Modern Mono}
+%\setmonofont{American Typewriter}
+
+\newcommand{\LetterSpaced}{\addfontfeatures{LetterSpace=7}}
+
+\titleformat{\section}{\small\sffamily\bfseries}{\thesection.}{1em}{\LetterSpaced\MakeUppercase }
+
+\titleformat{\subsection}{\footnotesize\sffamily\bfseries}{\thesubsection.}{1em}{\LetterSpaced\MakeUppercase }
+
+\titleformat{\chapter}{\footnotesize\sffamily\bfseries}{\thesection.}{1em}{\LetterSpaced\MakeUppercase }
+
+\begin{document}
+\begin{titlepage}
+\begin{center}
+\vspace*{1cm}
+% \large{Lecture notes}\\
+% \vspace{0.25cm}
+\setsansfont[BoldFont=Avenir Next Demi Bold]{Avenir Next Demi Bold}
+\textsf{
+\textbf{\Huge{\addfontfeatures{LetterSpace=0}C PROGRAMMING}}\\[1em]
+}
+\LARGE{Practical course handbook}\\
+\vspace{2.75cm}
+\begin{figure}[H]
+\centering
+\includegraphics[width=.5\textwidth]{coding}
+\end{figure}
+\vspace{2.75cm}
+\setsansfont[BoldFont=Avenir Next Demi Bold]{Avenir Next Demi Bold}
+\Large{V.H. Belvadi}\\[3.25cm]
+\large{\textsf{\addfontfeatures{LetterSpace=7} \textbf{POSTGRADUATE STUDIES IN PHYSICS}}}\\[0.25cm]
+\large{\textsf{\addfontfeatures{LetterSpace=5} \textbf{YUVARAJA'S COLLEGE}}}
+\end{center}
+\end{titlepage}
+\thispagestyle{empty}
+\setsansfont[BoldFont=Avenir Next Demi Bold]{Avenir Next Demi Bold}
+\tableofcontents
+
+\newpage
+\setsansfont[BoldFont=Avenir Next Demi Bold]{Avenir Next Demi Bold}
+
+\pagenumbering{arabic}
+\pagestyle{fancy}
+\fancyhead{}
+%\fancyhead[L]{ \tiny \textsf{\addfontfeatures{LetterSpace=10} POSTGRADUATE STUDIES IN PHYSICS}}
+\fancyhead[L]{\rule[-2ex]{0pt}{2ex}\small}
+\fancyhead[R]{ \tiny \textsf{\addfontfeatures{LetterSpace=10} \textbf{C PROGRAMMING} /\, PRACTICAL COURSE HANDBOOK}}
+\setlength{\headsep}{5ex}
+\renewcommand{\headrulewidth}{.5pt}
+\renewcommand{\footrulewidth}{.5pt}
+\setlength{\headsep}{5ex}
+\fancyfoot{}
+\setlength{\footskip}{5ex}
+\fancyfoot[L]{{\tiny \textsf{\addfontfeatures{LetterSpace=10} \href{http://vhbelvadi.com}{V.H. BELVADI} /\:\,\textbf{YUVARAJA'S COLLEGE}}}}
+\fancyfoot[R]{\scriptsize \textsf{\addfontfeatures{LetterSpace=10} \thepage}}
+
+\section{Introduction}
+
+Programming is an important skill for any physicist. Several computational techniques are employed in both theoretical and experimental work in physics that require the use of computers, access to terminals, and communicating with machines using carefully worded \textbf{commands}. While every single programming language in existence cannot realistically be taught in any physics course, it \textit{is} possible to introduce students to the general workings of most computer-oriented languages. This is primarily because most languages take a similar approach towards writing a program even if they end up differing in terms of the precise forms of their instructions, called their \textbf{syntax}, and the efficiency with which they let the programmer achieve various end results.
+
+Throughout this handbook anything that must be typed, including commands and code, has been set in a \cbox{highlighted monospaced font}. Other references to the system are set similarly but \verb+without highlights+ and all \synt{syntaxes} are boxed. Certain words have been emboldened: these are programmers' jargon worth paying attention to and, in nearly all cases, their meanings will be apparent from the context in which they are used. The best, and perhaps the \textit{only}, way to learn programming is to actually \textbf{write} programmes and \textbf{execute} them on your computer. And fail. Then keep going over the program, \textbf{debugging} it and retrying it until it runs successfully.
+
+The aim of this course is not so much to teach C programming as it is to familiarise students with programming itself. Once you understand how you can communicate with a computer using a set of instructions, i.e. a \textbf{program}, learning other programming languages simply becomes a matter of learning new ways of writing similar instructions. Some languages are designed to serve specific purposes while others are general-purpose. Being one of the oldest languages, and being a precursor to most of today's modern ones, C is a natural starting point. By the end of this course you will \textit{not} have learnt all that C has to offer, but you will have enough of a foundation in basic programming to be able to teach yourself different or even more advanced languages.
+
+\subsection{History}
+
+Brian Kernighan and Dennis Ritchie created the C programming language (and released the first edition of their book by the same name) during the 1970s. It was based on existing but somewhat primitive languages such as B and Basic Combined Programming Language (BCPL) but was powerful and robust enough that it has lasted to this day. The language and its syntax were standardised in 1989 by the American National Standards Institute (ANSI).
+
+Today C is the language in which most software is written across various fields, including entire operating systems like \textsc{unix} and macOS, and nearly all software from Adobe Systems. Physicists use C for various purposes including modelling astrophysical systems, studying hydrodynamics, lattices and other molecular and atomic systems, general simulations, experiments that require data collection at lightning speed (such as the Large Hadron Collider) and, at the end of it all, to solve large equations with large arrays of variables. When we say someone works in C, we often also refer to one of the derivatives of C, such as C++, Python etc., all of which share a commonality with C in the fundamental manner in which a program is converted into instructions although, as we stated earlier, the specific approach and the exact format of instructions themselves may change from one language to another. Think of C as a car; these languages would then be more comfortable, faster cars --- but cars nonetheless.
+
+\subsection{Using this handbook}
+
+One can keep talking for hours about C and its development and how it is worked on, but all of this is better learnt as we go. Almost all operating systems offer support for C out of the box but it always helps to have additional programmes that make life easier: some offer \textbf{syntax highlighting}, letting us read code better at a glance but styling different types of code differently; others offer auto-completion; still others offer detailed error analysis to make \textbf{debugging} easier. At the core of all this, however, the language itself remains the same and this is what we will focus on. That is, instructions in this handbook will remain as free as possible from workflows specific to third-party compilers. Students opting for such alternative solutions may have to help themselves but that should not be difficult. As far as the code and the knowledge required to write your own programs as part of this course goes, this handbooks covers all of it.
+
+Use this handbook in order since each new section builds on the last. Each of sections \ref{sec:overview-of-a-c-program}--\ref{sec:file-handling} explores a particular idea, explains related syntax and gives example problems. Type in and execute these example problems on your computer, alter various statements in them and see what effect that has. Experimenting is often the best way to learn.
+
+Towards the end of some sections are additional exercises with problems designed to help you understand the concepts explained in the preceding sections. Care has been taken to ensure that most programs are related to ideas in physics and mathematics which you have likely already come across during your previous years of study. Mixed among these exercises is a selection of example problems, one for each class of problems you may be asked for your semester exams or internal assessments, that has been asterisked. Solutions to these problems have been provided in section \ref{prg:exam-solutions} but try not to sneak a peek. Again: execute as many problems as you can because programming, like physics in general, cannot be learnt merely through reading or rote memorisation. Think of all this as an extension of the problem solving you normally do in physics.
+
+Working through section \ref{sec:building-larger-programs} is optional if you are running short on time in your computing lab sessions. Section \ref{sec:further-reading} offers suggestions on reading material to continue your study of programming beyond this course. There is also one final question there that covers most of the work you would have done by the time you reach the end of this handbook. Motivated students may, optionally, want to attempt this, and, if so, will have to treat section \ref{sec:building-larger-programs} as compulsory reading.
+
+\section{Overview of a C program}\label{sec:overview-of-a-c-program}
+
+Before we discuss the softwares you will be using to write and execute your C programs, let us take a moment to understand what exactly we will be doing over this process.
+
+A program is a set of instructions you give to a computer to follow. Each instruction is a command and various commands are cleverly grouped together to draw the required results or \textbf{output} from the computer. The main purpose of this, of course, is to exploit the fact that computers can be faster than humans at following instructions (and arguably more competent) as well as at computing and otherwise memorising and handling large data.
+
+The simplest instruction one can give a computer is to ask it to display something on the screen. This is called \textbf{printing} and is written as
+
+\begin{lstlisting}
+printf("Hello, world!");
+\end{lstlisting}
+
+There are a few things to note here that will help any further programming you do:\vspace{-0.25cm}
+\begin{itemize}
+\itemsep-0.35em
+\renewcommand\labelitemi{---}
+\item Notice the semicolon \cbox{;} at the end of the line. In C programming, the semicolon is a \textbf{terminator}. It tells the computer that the command has ended.
+\item The command itself is \cbox{printf} and it tells the computer to display or \textbf{print} something on the screen. This `something' is called an \textbf{argument} and the \cbox{printf} command accepts an argument which it will simply display on the screen.
+\item The \cbox{printf} command has a \textbf{syntax} that looks like \synt{printf(" ");} and anything inserted in-between the inverted commas \verb+" "+ will be \textbf{printed} on your screen.
+\item Entering any part of the command wrongly will result in a broken program with \textbf{buggy} code. You will then have to debug and \textbf{execute} the program again. You may find yourself doing this repeatedly: do not lose heart because this does not mean you are a bad programmer, it is often just how things work.
+\end{itemize}\vspace{-0.3cm}
+
+Entering the above line of code into your computer, however, will not do anything. This is simply one command and we still have to make a program out of it. We will now add a few other lines that will tell the computer what to execute and will, in fact, work like a program. The output of this program, as expected, is simply to display the words `Hello, world!' on your screen.
+
+A program is always started by calling \textbf{header files}. The \cbox{stdio} header file is mandatory for all programs and defines for the computer a lot of commands and keywords we will be using in our program. As we learn more about C we will come across several other header files too which will help us build more complex programs. Such files are \textbf{called}\label{cmd:include} using the \synt{#include < >} command and the name of the header file is given as the argument with the extension \verb+.h+ which identifies the file as a header file.\\
+
+Consider the following lines of code next:
+
+\begin{lstlisting}
+#include<stdio.h> (*@\label{start:hello_world}@*)
+
+int main() {
+
+	printf("Hello, World! \n");
+	
+	return 0;
+}			(*@\label{end:hello_world}@*)
+\end{lstlisting}
+
+All contents of a C program are included in functions. We will discuss these in detail later. Notice at this point, though, that parentheses and braces segment a program into a number of \textbf{tokens}. We usually represent each token by a line, but you need not worry too much about this. All that is important to understand at this point is that whitespace has no meaning to the computer itself in C and is only meant for humans to read. That is to say, the above program can just as well be written as follows:
+
+\begin{lstlisting}
+#include<stdio.h>int main(){printf("Hello, World!\n");return 0;}
+\end{lstlisting}
+
+The output of the program would be the same as before but it would be hard for us to understand a program, especially if it is long and complex. Note, though, that some whitespace \textit{does} matter: writing \verb+intmain()+ is \textit{not} the same as \verb+int main()+. In any case, this is what a C program \textit{looks} like and most C programs you will come across in this handbook (and in your later studies) will look like necessarily more complex forms of this.
+
+\section{Compiling and executing}
+
+There are several ways to execute or run a C program. Once the contents of a program are typed, they must be saved into a file with the extension \verb+.c+ on your computer. Say we save our example program from earlier into a file called \verb+hello_world.c+ located at \verb+/folder/path/hello_world.c+ on your computer. Try not to have spaces in your filename; use underscores or hyphens instead.
+
+Most Integrated Development Environments (IDEs) have a simple \textit{run} button that can execute your program in one click. Since the exact approach to this varies from software to software, we will not be going over it. Besides this any C program can always be run via the \textbf{Terminal} available in almost any computer and it is this method we will overview now.\\
+
+In the lab you will be working on a \textsc{unix}-based operating system and opening the Terminal will be like opening any other app. Once you are in the Terminal you should see something that looks like this:
+
+\begin{lstlisting}
+computer@name:~ username$ (*@\label{terminal_default}@*)
+\end{lstlisting}
+
+The \verb+$+ symbol is called a \textbf{prompt}. You will find various prompts based on the terminal environment you are in. Ideally, it is the dollar prompt you should be seeing as soon as you open a Terminal window. From this point on, for simplicity and clarity, we will be omitting everything \textit{before} the dollar prompt and only mentioning the commands you will have to enter \textit{after} the prompt. Make sure \textit{not} to type in the dollar prompt \verb+$+ itself at any point.
+
+Now navigate to the folder in which you have saved your C program. This is done using the \cbox{cd} command, which stands for \textbf{change directory}. The syntax is \synt{cd /full/folder/path} to point to the directory you want to enter. If you are ever in doubt, you can simply type \cbox{ls} after the dollar prompt to view a list of files and folders and then type \cbox{cd folder_name} to enter a particular folder.
+
+\begin{lstlisting}
+$ cd /folder/path
+\end{lstlisting}
+
+Now that you are in the required folder you should be in a position to execute your C program. However, executing a \verb+.c+ file is the \textit{last} step. First we need to convert the \verb+.c+ file from its human-readable format to a machine readable file, called an \textbf{executable}. This is called \textbf{compiling}\footnote{In the lab all systems have the \textsc{gnu} C compiler preinstalled. Instructions to install this on your own system can be found at \url{https://gcc.gnu.org/install/} from the Free Software Foundation, Inc.}.
+
+\begin{errorbox}
+\eb{POSSIBLE\, ERRORS }
+If you are unable to locate your folder using \ebcbox{ls} or if you ended up choosing the wrong path, you can use the command \ebcbox{cd ../} to return to the immediate upper level. Note the space in that command since `small' points like this make a huge difference in programming. In your terminal, as in line \ref{terminal_default}, the tilde \ebcbox{~} represents your home directory; typing in \ebcbox{cd ~} will take you back home and let you start afresh. Also remember that you can type in \ebcbox{clear} anytime to clean up the terminal window.
+\end{errorbox}
+
+At this point make sure that you have saved the `Hello, world!' program (lines \ref{start:hello_world} to \ref{end:hello_world}) into a file called \verb+hello_world.c+ or do so if you have not. We can now compile a C program using the \cbox{gcc} command. This only applies if you are using \textsc{gcc}, which you will be doing in the lab. Other programs may use different commands, such as \texttt{clang}, instead of \texttt{gcc} but with the rest of the syntax untouched.
+
+\begin{lstlisting}
+$ gcc -o exe_name file_name.c
+\end{lstlisting}
+where \verb+exe_name+ is the name of the executable file that will be created for your program. Usually, this is named the same as the \verb+file_name+ but you can choose anything you like. The command \cbox{-o} gives the terminal permission to open the file\footnote{Note the differences between the lowercase letter `oh', written as  \texttt{o}, the uppercase letter `Oh', written as  \texttt{O}, and the number `zero', written as  \texttt{0}. The uppercase letter has less rounded corners and the number is more of an oval.}.
+
+In our case we can compile our program using the command
+
+\begin{lstlisting}
+$ gcc -o hello_world hello_world.c (*@\label{exe:hello_world}@*)
+\end{lstlisting}
+If the compilation is successful you should not see any errors on your screen. If you do get errors, go over this section again and track down where you may have made a mistake. Spaces, semicolons and other symbols that are easy to miss are some of the most important ones. You can solve errors during compiling mathematics by appending \cbox{-lm} to line \ref{exe:hello_world}, telling the compiler explicitly to include the \verb+math+ library, e.g. \cbox{gcc -o hello_world hello_world.c -lm} especially on old systems.
+
+Once compiled it is time to execute our program. For this we have a simpler syntax:
+
+\begin{lstlisting}
+$ ./exe_name
+\end{lstlisting}
+The \verb+exe_name+ must match the name of the executable file that we created at \textbf{compile time}. Through these commands we are telling the computer that we have a \verb+.c+ file that it must compile to a machine-readable format and then execute to provide us an output.
+
+Learning syntaxes is important in C as they provide a framework on which we can write down instructions/commands as we like. In this case our executable file is called \verb+hello_world+, which is what we named it in line \ref{exe:hello_world}, so our execution command becomes
+
+\begin{lstlisting}
+$ ./hello_world
+\end{lstlisting}
+This should then give you the output, which is simply the words `Hello, world!' printed on your screen. By itself this program does nothing impressive, but you have now written your first C program successfully. The process of compiling and executing explained in this section applies to all your future programs too.
+
+\begin{errorbox}
+\eb{TIPS }
+Throughout this process, ensure that you are in the same folder/directory as the one in which your C program, i.e. your \verb+hello_world.c+ file, is saved. Also, you can combine the compilation and execution commands into a single command that will automatically be run both its constituents one after the other. Use \ebsynt{gcc -o exe_name file_name.c && ./exe_name} as your syntax.
+\end{errorbox}
+
+\section{Variables, data types and reserved words}
+\subsection{Printing things on screen}
+
+As in physics, a \textbf{variable} is a quantity that takes different values under different conditions. The manner in which a variable is treated in C is different, of course. As in any computer program, C allots a certain amount of space in your computer memory to every variable and uses an \textbf{identifier} to reference that memory location which holds the value or magnitude of that variable.
+
+For example, you can call a variable \verb+x+ and specify its \textbf{data type} as an integer and C will allocate an appropriate amount of space in your computer memory to it and call that space \verb+x+. Every time you refer to \verb+x+, your computer now knows that you refer to the value stored in that particular memory location.
+
+Consider this simple program to add two integers:
+
+\begin{lstlisting}
+#include<stdio.h> (*@\label{simple_sum_start}@*)
+
+int main() {	(*@\label{simple_sum_main}@*)
+
+	int a=2, b=4, c;		(*@\label{simple_sum_declaration}@*)
+	
+	c = a + b;		(*@\label{simple_sum_arithmetic}@*)
+	printf("The sum of %d and %d is %d \n",a,b,c); (*@\label{simple_sum_print}@*)
+	
+	return 0;	(*@\label{simple_sum_return}@*)
+}	(*@\label{simple_sum_end}@*)
+\end{lstlisting}
+
+Let us see carefully what this program is doing, line-by-line (except line \ref{simple_sum_return} which we will talk about later). Pay attention to new commands and syntaxes you will come across now:\\[1cm]
+\begin{description}
+\item[\qquad{\scriptsize \textbf{\sffamily \addfontfeatures{LetterSpace=7} LINE \ref{simple_sum_start}: }}] This is the same header file we saw earlier in our \verb+hello_world.c+ program.
+
+\item[\qquad{\scriptsize \textbf{\sffamily \addfontfeatures{LetterSpace=7} LINE \ref{simple_sum_main}: }}] This is called a \textbf{function}. A function is a subset of commands in a C program. The syntax of a function is \synt{data_type name() { }} and we have used the data type \verb+int+ (which we will discuss presently) and the function name, \cbox{main()} which is a standardisation: every C program starts with the first line of the \cbox{main()} function. Other functions can be called from within the \cbox{main()} function, but there must always exist a \cbox{main()} function which contains the heart of a program. We will see how this can be done in later programs. Note the lack of a semicolon at the end of a function.
+
+\item[\qquad{\scriptsize \textbf{\sffamily \addfontfeatures{LetterSpace=7} LINE \ref{simple_sum_declaration}: }}] This is known as the \textbf{declaration} and is where we first tell the computer how many memory slots we will need and what we will be using them for. Declaring variables is preferably done at the start of a program to prepare necessary memory locations. This is also where \textbf{identifiers}, or names, are assigned to our variables. We have also \textbf{initialised} variables \verb+a+ and \verb+b+ with some values.
+
+The syntax for such a declaration specifies the data type and identifiers and any initial values as \synt{data_type identifier=initialisation, identifier, ... , identifier;} and our declaration too uses this format.
+
+Our \verb+data type+ is \verb+int+, which stands for integer, and our identifiers are \verb+a+, \verb+b+ and \verb+c+, two of which we have \textbf{initialised}, i.e. given values to at the start of the program. Naturally then, \verb+c+ is \textit{not} initialised since we will be adding \verb+a+ and \verb+b+ and assigning the value of their sum to be stored in the memory location identified by \verb+c+.
+
+\item[\qquad{\scriptsize \textbf{\sffamily \addfontfeatures{LetterSpace=7} LINE \ref{simple_sum_arithmetic}: }}] This is a simple arithmetic operation. Any C program supports basic operations such as sums, differences, products and quotients out of the box. For more complicated operations like powers, we must also include the \cbox{math} header file that defines other operations. Once this header file is called, $b^a$ can be defined as \synt{pow(b,a)} and sin\,\verb+x+ is \synt{sin(x)} and so on.
+
+In our program, this line tells the computer to add \verb+a+ and \verb+b+ and store their sum as \verb+c+. So when we call \verb+c+ next time the computer simply gives us the sum \verb+a++\verb+b+ instead.
+
+\item[\qquad{\scriptsize \textbf{\sffamily \addfontfeatures{LetterSpace=7} LINE \ref{simple_sum_print}: }}] We have come across this line before in our \verb+hello_world.c+ program and we know that its job is to print whatever is stated between a pair of inverted commas. However, we have an new format here compared to last time: besides simple text we have a reference to \verb+c+ as well.
+
+The syntax is\;\; \synt{printf("Some text %d more text %f", identifier, identifier);} where the percentage symbol tells the computer that we are referring to a particular data type and the letter/s immediately after that are the \textbf{format specifiers} which tell the computer whether we are referring to an integer (\verb+d+) or a decimal number (\verb+f+) and so on.
+
+The contents within the inverted commas are printed and the \verb+%d+ and \verb+%f+ are replaced by their corresponding identifiers mentioned in the same order and separated by commas \textit{after} the main pair of inverted commas.
+
+In our program we refer to three integers and therefore use \verb+%d+ to specify where they must be placed; next we specify \verb+a+, \verb+b+ and \verb+c+ as our identifiers, in the order in which they should appear. That is, the first \verb+%d+ will be replaced by \verb+a+, the second by \verb+b+ and the third by \verb+c+. The output of this program will then be `The sum of 2 and 4 is 6'.
+\end{description}
+
+Now try to run this program yourself. Feel free to also make changes and see what effects they will have. If you break the program, follow the errors and try to rectify them yourself.
+
+\subsection{Accepting inputs from the user}
+
+Every value in a C program is classified into a \textbf{data type} which determines how much memory storage it is allocated. That is from the perspective of a computer. From a human perspective a data type is simply a determinant of the type of a variable: is it an integer, a fraction, a letter, a string of letters etc.
+
+There are four basic data types in C which have further classifications beneath them. Here is an overview, but do not treat this as an exhaustive list:
+\begin{multicols}{3}
+\begin{enumerate}
+\item Primitive data types
+\begin{enumerate}
+\item Integers
+\item Characters
+\item Short
+\item Long
+\item Float (decimals)
+\item Double
+\end{enumerate}
+\vfill\null
+\columnbreak
+
+\item Derived data types
+\begin{enumerate}
+\item Pointers
+\item Arrays
+\item Structured
+\item Functions
+\end{enumerate}
+\vfill\null
+\columnbreak
+
+\item Enumerated data types
+\item Void data types
+\begin{enumerate}
+\item Certain functions
+\item Certain pointers
+\end{enumerate}
+\end{enumerate}
+\end{multicols}%\vspace{-0.5cm}
+Writing a one-sided C program is like being a physicist trying to work things out without maths: interesting, but of little consequence no matter how you look at it. One of the fundamental capabilities of a C program is to interact with the user; to take in some data and \textbf{process} it or \textbf{compute} something using it and to eventually produce some output.
+
+Like `print' was the term used to display data on the screen, \textbf{scan} is the term used to accept data from the user. The command used for this is \cbox{scanf} and, like the \cbox{printf} statement, the syntax of a \cbox{scanf} statement involves format specifiers and their respective identifiers, but this time to save data to memory rather than retrieve it. To accept various types of inputs use the syntax \synt{scanf("%d %f %s", &identifier, &identifier, identifier);}. This saves inputs to the memory locations specified by their identifiers. The ampersand symbol (\verb+&+) represents the memory location of an identifier rather than the identifier itself.
+
+\begin{errorbox}
+\eb{POSSIBLE\, ERRORS  }
+Note that there is no location identifier for characters and strings. The \textbf{address-of} symbol \verb+&+ tells you the memory address of an identifier while typing just the identifier gives you its value. Make sure you are asking for the right thing since the computer simply does what you command it to do. The \ebcbox{scanf} statement essentially tells the computer to `read a type of input and save it to the memory location named as a particular identifier'. This means if you expect the user to enter values separated by commas, the data types in your \ebcbox{scanf} statement should be \ebcbox{scanf("%d, %d",&a,&b);} also separated by commas. This statement accepts an input like \verb+7, 8+ and stores \verb+7+ in the memory location of \verb+a+ and \verb+8+ in the location of \verb+b+, but it throws an error (or uses stray values) for an inputs the form \verb+7 8+ etc.
+\end{errorbox}
+
+Why does the identifier for \verb+%s+ not have an address-of symbol before it? This is because C stores strings as an array of characters which means their addresses are already implied. You do not need to worry about exactly what this means just yet as we will discuss strings and arrays in detail later.
+
+The following are some commonly used data types in C, and in most languages derived from it, along with their symbols, declarations and memory sizes in bytes:
+
+\noindent\cbox{%d} Integer \cbox{int} 2--4\,B
+\qquad
+\cbox{%ld} Long integer \cbox{long int} 4\,B
+\qquad
+\cbox{%f} Float \cbox{float} 4\,B \\[1em]
+\cbox{%c} Character \cbox{char}
+\qquad\quad
+\cbox{%lf} Double \cbox{double} 8\,B
+\qquad\quad\quad\;\;\;\,
+\cbox{%s} String
+
+\subsection{Commenting and defining constants}
+
+The enumerated data type \cbox{enum} is not listed here since it is a little different from the others. An enumerated data type lets you store custom-defined identifiers as a collection. Its exact behaviour is out of our scope of discussion, but it is worth knowing, for completeness, that an \cbox{enum} lets us declare a set of identifiers, all for an arithmetic data type, and handle them in batches.
+
+For example, declaring \cbox{enum quarks { up, down, strange, charm, top, bottom };} lets us assign any one of these \textbf{elements} as the value of any other explicitly declared variable of the new data type \verb+quarks+. Throughout a program then these \textbf{enumerators} are effectively treated as constants.\\
+
+Here is a simple example:
+
+\begin{lstlisting}
+#include<stdio.h>
+
+int main() {
+    
+    enum weekday { monday, tuesday, wednesday };	(*@\label{enum_weekday}@*)
+    enum weekday today; // A 'weekday' variable called 'today'. (*@\label{enum_single_line_comment}@*)
+    today = monday;
+    
+   /*  An alternate way of declaring such	(*@\label{enum_multiline_start}@*)
+    *  variables is to use the combined format:
+    */
+    
+     enum weekend { saturday, sunday } that_day;
+     
+   /* This means we now have a variable
+    *  called 'that_day' of type 'weekend'.	(*@\label{enum_multiline_end}@*)
+    */
+    
+    printf("Tomorrow is day %d of the week\n",today+2);	(*@\label{enum_printf}@*)
+    
+    return 0;	(*@\label{enum_return}@*)
+}
+\end{lstlisting}
+
+The output of this program would be `Tomorrow is day 2 of the week'. But, besides \cbox{enum}, there are some important observations to be made here, like in our last program, that will help us later:
+\begin{description}
+\item[\qquad{\scriptsize \textbf{\sffamily \addfontfeatures{LetterSpace=7} LINE \ref{enum_single_line_comment}: }}] All the text following the double slash \cbox{//} on this line will be ignored by the C compiler and is meant for the programmer's eyes only. Such texts are called \textbf{comments}. Think of comments as little notes you leave to yourself for future reference in a program or to other programmers to help them understand your program better.
+
+\item[\qquad{\scriptsize \textbf{\sffamily \addfontfeatures{LetterSpace=7} LINES \ref{enum_multiline_start} TO \ref{enum_multiline_end}: }}] Everything between these lines constitute a \textbf{multiline comment}. Make a multiline comment by enclosing text between a slash followed by an asterisk \cbox{/* ... */} and the compiler will simply ignore these lines. As before, they are for programmers only. Note that the series of asterisks \cbox{*} typed at the start of each of these lines is \textit{not} part of the syntax, but using symbols like this is common practise in programming and ensures that multiline comments are neatly set apart from the main lines of code.
+
+\item[\qquad{\scriptsize \textbf{\sffamily \addfontfeatures{LetterSpace=7} LINE \ref{enum_printf}: }}] The \cbox{printf} command here not only refers to the variable \verb+today+ to print it in place of \verb+%d+ but also specifies an arithmetic operation right inside the \cbox{printf} statement, i.e. it asks the computer to print not the value of \verb+today+ but the value of \verb+today+ with \verb+2+ added to it.
+
+This is an efficient shorthand and saves us a line: we do not strictly have to add \verb+today++\verb+2+ separately. In the same vein, observe that line \ref{simple_sum_arithmetic} could have simply been included in line \ref{simple_sum_print} and we need not have declared a third variable \verb+c+ at all. This type of improved efficiency is a huge part of what makes programs run faster.
+
+\end{description}
+
+\begin{errorbox}
+\eb{TIPS }
+Note how our main function too has a data type \verb+int+ associated with it. What does this mean? In short, this refers to the fact that our \ebcbox{main()} function \textbf{returns} a value of type \verb+int+, but we know this has not been true so far. Our \ebcbox{main()} function has \textit{not} returned any data at all besides displaying an output as commanded. It is for this reason that we specify (as in lines \ref{simple_sum_return} and \ref{enum_return}) the code \ebcbox{return 0;} suggesting that the \ebcbox{main()} function is, in fact, returning nothing. Although it might seem tempting to simply call our function \ebcbox{main()} without specifying a data type, this is invalid syntax.
+\end{errorbox}
+
+Besides declaring constants in \cbox{enum} we can explicitly define individual constants too. Of course initialising a variable also equates it to a constant, but then we can redefine the same variable and overwrite its value, so it is \textit{not} truly constant. However, using \synt{#define name value} we can define a proper constant for use in our program.
+
+The definition of a constant can be (and usually is) done soon after we call our header files, \textit{outside} our \cbox{main()} function. We can also define other variables this way to make them available \textbf{universally} for use across all functions; else, if declared inside our \cbox{main()} function, the variables remain valid only within the \cbox{main()} function. Do not worry too much about this as we will discuss this in detail later.
+
+Consider a simple program in which we use ideas we have discussed so far. The program accepts the value of a radius from the user and computes the area of a circle and volume of a sphere of that radius. 
+
+\begin{lstlisting}
+#include<stdio.h>
+#include<math.h>
+
+#define pi 3.1415926536	(*@\label{area_vol_define}@*)
+ 
+// Compute the circular area and spherical volume, given a radius
+
+int main() {
+    
+    float radius, area, volume;	(*@\label{area_vol_declaration}@*)
+    
+    printf("\nEnter the radius:\t");
+    scanf("%f",&radius);
+    
+    area = pi * pow(radius,2);	(*@\label{area_vol_arithmetic_1}@*)
+    volume = (4.0/3.0) * M_PI * pow(radius,3);	(*@\label{area_vol_arithmetic_2}@*)
+    
+    printf("\nArea = %f",area);
+    printf("\nVolume = %.2f\n",volume);	(*@\label{area_vol_limiter}@*)
+    
+    return 0;
+}
+\end{lstlisting}
+
+Understanding and executing this program should give you enough of an idea to work through the exercise that follows. But first, here is a quick look at some important lines:
+\begin{description}
+\item[\qquad{\scriptsize \textbf{\sffamily \addfontfeatures{LetterSpace=7} LINE \ref{area_vol_define}: }}] Here we define the constant \verb+pi+ for use later in the program. Note that this is for the sake of our example only; the \cbox{math.h} header file predefines a constant called \cbox{M_PI} which carries a more accurate value of pi. We have used this in line \ref{area_vol_arithmetic_2}.
+
+\item[\qquad{\scriptsize \textbf{\sffamily \addfontfeatures{LetterSpace=7} LINE \ref{area_vol_declaration}: }}] Foreseeing that the user may enter a fractional value of radius and not necessarily an integer we use the \cbox{float} data type here for our radius, area and volume.
+
+\item[\qquad{\scriptsize \textbf{\sffamily \addfontfeatures{LetterSpace=7} LINES \ref{area_vol_arithmetic_1} AND \ref{area_vol_arithmetic_2}: }}] Note that \cbox{math.h} allows us to use \cbox{pow(radius,2)} and \cbox{pow(radius,3)} instead of the long-winded \cbox{radius*radius} and \cbox{radius*radius*radius}.
+
+Also note our use of the self-defined constant \verb+pi+ in one line and the predefined constant \cbox{M_PI} from \cbox{math.h} in the next line.
+
+Lastly, since we are dealing with \verb+float+ type variables, our fraction cannot be just \verb+4/3+ but must also be of float, i.e. fraction/decimal, type explicitly, meaning we must specify that there is nothing beyond the decimal point (at least in the numerator or denominator if not in both) as \verb+4.0/3+ or \verb+4/3.0+ or \verb+4.0/3.0+ so as not to end up with incorrect computations.\\
+
+\item[\qquad{\scriptsize \textbf{\sffamily \addfontfeatures{LetterSpace=7} LINE \ref{area_vol_limiter}: }}] While displaying the result of our area we simply used \cbox{%f} for the identifier \verb+area+ but here, for the \verb+volume+, we use \cbox{%0.2f}. The syntax \synt{%wf} carries the \textbf{field width specifiers} and tells the computer to restrict the value of \cbox{%f} to \verb+w+ width.
+
+More specifically, \verb+w+ is made up of two components \verb+w.p+ meaning the field width and precision. The precision describes the number of digits after the decimal point and the field width is the number of digits, counting from the right, that the number should occupy.
+
+For instance, if \verb+radius = 3+ our volume is about \verb+113.09734+ and if we use \cbox{%0.2f} to display this, the volume will be rounded off to \verb+113.10+ and if we also specify a width of seven by stating \cbox{%8.2f} then the same number is displayed as \verb+  113.10+, i.e. the number is displayed in a `field' with eight blanks to be filled, counting from the right: zero occupies the first, one occupies the second, the decimal point occupies the third etc. so that the five digits and the decimal point together occupy six spaces and leave two unoccupied ghost spaces in the thousands' and ten-thousands' places.
+\end{description}
+
+\begin{errorbox}
+\eb{TIPS }
+You may have noticed that we have been using the code \ebcbox{\n} a lot within our \ebcbox{printf} statement. In the program below we use a new one \ebcbox{\t} as well. These are called \textbf{escape sequences}. The command \ebcbox{\n} is called a \textbf{new line character} and tells the computer to end a line at that point and start a new one. The \ebcbox{\t} command is a \textbf{horizontal tab character} and tells the computer to give a tab space at that point. We will be using them a lot henceforth to better arrange the display of data on our screen and they may confuse you at first. The best way to work around this is to execute programs and see the effect they really have. Try deleting one of the \ebcbox{\n} or \ebcbox{\t} commands and executing your program and see what effect it has. Neither will break your code; they will merely change how it is displayed on screen.
+\end{errorbox}
+
+So far you have learnt how to display something on screen, accept inputs from the user, perform basic arithmetic operations, define constants and handle certain data types. A set of programs are given below as an exercise for you to work through. We will overview data types again before discussing characters and Boolean data types.
+
+\section*{Exercise \theexercise}\label{ex:basic}\refstepcounter{exercise}
+\begin{enumerate}
+\item Write a program to accept all required data in mm from the user and calculate the reading of a screw gauge in cm correct to three decimal places.
+\item Write a program to accept an integer from the user and display the numbers before and after it. You are allowed to declare only one variable. \label{ex:increment-decrement}
+\item The syntax \synt{sizeof( )} takes a data type (\verb+int+, \verb+double+ etc.) as its argument and is an identifier that will retrieve for you the allowed memory size of that data type. Print its value as a data type \cbox{%lu} and verify if the byte lengths given above for \verb+int+, \verb+char+ etc. match those on your system. You may have to use the \cbox{limits} header file.
+\item Accept the lengths of the two shorter sides of a right-angled triangle from the user and do the following: (a) use Pythagoras's theorem to find the hypotenuse, and (b) use the sine rule to find the two unknown angles.
+\item Ask the user for the co\"{o}rdinates (coefficients only, to be entered as \verb+(x, y, z)+ into the program) of two vectors and (a) add them up, (b) subtract them, and (c) find their dot product.
+\end{enumerate}
+
+\begin{errorbox}
+\eb{TIPS }
+First write down the various steps involved in your strategy when trying to solve a problem; write down what variables you will need, of what data types they are, and exactly what you will do with them going from accepting input and assigning values all the way to computing, analysing and presenting the required output. Write all this verbally, stepwise and use it as an outline to write your program: this method of strategising of your program is called an \textbf{algorithm}. For help in writing one, see \ref{sec:arithmetic-operators}.
+\end{errorbox}
+
+\subsection{Characters and the Boolean data type}\label{sec:characters-and-the-boolean-data-type}
+
+We saw that an integer data type is a basic data type that stores integral values, a float data type stores fractions/decimals and long integers and doubles allot more memory to store longer versions of integral and fractional values respectively. We also saw that, ultimately, all data types are converted into bytes that a computer can understand when an executable file is created. For this reason, a \cbox{char} data type is sometimes also classified as an `integer' data type although calling letters integers does not make immediate sense.
+
+However, look at it from the perspective of a computer: storing a single character takes a single byte. This is the only constant across generations of machines. An integer, for example, can have various storage spaces depending on the architecture of a system (for example, 32-bit and 64-bit CPUs can potentially allocate different storage amounts to the same data type). But, more importantly, every character is stored as an \textsc{ascii}-equivalent number\footnote{The American Standard Code for Information Interchange (\textsc{ASCII}) is a character-to-number conversion standard.}. The decimal \textsc{ascii} value of \verb+S+ is 83, so the character \verb+S+ is stored the same as the one-byte integer, 83, in memory. Whether this is a number or it must be converted into its equivalent character will be decided by the compiler when the program is being run depending, of course, on the program.
+
+Absolutely every character you can type or print on your screen, be it a letter, a number, or a symbol, has an \textsc{ascii} value associated with it. This allows us, comically sometimes and usefully at other times, to `add' to letters. Try this out in a program: the \textsc{ascii} values of \verb+a+ and \verb+c+ are 97 and 99 respectively. What happens if you declare two characters as \verb+'a'+ and \verb+'c'+ try to print their sum?
+
+Declaring a character is the same as declaring any other data type, but initialising them must be done inside single inverted commas: \synt{char identifier, identifier='initialisation';} For example, we can declare a character called \cbox{char a, b;} where \verb+a+ and \verb+b+ are identifiers and \textit{not} the values stored in the characters themselves. Following our little experimental program from the last paragraph we can initialise them as \cbox{char a='a', b='c';} which means the identifier \verb+a+ now stores the value of the character \verb+'a'+ inside it and the identifier \verb+b+ now stores the value of the character \verb+'c'+. You can now try adding \cbox{a + b} to see what output you get.
+
+Perhaps writing this differently will clear things up: the declaration give by the command \cbox{char first_letter, second_letter;} makes it clear that \verb+first_letter+ is \textit{not} a letter but an identifier of the type \cbox{char}. As with any other data type, we can make it store a letter by initialising it: \cbox{char first_letter='a', second_letter='c';} and then add them to get an output: \cbox{first_letter + second_letter} which turns out to be an integer.
+
+There is yet another data type (although not one you may be using a lot in this course) called the Boolean data type. This data type, as its name suggests, only allows one of two polar values: a plus and a minus, or a head and a tail, or, more specifically in programming, a one and a zero.
+
+A Boolean data type, named after George Boole, has a special declaration in derivative programs like objective C as \verb+bool identifier;+ and the identifier normally takes the value \verb+1+ if it is true and \verb+0+ if it is false. C itself does not have a \verb+bool+ type and a simple \verb+int+ can be used equivalently and, in fact, is used more often.
+
+That said the purpose of introducing the idea of a Boolean quantity here is to talk about the derived ideas of a Boolean condition and a Boolean statement that we will come across later. A Boolean condition is one that, like a Boolean variable, will be either true (\verb+1+) or false (\verb+0+). We use Boolean conditions to check whether relationships between variables satisfy certain requirements we are interested in or not.
+
+\subsection{Keywords and system commands}
+
+There are a lot of words that C uses as part of its syntax that a user is \textit{not} allowed to use as an identifier because doing so may lead to utter confusion as to whether something is a command or an identifier and, in turn, will almost certainly result in an incorrect output. Such prohibited words are called \textbf{keywords}. The following are keywords used in C that you cannot use yourself as anything but commands:
+\begin{multicols}{8}
+\noindent\verb+auto+ \\
+\verb+break+ \\
+\verb+char+ \\
+\verb+case+ \\
+\verb+const+ \\
+\verb+continue+ \\
+\verb+default+ \\
+\verb+do+ \\
+\verb+double+ \\
+\verb+else+ \\
+\verb+extern+ \\
+\verb+enum+ \\
+\verb+float+ \\
+\verb+for+ \\
+\verb+goto+ \\
+\verb+if+\\
+\verb+int+\\
+\verb+long+ \\
+\verb+register+ \\
+\verb+return+ \\
+\verb+short+ \\
+\verb+signed+ \\
+\verb+unsigned+ \\
+\verb+sizeof+ \\
+\verb+switch+ \\
+\verb+static+ \\
+\verb+struct+ \\
+\verb+union+ \\
+\verb+typedef+ \\
+\verb+void+ \\
+\verb+volatile+ \\
+\verb+while+
+\end{multicols}
+\vspace{.25cm}
+\begin{errorbox}
+\eb{POSSIBLE\;\,ERRORS }
+C is a \textbf{case-sensitive} language, which means writing \verb+M_PI+ is \textit{not} the same as writing \verb+m_pi+ or even using an identifier called \verb+radius+ is \textit{not} the same as \verb+Radius+ and so on. Along the same lines, remember that initialising a character is done with single inverted commas (also called `quotes' sometimes) and not double inverted commas: \verb+'m'+ and not \verb+"m"+. We will later see that double quotes are reserved for strings.
+\end{errorbox}
+
+You may recall those which you have already come across. You will come across more of them as we go. But remember that even keywords are allowed in two parts of your program: one, as an argument for the \cbox{printf} command, since that data will be displayed exactly as given and will not be processed except to check to format specifiers; and, two, in comments since the computer ignores comment lines.
+
+The \verb+system+ \textbf{reserved word} (another name for keyword) can be used to issue commands to the terminal from within a C program using the syntax \synt{system("command");} where the \verb+command+ is anything you want to instruct the terminal or system itself.
+
+There is a particularly helpful \textbf{use case} for this. We saw earlier that we can clear the terminal window using the \cbox{clear} command after the \verb+$+ prompt. We can also say \cbox{system("clear");} \textit{inside} our C program to have the same effect and clear our screen. It is advisable to give the first command to clear the terminal window \textit{after} declaring and/or initialising variables.
+
+Like the \cbox{\n} and \cbox{\t} statements this is more of a superficial feature in our program but starting with a clean window means users can get a better look and a better understanding of whatever is happening on screen. We will start using this command, albeit sparingly, in our code from this point onwards.
+
+\begin{errorbox}
+\eb{POSSIBLE\;\,ERRORS }
+Older systems may use \verb+cls+ or \verb+clrscr+ or equivalent commands. Most of these have been deprecated in modern standardisations of C. The same is true of the \verb+conio.h+ file itself. Do \textit{not} use any of these. If you are unable to pass a \ebcbox{system("command");} directly, try calling the \ebcbox{stdlib.h} file.
+\end{errorbox}
+
+\noindent{\scriptsize \textbf{\sffamily \addfontfeatures{LetterSpace=7} EXERCISE }} Try writing a C program to list out all files and folders in the current directory.
+
+\section{Decision making with \texttt{\large \lowercase{if}} and \texttt{\large \lowercase{else}}}\label{sec:decision-making-with-if-else}
+\subsection{Arithmetic operators}\label{sec:arithmetic-operators}
+It is now time to introduce some basic intelligence into our programs. Think of yourself in a supermarket: \textbf{if} you have money in your wallet, you will buy a certain interesting-looking article, \textbf{else} you will not buy it (or you will put it off for another day, but that is besides the point).
+
+Such \cbox{if} and \cbox{else} statements exist everywhere in life and are just as common in mathematical and physical arguments. While solving a problem you can instruct the computer to execute certain set of commands \cbox{if} a condition is true, or \textbf{else} execute a different set of commands. The syntax is simple: \synt{if ( ) { } else { }} where the condition is enclosed in parentheses and the commands in braces.
+
+Let us now use this idea to write a small program that will check if a given number is even or odd. First, though, let us write an \textbf{algorithm} that will outline the strategy we will be following in this program. An algorithm is not a massively complex idea; it is simply a watered-down version of your program, written as steps, preferably with syntaxes, to make writing your actual program easier. Although algorithms were written by physicists as early as Euclid (see the exercise problem below) they were popularised in computer programming by the likes of the English mathematician, Alan Turing.
+
+Now let us get back to our program to check if a number is even or odd. Our approach will revolve around the fact that even numbers are divisible by 2 and odd numbers are not. To check if a number is divisible by another, we use the \textbf{remainder-of} operator \cbox{%}. Writing \cbox{a % b} means the operator returns the \textit{remainder} of the division of \cbox{a / b}. So if we check \cbox{x % 2} for some given \verb+x+ and if this turns out to be zero, then we can safely say that \verb+x+ must be an even number; else, \verb+x+ must be an odd number. Formally, this is what our algorithm would be:\vspace{0em}
+\begin{description}
+\item[\qquad \footnotesize\sffamily\addfontfeatures{LetterSpace=7} PRINT] Enter an integer \\[-1.85em]
+\item[\qquad \footnotesize\sffamily\addfontfeatures{LetterSpace=7} INPUT] $x$ \\[-1.85em]
+\item[\qquad \footnotesize\sffamily\addfontfeatures{LetterSpace=7} IF] $x \,\%\, 2 = 0$ \textbf{\footnotesize\sffamily\addfontfeatures{LetterSpace=7} THEN PRINT} $x$ is an even number \\[-1.85em]
+\item[\qquad \footnotesize\sffamily\addfontfeatures{LetterSpace=7} ELSE PRINT] $x$ is an odd number
+\end{description}
+Note that although we use some keywords, the exact syntax is not always used in an algorithm. At the end of the day, write your algorithm however you find it comfortable to understand but try to follow a pattern similar to the one above.
+
+The sole purpose of an algorithm is to make it easy for you to write your actual program. We can now use this algorithm to prepare a working program that we can execute on our systems. A few line-by-line observations follow.\vspace{-.25cm}
+\begin{lstlisting}
+#include<stdio.h>
+#include<stdlib.h> // Called only for the |\verb+system("clear");+| command
+
+int main() { // Check if a given number is even or odd
+    
+    int x;
+    
+    system("clear");	(*@\label{even_odd_clear}@*)
+    
+    printf("\nEnter an integer:\t");
+    scanf("%d",&x);
+    
+    if ( x % 2 == 0 ) {	(*@\label{even_odd_remainder_operator}@*)
+        printf("\n%d is an even number.\n\n",x);
+    } else {			
+        printf("\n%d is an odd number.\n\n",x);
+    }				(*@\label{even_odd_else}@*)
+    
+    return 0;
+}
+\end{lstlisting}
+\vspace{-.5cm}
+\begin{description}
+\item[\qquad{\scriptsize \textbf{\sffamily \addfontfeatures{LetterSpace=7} LINE \ref{even_odd_clear}: }}] The \cbox{system("clear");} command has been used here to make sure the output of the program looks clear and easy to follow as we discussed before. In general, however, \cbox{system( );} commands are best avoided as far as possible: they can be a security risk as they let you meddle with the system through a C program, and they make your program system-dependent as not all \cbox{system( );}. commands work on all systems.
+
+\item[\qquad{\scriptsize \textbf{\sffamily \addfontfeatures{LetterSpace=7} LINE \ref{even_odd_remainder_operator}: }}] The remainder operator, sometimes also called the \textbf{modulo operator}, is used here to check if $2$ divides \verb+x+ fully in order to determine whether \verb+x+ is even or odd. This is all exactly as we discussed while writing the algorithm.
+
+\item[\qquad{\scriptsize \textbf{\sffamily \addfontfeatures{LetterSpace=7} LINES \ref{even_odd_remainder_operator} TO \ref{even_odd_else}: }}] There is one important thing to remember about using braces to group commands together, as we have done for our \cbox{if} and \cbox{else} statements here: if only one command exists, no braces are needed. Omitting braces may not seem like much, but in longer programs, every additional character that the computer has to read through will delay execution time and such single characters tend to add up to make a substantial difference.
+
+In other words, the program would have worked just fine had we written lines \ref{even_odd_remainder_operator} to \ref{even_odd_else} simply as lines \ref{even_odd_alt_start} to \ref{even_odd_alt_end} shown below:\\[-3em]
+\end{description}
+\begin{lstlisting}
+    if ( x % 2 == 0 )	(*@\label{even_odd_alt_start}@*)
+        printf("\n%d is an even number.\n\n",x);
+    else			
+        printf("\n%d is an odd number.\n\n",x);	(*@\label{even_odd_alt_end}@*)
+\end{lstlisting}
+
+There are seven arithmetic operators: the sum \cbox{+}, the difference \cbox{-}, the product \cbox{*}, the quotient \cbox{/}, the remainder \cbox{%}, the increment \cbox{++} and the decrement \cbox{--} operators.
+
+The increment operator increments the value of the existing variable by one, i.e. it adds one to the current value. The decrement operator does the opposite. To increment or decrement some variable use \synt{variable++;} or \synt{variable--;}. Try rewriting problem \ref{ex:increment-decrement} from exercise 1 using the increment and decrement operators. Note also that the increment and decrement operators are simply shorthand for the lines \cbox{x = x + 1 ;} and \cbox{x = x - 1 ;} respectively.
+
+\subsection{Jumping to a line}
+
+You can move to a specific line in your C program using the \synt{goto label;} command. You will first have to flag or label your line with some \cbox{label:} and you can then jump to it from any other part of your C program. Pay attention to the fact that there is a colon at the end of a \cbox{label:} and \textit{not} a semicolon. A label must be placed at the start of a line. It will then refer to the command identified from that point up to the first semicolon the processor encounters.
+
+\subsection{Relational operators}
+
+Besides arithmetic operators, C also defines relational operators that help us check the relationships between two quantities. There are six relational operators, almost none of which need explanation: equal to \cbox{==}, not equal to \cbox{!=}, lesser than \cbox{<}, greater than \cbox{>}, less than or equal to \cbox{<=} and greater than or equal to \cbox{>=} and all of them have the same meaning as in physics and mathematics. Pay attention to spaces: \verb+! =+ is wrong, and \verb+< =+ is wrong too. Instead write these symbols \textit{without} a space between them.
+
+Relational operators see great use in defining \cbox{if} conditions. Before we see an example problem, note that the \cbox{=} symbol is \textit{not} a relational operator and does \textit{not} mean `equal to'. Instead it serves as an \textbf{assignment operator} and writing \verb+c = a ++\verb+ b ;+ really means `Add \verb+a+ and \verb+b+ and assign to \verb+c+ the value of their sum'. The command \verb+c == a ++\verb+ b ;+ is a \textbf{conditional statement} that checks the relationship between \verb+c+ and \verb+a ++\verb+ b+ and returns a value of \verb+1+ if it is true and \verb+0+ if it is false. In other words, it is Boolean.
+
+Now it is time for another example program (see the following page). This time, however, no description of the problem will be given, just the program itself. By now you should be in a position to look at the code, \textit{read} it and identify what it is doing. This program may seem fairly complicated now, so here is its algorithm to help you out:
+\begin{description}
+\item[\qquad \footnotesize\sffamily\addfontfeatures{LetterSpace=7} PRINT] Enter an integer \\[-1.75em]
+\item[\qquad \footnotesize\sffamily\addfontfeatures{LetterSpace=7} INPUT] $x$ \quad\textbf{\footnotesize\sffamily\addfontfeatures{LetterSpace=7} [TRY]}\\[-1.75em]
+\item[\qquad \footnotesize\sffamily\addfontfeatures{LetterSpace=7} LET] $y$ = integral part of $x$ (i.e. only the digits before the decimal) \\[-1.75em]
+\item[\qquad \footnotesize\sffamily\addfontfeatures{LetterSpace=7} IF] $y$ != $x$ \textbf{\footnotesize\sffamily\addfontfeatures{LetterSpace=7} THEN GOTO  [TRY]} (i.e. retry if the integral part of $x$ is not equal to $x$, that is if $x \notin \mathbb{Z}$)\\[-1.75em]
+\item[\qquad\footnotesize\sffamily\addfontfeatures{LetterSpace=7} ELSE \quad IF] $x \,\%\, 2$\,!=\,$0$ \textbf{\footnotesize\sffamily\addfontfeatures{LetterSpace=7} THEN PRINT} $x$ is an odd number \\[-1.75em]
+\item[\qquad\qquad\;\;\; \footnotesize\sffamily\addfontfeatures{LetterSpace=7} ELSE PRINT] $x$ is an even number
+\end{description}
+
+First of all, notice how we have used the label \verb+TRY:+ to reference the input statement. Then we have used the \cbox{goto} command to return to that line.
+
+Secondly, notice that our \cbox{if ... else} statement has an \cbox{if ... else} statement inside it. This is called a \textbf{nested if ... else statement} and allows us to check for complex parameters or, quite simply, conditions within conditions.
+
+The syntax of the nested \cbox{if ... else} statement follows from the regular \cbox{if ... else} statement: \synt{if ( ) { } else { if ( ) { } else { }} }. A couple of other ideas are explained in the usual line-by-line observations after the source code.\\
+
+\begin{lstlisting}
+#include<stdio.h>
+#include<stdlib.h>
+
+int main() {
+    
+    float x;	(*@\label{check_float_declaration}@*)
+    int y;
+    
+    system("clear");
+    
+    printf("\nEnter an integer:\t");
+TRY:scanf("%f",&x);	(*@\label{check_float_label}@*)
+    y=(int)x;	(*@\label{check_float_typecast}@*)
+    
+    if ( y != x ) {	
+        printf("\nYou seem to have entered a fraction.\nPlease enter an integer:\t");
+        goto TRY;		(*@\label{check_float_goto}@*)
+    }
+    else if ( y % 2 != 0 )
+        printf("\n%d is an odd number.\n\n",y);
+    else
+        printf("\n%d is an even number.\n\n",y);
+    
+    return 0;
+}
+\end{lstlisting}
+\begin{description}
+\item[\qquad{\scriptsize \textbf{\sffamily \addfontfeatures{LetterSpace=7} LINE \ref{check_float_declaration}: }}] We declare our variable, \verb+x+, as a \verb+float+ type in preparation for some user entering a fraction into the program.
+
+Try entering a non-integral quantity in our previous program to check if a number is even or odd and you will find that it breaks the program. This modification intelligently lets the computer give the user another chance to enter an integral if they entered a fraction in the first place.
+
+\item[\qquad{\scriptsize \textbf{\sffamily \addfontfeatures{LetterSpace=7} LINE \ref{check_float_label}: }}] We use the label \verb+TRY:+ to flag/label this line and return to it later. Although we skip back a few lines in this program, this technique can be used just as well to skip forward a few lines.
+
+\item[\qquad{\scriptsize \textbf{\sffamily \addfontfeatures{LetterSpace=7} LINE \ref{check_float_typecast}: }}] We originally declared \verb+x+ as a \cbox{float} type. If we want to check if the user entered an integer, we must make sure that the \cbox{float} variable \verb+x+ is equal to that part of \verb+x+ which exists only before the decimal point, i.e. the integral value.
+
+To check if this is true, in this line we assign the integral part of \verb+x+ to a new variable \verb+y+ of type \cbox{int} using a technique called \textbf{type casting}. This converts data of one type into another type. The command \synt{var_one = ( data_type ) var_two;} will convert \verb+var_two+ into the specified \verb+data type+ and store it in \verb+var_one+.
+
+A numerical example will help clarify this further: if the user enters \verb+9.5+, which is a \cbox{float} type, the computer assigns \verb+x = 9.5+ as usual. We then type cast \verb+x+ into an integer and save it in \verb+y+, which would make \verb+y = 9+ and the condition \verb+y = x+ or \verb+ 9.5 = 9+ fails, telling us that the user entered a non-integral quantity.\\
+
+On the other hand if the user entered just \verb+9+, then we would have \verb+x = 9.0+ and \verb+y = 9+ and finally \verb+x = y+ making our condition \verb+true+ and telling us that the user did, in fact, enter an integer.
+
+\item[\qquad{\scriptsize \textbf{\sffamily \addfontfeatures{LetterSpace=7} LINE \ref{check_float_goto}: }}] This \cbox{goto} statement inside the \cbox{if} section kicks into action when \verb+y != x+, which, as we saw earlier, means that the user did not enter an integer. The \cbox{goto TRY;} command then tells the computer to go to the line labelled \verb+TRY+ and continue the program from there.
+\end{description}
+
+\subsection{Logical operators}
+
+One final, useful fact about \cbox{if} conditions is that multiple conditions can be combined together in the same statement. There are primarily two ways in which this can be done: either execute the specified set of commands if \textit{at least one} of the given statements is true, or execute the specified set of commands only if \textit{all} the given statements are true.
+
+Such conditions are specified using one of three logical operators: the AND operator \cbox{&&}, the OR operator \cbox{||}, and the NOT operator \cbox{!}, all of which must be written in uppercase.
+
+You have come across the logical NOT operator already in our definition of the `not equal to' relational operator \cbox{!=} and the behaviour of the other two is well-known from mathematics and physics. For an AND operation to be true, all conditions must be satisfied; for an OR operation to be true, at least one condition should be satisfied.
+
+In an \cbox{if} statement, each condition must be mentioned separately, parenthetically. The syntax \synt{if((condition 1) && (condition 2) || (condition 3) && !(condition 4)) { }} is best understood using the example program below. In an attempt to stop hand-holding, no line-by-line explanations are given this time round.
+\begin{lstlisting}
+#include<stdio.h>
+int main() {
+    /* Check if a given number is an integer, a whole number or a
+       fraction, and also whether it is positive or negative. */
+        
+    float x;
+    printf("\nEnter a number:\t");
+    scanf("%f",&x);
+    
+    if ( x == 0 )
+        printf("\n%d is a whole number.\n",(int)x);
+    else if ( (x == (int)x) && (x > 0) )
+        printf("\n%d is a positive integer.\n",(int)x);
+    else if ( !(x != (int)x) && (x < 0) )
+        printf("\n%d is a negative integer.\n",(int)x);
+    else if (x > 0)
+        printf("\n%f is a positive fraction.\n",x);
+    else printf("\n%f is a negative fraction.\n",x);
+    
+    return 0;
+}
+\end{lstlisting}
+\vspace*{-0.5cm}
+\begin{errorbox}
+\eb{POSSIBLE\;\,ERRORS }
+Keep an eye on your brackets. They are most likely what will trip you when writing a program. When they can be avoided, prefer to avoid them. In the last example program we used as few brackets as we needed to. And, in the process, also try to write programs economically. Just like you would not leave superfluous constants lying around for no reason in your equations, do not declare more variables than you really need.
+
+\hspace*{0.5cm}Compare the last two example programs and see how we accomplished type casting in the latest one without explicitly declaring a second variable. Lastly, whenever you write an \ebcbox{if} condition, ask yourself if the condition actually has a Boolean answer; if it does not, then your program will naturally fail: \verb+if ( 3 - 2 ) { }+ is \textit{not} a sensible condition. Once you have written your program, try to read it like english and see if it makes sense --- it should.
+\end{errorbox}
+\vspace*{-0.5cm}
+%It is now time for another exercise involving \cbox{if ... else}, \cbox{goto} and various operators.
+
+\section*{Exercise \theexercise}\label{ex:if}\stepcounter{exercise}
+\begin{enumerate}[label=\arabic*.]
+\item The following algorithm is known as `Euclid's algorithm' and is used to find the greatest common divisor of two integers:
+\begin{description}
+\item[\qquad\qquad \footnotesize\sffamily\addfontfeatures{LetterSpace=7} PRINT] Enter two integers \\[-1.75em]
+\item[\qquad\qquad \footnotesize\sffamily\addfontfeatures{LetterSpace=7} INPUT] $a$ and $b$ \\[-1.75em]
+\item[\footnotesize {\normalfont\sffamily\addfontfeatures{LetterSpace=7} ALPHA:} \;\,\, \sffamily\addfontfeatures{LetterSpace=7} IF] $b = 0$ \textbf{\footnotesize\sffamily\addfontfeatures{LetterSpace=7} THEN GOTO} {\footnotesize\sffamily\addfontfeatures{LetterSpace=7} [GAMMA]}\\[-1.75em]
+\item[\qquad\qquad \footnotesize IF] $a > b$ \textbf{\footnotesize\sffamily\addfontfeatures{LetterSpace=7} THEN GOTO} {\footnotesize\sffamily\addfontfeatures{LetterSpace=7} [BETA]} \\[-1.75em]
+\item[\qquad\qquad \footnotesize\sffamily\addfontfeatures{LetterSpace=7} LET] $b = b - a$ \\[-1.75em]
+\item[\qquad\qquad \footnotesize\sffamily\addfontfeatures{LetterSpace=7} GOTO] {\footnotesize\sffamily\addfontfeatures{LetterSpace=7} ALPHA} \\[-1.75em]
+\item[\footnotesize {\normalfont\sffamily\addfontfeatures{LetterSpace=7} BETA:}\qquad LET] $a = a - b$ \\[-1.75em]
+\item[\qquad\qquad \footnotesize\sffamily\addfontfeatures{LetterSpace=7} GOTO] {\footnotesize\sffamily\addfontfeatures{LetterSpace=7} [ALPHA]} \\[-1.75em]
+\item[\footnotesize {\normalfont\sffamily\addfontfeatures{LetterSpace=7} GAMMA:}\,\,{\sffamily\addfontfeatures{LetterSpace=7} PRINT}] $a$ 
+\end{description}
+
+Write a C program based on this algorithm.
+\label{ex:euclid-algorithm}
+\item Ask the user for five numbers, whether integers or fractions, and write a program that outputs the largest and the smallest of these numbers. If you need help getting started, try writing an algorithm first.
+\item Accept three random lengths from the user and see if they form a triangle. (Use the fact that for a triangle of sides \verb+x+, \verb+y+ and \verb+z+, all three conditions, \verb+x ++\verb+ y > z+ and \verb+y ++\verb+ z > x+ and \verb+z ++\verb+ x > y+ must be satisfied.) If they do not form a triangle, ask the user for three new values.
+
+\item[\bfseries*\stepcounter{enumi}\theenumi] Accept \verb+a+, \verb+b+ and \verb+c+ for the quadratic equation $ax^2+bx+c=0$ and find its roots.
+
+(Programs that are part of your coursework and exams are marked with an asterisk. Solutions to these programs are provided in section \ref{prg:exam-solutions} of this handbook, but try solving them yourself first.)
+\end{enumerate}
+
+\begin{errorbox}
+\eb{TIPS }
+If you like, you can use the \textbf{ternary operator} shorthand for certain \verb+if...else+ statements that evaluate variables. Next time, test the syntax \ebsynt{condition ? expression1 : expression2 ;} and see where it works and where it fails. Do not forget to test nested statements. (Also see p.\,\pageref{sec:switching-things-around}.)
+\end{errorbox}
+
+\section{Functions and loops}
+\subsection{Functions simplify programs}
+
+In a program there may be certain lines of code that you use several times without alterations. You can always keep re-typing these lines over and over again or you can type them just once and keep referring back to them.
+
+At first you may want to use the \cbox{goto} command for this, but the drawback with that approach is that \cbox{goto} continues the entire program from a particular line and has no way to specify a restriction on which lines to execute. Using functions solves this problem.
+
+Another way to think of functions is like chunks of your program. If you write a program in several chunks, you can simply specify which chunk to execute in your main function and the computer will do the rest. Alternately, having functions lets you simplify complex programs: if something is wrong in a lengthy program it becomes hard to spot the error, but if we can narrow it down to a specific function spotting and correcting errors becomes much easier.
+
+By now you are familiar with the \cbox{main()} function. The \textbf{function declaration} syntax is \synt{data_type functionName( data_type var1, data_type var2 ){ ... return value; }} where the \verb+functionName+ has its first word conventionally written in lowercase and has successive words written with a leading uppercase letter. The arguments listed within parentheses must be \textbf{passed} to the function from elsewhere in the program \textit{in the same order} and with the same data type, and the \cbox{return} value must match the data type of the function.
+
+To better understand this idea, as always, let us write an example program. This time, let us make things interactive but keep the intent simple. Say we want to accept some numbers from the user and give them options of performing some basic arithmetic operations on them.
+
+The program is long and looks complicated but is not. Think of yourself as a physicist reading a program now and try to understand it all by yourself. Use the many comments provided as an aid to help you out along the way. After the source code you can follow the brief explanation provided, that describes what a user will experience when they run this program.\\[-0.75cm]
+
+\begin{lstlisting}
+#include<stdio.h>  (*@\label{functions_example.c}@*)
+#include<math.h>
+#include<stdlib.h>
+
+float a, b, option;               // Global variables (*@\label{func_global_var_start}@*)
+int counter=1;                    // declared outside for
+char repeat;                      // use in all functions (*@\label{func_global_var_end}@*)
+
+int checkInteger( float given ) { // Variable called 'given' , (*@\label{func_1}@*)
+    if( given == (int)given )     // of type float, has
+        return (1);               // been declared for
+    else return(0);               // use only within
+}                                 // this function
+
+float acceptNumber() { // not all functions need arguments (*@\label{func_2}@*)
+    float accept;
+    printf("\nEnter number %d:\t",counter);
+    scanf("%f",&accept);
+    return(accept); // returns the value of 'accept' (line |\ref{func_example_return_use}@*))
+}
+
+void printer( float result ) { // void functions do not return() (*@\label{func_3}@*)
+    if(checkInteger(result) == 0)
+        printf("\n\nThe result is: %.3f.",result);
+    else printf("\n\nThe result is: %d.",(int)result);
+}
+
+int main() { // The program starts with the first line of main() (*@\label{func_main}@*)
+    
+    // Ask for an option (*@\label{func_ask_option}@*)
+ RE:system("clear"); (*@\label{func_ask_for_switch}@*)
+OPT:printf("\n\nPlease pick an option [1-4]:\n");
+    printf("1. Add\t 2. Subtract\t 3. Multiply\t 4. Divide\n");
+    printf("5. Mod\t 6. Sine\t 7. Cosine\t 8. Tangent\n\n");
+    scanf("%f",&option);
+    
+    // Check for valid option (*@\label{func_check_option}@*)
+    if ( (checkInteger(option) == 0) || (1 > option) || (option > 8) )  {
+        printf("\nInvalid option. Please pick again.\n");
+        goto OPT;
+    }   // with checkInteger(option) we send the value of
+        // 'option' to the checkInteger function above.
+    
+    // Ask for as many numbers as required (*@\label{func_ask_numbers}@*)
+TRY:if( (1 <= option) && (option <= 4) ) {
+        a=acceptNumber();
+        counter++;
+        b=acceptNumber();
+    }
+    else {
+        counter=1;        // Value returned by acceptNumber() (*@\label{func_example_return_use}@*)
+        a=acceptNumber(); // function will be assigned to 'a'
+    }
+    
+    // Check if a and b are integers (*@\label{func_check_numbers}@*)
+    if ((checkInteger(a) == 0) || (checkInteger(b) == 0)) {
+        printf("\nIt looks like you have not entered an integer.\nPlease try again.\n");
+        goto TRY;
+    }
+    
+    // Perform operations (*@\label{func_operations}@*)
+    if (option == 1)
+        printer(a+b);
+    else if (option == 2)
+        printer(a-b);
+    else if (option == 3)
+        printer(a*b);
+    else if (option == 4)
+        printer(a/b);
+    else if (option == 5)
+        printer(fabs(a)); // math.h provides the fabs() function
+    else if (option == 6)
+        printer(sin((a*M_PI/180))); // trig functions in radian
+    else if (option == 7)
+        printer(cos((a*M_PI/180)));
+    else printer(tan((a*M_PI/180))); (*@\label{func_operations_end}@*)
+    
+    // Another round? (*@\label{func_repeat}@*)
+    printf("\n\nWant to try again (Y or N)?\t");
+    scanf(" %c", &repeat); //Try removing the space before %c
+    if ( (repeat == 'Y') || (repeat == 'y')) goto RE;
+    else exit(0);   // makes your C program quit automatically (*@\label{func_exit}@*)
+    
+    return 0;
+}
+\end{lstlisting}
+
+\begin{errorbox}
+\eb{TIPS }
+Ironically, the quickest way to understand what various parts of a program do (especially the lines you are not clear about) is to delete or modify those lines in some way and see how it breaks the program.
+\end{errorbox}
+
+Suppose that a user runs this program. They first thing that will happen is the global variable declaration (lines \ref{func_global_var_start} to \ref{func_global_var_start}). Following this the computer starts off with the \cbox{main()} function as usual (line \ref{func_main}). Besides the \cbox{main()} function there are three other functions that we have defined in this program: \verb+checkInteger()+ (line \ref{func_1}) which checks if a given number is an integer or not, \verb+acceptNumber()+ (line \ref{func_2}) which accepts inputs, and \verb+printer()+ (line \ref{func_3}) prints values.
+
+The user is first provided a set eight of options (line \ref{func_ask_option}) and they must pick one. We then check (line \ref{func_check_option}) to make sure they picked one of the eight and not something invalid. Following this, we ask them to either enter one or two numbers (line \ref{func_ask_numbers}) depending on their option and then check if they entered integers (line \ref{func_check_numbers}, also see the exercise below). Once everything is set we perform the necessary arithmetic operations (line \ref{func_operations}) and send the output to be printed, all with a single line of code. Note the \cbox{fabs()} function which outputs the absolute value of its argument; think of it as a shorthand used to replicate the behaviour of the command \cbox{if(x<0) x=x-(2*x);} for some \cbox{float} variable \verb+x+.
+
+Finally, we ask the user if they want to try everything again, i.e. start over and pick a new operation and new number/s. We use a character identified by \verb+repeat+ to check this: if the user assigns \verb+repeat+ a \verb+Y+ (or \verb+y+) to say `yes', then we return to that part of the program where we offer eight options, using \cbox{goto}. And if the user enters anything besides \verb+Y+ (or \verb+y+) we take it as a `no' and terminate the program. Lastly, line \ref{func_exit} is not compulsory. Using an \cbox{if} without an \cbox{else} will terminate the program as expected.\\
+
+\noindent{\scriptsize \textbf{\sffamily \addfontfeatures{LetterSpace=7} EXERCISE }} Observe that checking for integers in this program is not strictly necessary. It serves no purpose and the program should work even if the user enters fractions. Try to modify the program in such a way that entering fractions too is allowed. Do not forget to change the \verb+printer()+ accordingly.
+
+\subsection{Looping with \texttt{\large \lowercase{do}} and  \texttt{\large \lowercase{while}}}
+
+It may so happen that we come across a particular instruction that we want the computer to execute $n$ times. A simple example of this would be adding $n$ numbers. Commands used to execute repetitive instructions are called \textbf{loops}. The most basic looping command is the \cbox{while} loop.
+
+For any loop to run, there must be some condition that is either valid for the entire lifetime of a loop and whose invalidity marks the end of a loop. For instance, you can \textit{toss a coin} until \textit{your thumb aches}: the act of tossing a coin is then the repetitive command you are performing and the condition that marks the end of the repetition is your aching thumb.
+
+The syntaxes for the \verb+while+ and \verb+do...while+ loops make sense even from a grammatical perspective: \synt{do { } while ( conditions ) ; } and this is the only instance where you will encounter conditions trailing a set of commands. As in the case of the decision making \verb+if+ statements discussed in section \ref{sec:decision-making-with-if-else}, all conditional statements henceforth will precede the list of commands.
+
+Before we discuss the exact manner in which the \verb+do ... while+ loop works, there is another, closely-related looping statement that demands our attention. The \verb+while+ statement (which is, arguably, the one used more often) has the syntax \synt{while ( conditions ) { }} and primarily differs from the \verb+do...while+ block thanks to its condition appearing at the head of the block.
+
+The key difference between these two loops is clear based on the order in which they are executed: the \verb+do...while+ loop first does something and then checks a condition and then repeats the same thing and checks the condition again and repeats so long as the condition to run the loop is satisfied. The \verb+while+ loop first checks the condition and runs the commands and checks the condition again and repeats so long as the condition to run the loop is satisfied. Beware of which loop you use, therefore: both function similarly except at the start, where the \verb+do...while+ loop executes the commands once regardless of whether the mentioned conditions are satisfied or not whereas the \verb+while+ loop gives the condition precedence. Understanding one of these loops with an example program will suffice (although the program, admittedly, does little). We shall prefer the simple \verb+while+ loop:
+
+\begin{lstlisting}
+#include<stdio.h>
+
+int main() {
+    
+    /* Accept a limit and print that many natural numbers. */
+    
+    int x=1, n=0;
+    
+    printf("\nEnter a limit:\t");
+    scanf("%d",&n);
+    
+    while ( x <= n ) {
+        printf("%d \t",x);
+        x++; (*@\label{while_increment}@*)
+    }
+    
+    printf("\n");
+    
+    return 0;
+}
+\end{lstlisting}
+
+The output of this program is to simply print natural numbers from 1 to $n$. What difference would it make if the \verb+do...while+ loop were used instead? Specifically, think about what would happen if the user entered $n = 0$ with a \verb+do...while+ loop.
+
+\subsection{More robust loops with \texttt{\large \lowercase{for}}}
+
+The \verb+while+ loops are somewhat basic in nature and one key property of loops can be incorporated into the loop syntax itself to make for simpler commands.
+
+Observe the increment command in line \ref{while_increment} in our example \verb+while+ loop program. It so happens that such increments are a characteristic property of most loops: you will often want to perform a command once for a variable, then move to the next; or you may want to perform a command $n$ times and use a counter that gets incremented with each round; or you may want to perform commands for one like of a table stored in a file and the repeat it for each successive line and so on. In all of these cases, the increment is an important factor.
+
+Equally important, of course, is the condition, but notice the initialisation in the example \verb+while+ loop program. We initialised $x=1$. (What would happen if we did not do that?) We will often want to initialise values in our loops, which means incorporating this process into the syntax rather than as a separate command would be economical. Indeed all of this is solved by the \verb+for+ loop: \synt{for ( initialisation ; condition ; increment ) { }}.
+
+Keep the order of the \verb+for+ arguments in mind: first initialise your variable, then state the condition which must be broken for the loop to be broken, and then state the values by which your counter variable must be incremented. The initialised variable and incremented variable need not be the same, i.e. you can choose to initialise the counter in advance, and this is often the route taken. Nonetheless, the \verb+for+ loop honours what variable you initialise, what condition you state, and what increments you define.
+
+Here is the same program as the \verb+while+ loop example we previously saw, except it uses the \verb+for+ loop this time round:\\[-1cm]
+\begin{lstlisting}
+#include<stdio.h>
+
+int main() {
+
+    int x, n=0;
+    printf("\nEnter a limit:\t");
+    scanf("%d",&n);
+    
+    for( x=1 ; x <= n ; x++ )
+        printf("%d \t",x);
+    
+    printf("\n");
+    return 0;
+}
+\end{lstlisting}
+
+The body of the \verb+for+ loop becomes smaller (small enough, in fact, that we have eliminated the braces enclosing the commands). Loops often find creative use in a program; whenever you have a bunch of tasks of the same nature to perform on a variable or a set of variables, prefer one of the three looping statements discussed so far.
+
+\section*{Exercise \theexercise}\label{ex:if}\stepcounter{exercise}
+\begin{enumerate}[label=\arabic*.]
+\item Accept two arbitrary limits and list the prime numbers between, and including, these limits.
+
+(Remember to handle all possible scenarios: what if the user gives the upper limit first and then the lower? Or what if the user gives a composite number as one of the limits? Make sure your program is complete and, to start with, determines the order of the user's given limits as well as the first and last prime numbers to be printed properly.)
+
+\item Use loops to accept \verb+a+ and \verb+b+ and determine $a^b$ without using the \verb+pow+ command or calling \verb+math.h+ at all. If you got this right, let us complicate the problem slightly: use functions and loops to write a program that extracts the ones, tens, hundreds etc. digits from a number.
+
+\textbf{Hint:} What does \cbox{x/((int)pow(10,n)) % 10} do for, say, $x=326$ and $n=1$, and why?
+
+\item[\bfseries*\stepcounter{enumi}\theenumi] Find the roots of the quadratic equation $3x^3 - 9x - 5 = 0$ by bisection; start by asking the user for the two guesses characteristic of this method.
+
+Use functions and a \verb+while+ loop. Observe how this construction helps by simplifying the next part of this problem: re-write the program for another equation.
+
+\item[\bfseries*\stepcounter{enumi}\theenumi] Generate the first $n$ elements of the Fibonacci\footnote{For Leonardo Fibonacci, pronounced `fee-bone-\textit{ah}-chee'.} sequence. As a first case, do this using \verb+while+ looping, then re-write the program using \verb+for+ looping.
+
+Finally, after you have warmed up with basic loops, try a second case: write the program so that you accept a random number from the user and generate a Fibonacci sequence of as many elements as necessary so that the greatest element in the sequence is as close as possible to the number given by the user\footnote{
+For example, in the first case, $n=7$ must generate the sequence ${ 0, 1, 1, 2, 3, 5, 8 }$ and, in the second case, the same $n=7$ must generate the sequence ${ 0, 1, 1, 2, 3, 5 }$.}
+
+\item[\bfseries*\stepcounter{enumi}\theenumi] Approximate the roots of the equation ${ y + x \over yx }$ using the classical Runge-Kutta\footnote{For Carl Tolm\'{e} Runge and Martin Wilhelm Kutta, pronounced `roong' and `\textit{koo}-tah' respectively.} method; start by asking the user for the two guesses characteristic of this method.
+
+Use functions and a \verb+while+ loop. Observe how this construction helps by simplifying the next part of this problem: re-write the program for another equation.
+
+\item[\bfseries*\stepcounter{enumi}\theenumi] Use the Trapezoidal tule to integrate $f(x) = x^4$. Request the user for the size of the interval (i.e. the accuracy of your approximation) and the limits of the integral.
+\end{enumerate}
+
+\begin{errorbox}
+\eb{TIPS\;\,AND\;\,POSSIBLE\;\,ERRORS }
+You can increment or decrement a variable \verb+x+ in three ways: the most straightforward method would be \texttt{x = x + 1} using the assignment and addition operators, but the problem with this is that the new \verb+x+ no longer refers to the old object \verb+x+ but to the newly calculated object which is then simply bound back to the old \verb+x+; the second method is to use the shorthand \texttt{x++} that we have already come across, which only uses the addition operator and increments the object \textit{in place}; and, finally, there is the form \texttt{x+=1} which works the same as \texttt{x++} but allows flexibility since we can choose to increment \verb+x+ by any $n$ using \texttt{x+=n}. The same approaches work for subtraction too.
+
+\hspace*{0.5cm} However, there are two ways to increment (or decrement) a variable based on when the variable is incremented. Try the following simple program that increments a number: \verb!#include < stdio.h > int main() { int x = 7; printf("x = %d", x++); return 0; }! and you should get the output \verb+x=7+. Next modify the program slightly to use \verb!++x! instead: \verb!#include < stdio.h > int main() { int x = 7; printf("x = %d", ++x); return 0; }! and you should get \verb+x=8+. The difference between \texttt{x++} and \texttt{++x} is that, while the former executes the current statement and then increments \verb+x+, the latter first increments \verb+x+ and then executes the current statement. Decide what your program logic needs carefully before picking one of these.
+
+\end{errorbox}
+
+\subsection{Switching things around}\label{sec:switching-things-around}
+
+Let us deviate from arrays briefly to look at an interesting type of decision making command. Recall the example program we discussed on p.\,\pageref{functions_example.c}. In it we used the \verb+goto+ command to offer the user some options and execute bits of code accordingly. There is a simpler way to do this using a \verb+switch+ statement. The syntax of a switch statement may be a little hard to grasp at one go, so we will expand it in a moment. The syntax is intended to execute commands based on the user's choice: \synt{switch ( var_1 ) { case var_2: statements; ... default: statements; } } The idea is to allow users to pick an option and, as a \textbf{fallback}, to execute some \textbf{default} commands: \vspace{-1cm}
+\begin{lstlisting}
+switch ( choice_identifier ) {
+    case int_1 : 
+        statements;
+    case 'X' :
+        statements;
+    default :
+        statements;
+}
+\end{lstlisting}
+
+The switch statement associates the \verb+choice_identifier+ with the integral or character case identifier that the user chooses and then executes appropriate commands. Use integrals as usual or characters within single quotes, e.g. \verb+'A'+ or \verb+'X'+. Lines \ref{func_operations} to \ref{func_operations_end} can be simplified using the \verb+switch+ statement as follows:
+
+\begin{lstlisting}
+switch ( option ) {
+    case 1 : 
+        printer(a+b);
+        break;
+    case 2 :
+        printer(a-b);
+        break;
+    default :
+        goto RE; // RE is the flag we set on line (*@\textit{\texttt{\ref{func_ask_for_switch}}}@*)
+}
+\end{lstlisting}
+
+After executing a case, without an explicit \cbox{break;} command, the program will move onto the next case. Almost always this is unwanted behaviour, so ensure you have the \verb+break+ command that tells the system to exit the \verb+switch+ statement after executing the required case. (Note that cases 3 to 8 have been omitted above since they should be clear from those shown in the example.)
+
+Also recall the command \cbox{exit(0);} that takes the \verb+break+ command one step further and exits the program altogether. We came across this on p.\,\pageref{func_exit}.
+
+\section{Arrays and strings}\label{sec:arrays-and-strings}
+
+\subsection{Handling numerical data sets}
+
+Often, in physics, particularly during simulations and experimentation, we end up with large data sets. The simplest case of this is a set of co\"{o}rdinates that can plot a function or help us determine the nature of the phenomenon under observation. When calculating with such data, it is not uncommon to have to perform the same calculations repeatedly; for a handful, perhaps manual repetition is not that cumbersome, but with sets of tens or hundreds of values or more, it helps to be able to compute and perform common operations over several variables in one go.
+
+That is one case of handling data groups. The other classic case is that of a matrix, where all elements do not necessarily undergo the same process (e.g. matrix multiplication or row-column switching) but the entire group still has to be handled as a single entity.
+
+It is hard to keep track of such individual variables, which is why C allows the use of an array or matrix of variables that can be treated as a single entity but operated on individually if we so choose. These are not special memory units; the onus is on the computer to keep track of the elements of an array rather than on the user.
+
+We could call array elements as \verb+a+, \verb+b+, \verb+c+... but this can clearly get complicated quickly. Instead we refer to them much like we do in physics or mathematics: with `row' and `column' numbers. You can also have three, four, five or higher dimensional arrays but the `row' and `column' analogy sadly breaks in the third dimension. Nonetheless, an array of integers called, say, \verb+A+ can be represented by \verb+A[5]+.
+
+There are a few things worth noting here: \vspace*{-0.75em}
+\begin{itemize}
+\itemsep-0.25em
+\renewcommand\labelitemi{---}
+\item All elements of an array must be of the same data type
+\item Array counters start at zero and not one, so an array like \verb+A[5]+ has five elements, but from zero to four rather than from one to five: \verb+A[0]+, \verb+A[1]+, \verb+A[2]+, \verb+A[3]+, and \verb+A[4]+.
+\end{itemize}\vspace*{-0.8em}
+The syntax for declaring an array is the same as that for declaring any individual variable of the same data type: \synt{data_type name[size];}, so, for example, two one-dimensional integral arrays \verb+P+ and \verb+Q+ with two and four elements respectively may be declared as \cbox{int P[2], Q[4];} but their final elements are \verb+P[1]+ and \verb+Q[3]+.
+
+Initialising arrays is possible too: \cbox{float constants[3] = {3.14, 6.28, 0.707};} creates variables \verb+constants[i]+ with the corresponding values up to \verb+i = 2+. Referring to the value stored in \verb+constants[1]+ later in your C program will then fetch the value of \verb+6.28+. However, you do not have to initialise all values. For instance, \cbox{int charge[3] = {+1,-1};} will automatically set \verb+charge[2] = 0+.
+
+Further, simply declaring an array without explicitly mentioning its size is allowed so long as you initialise the array. In this case, the size of the array will be determined accordingly. Say you declare \cbox{float squares[] = {4, 9, 16, 25, 36};} then the processor automatically sets the size of \verb+squares[]+ to \verb+5+. Remember to consciously count elements from zero since this rarely comes naturally to most students in the beginning.
+
+Finally, two-dimensional arrays are created by specifying the sizes of the two dimensions separately: \synt{data_type name[size1][size2];} The initialisation of two- and multi-dimensional arrays is as follows: \cbox{float identity[3][3] = { {1, 0, 0}, {0, 1, 0}, {0, 0, 1} };}
+
+As before, we attempt to understand basic array operations using an example program. Our intention is to see how array inputs can be accepted and how an array can be printed. Since we will be using matrices, let us also try to make our matrix output look like a matrix and not just a set of numbers.
+
+For simplicity, let us see how two 3 $\times$ 3 matrices may be added. You will later have to follow closely and extend this idea to multiplying matrices and more.\\[1cm]
+\begin{lstlisting}
+#include<stdio.h>
+
+int a[3][3],b[3][3],c[3][3],row,column;
+
+void acceptor(int matrix[3][3]) {
+    for( row=0 ; row<3 ; row++ )
+        for( column=0 ; column<3 ; column++ )
+            scanf("%d",&matrix[row][column]);
+}
+
+int main() {
+// Accept elements of matrix A
+    printf("\n\nEnter the elements of matrix A by row:\n");
+    acceptor(a);
+// Accept elements of matrix B
+    printf("\n\nEnter the elements of matrix B by row:\n");
+    acceptor(b);
+// Add matrices A and B as C
+    for( row=0 ; row<3 ; row++ )
+        for( column=0 ; column<3 ; column++ )
+            c[row][column] = a[row][column] + b[row][column];
+// Printing matrix C
+    printf("\n\nThe sum of the two matrices is:\n");
+    for( row=0 ; row<3 ; row++ ) {
+        for( column=0 ; column<3 ; column++ )
+            printf("%d\t",c[row][column]);
+        printf("\n");
+    }  
+    return 0;
+}
+\end{lstlisting}
+\vspace*{0.5cm}
+By now you should be able to follow this simple program without trouble. To aid you, here are a few things to observe: \vspace*{-0.7em}
+\begin{enumerate}
+\itemsep-0.45em
+\item We use global variables to prevent redefining \verb+row+ and \verb+column+ in our \verb+acceptor()+ function.
+\item In our \verb+acceptor()+ function we have the preset size of 3 $\times$ 3. Can you pass an array to a function without specifying its size?
+\item The \verb+acceptor()+ function is \verb+void+ since it does not return any value to the \verb+main()+ function, rather it assigns values to the elements of the given arrays.
+\item We could have used functions to add and print too, but it serves no purpose since we only add and print once. However, should you choose to write functions for them, it will only vary slightly from the \verb+acceptor()+ function in the example program.
+\item Remember to always \verb+return 0+ by the end of the \verb+main()+ function.
+\end{enumerate}\vspace*{-0.8em}
+
+\subsection{Handling words and sentences}
+
+We will not concern ourselves too much with string handling for the purposes of this course, but it is nonetheless important that we have some basic ideas about it. A \textbf{string} (or a word or sentence as we know it better) is simply treated as an array of characters in C. Whenever you want to use strings, be sure to \cbox{#include<string.h>} as a preprocessor.
+
+The word `Physics', according to us, carries seven letters, but, according to the processor, carries eight. The \textbf{null character} \verb+\0+ marks the end of a string is always appended to it. The word `Physics', then, is a character array defined by \cbox{char subject[8] = "Physics";} and spaces too, if any, must be counted as characters. Alternately, we can also define the same string using \cbox{char subject[8] = {'P', 'h', 'y', 's', 'i', 'c', 's', '\0'}} but, in this case, we will have to specify the null character explicitly.
+
+The term \textbf{string handling} encompasses a lot of potential operations one can perform with strings, somewhat (but not entirely) analogous to the operations we discussed in section \ref{sec:decision-making-with-if-else}. String handling functions include the \textit{concatenation} (combining) of two strings using the \verb+strcat+ command: \synt{strcat("string1","string2");}, calculating the length of a string using the \verb+strlen+ command: \synt{int_var = strlen("string");}, reversing a string using the \verb+strrev+ command: \synt{strrev("string");}, copying strings from a \verb+source_identifier+ to a \verb+destination_identifier+ using the \verb+strcpy+ command: \synt{strcpy(destination_identifier,source_identifier);}, and, finally, comparing the \textsc{ascii} difference between a pair of strings using the \verb+strcmp+ command: \synt{int_var = strcmp("string1","string2");}.
+
+String comparison works the same as character comparison which we discussed briefly in section \ref{sec:characters-and-the-boolean-data-type}, i.e. it compares the \textsc{ascii} values of each letter of the two strings based on the idea that (if the strings are, in fact, the same) the difference between two corresponding letters will always be zero. This is why the output of \verb+strcmp+ must be assigned to some integral variable \verb+int_var+ using the assignment operator as shown in the syntax above. The same reasoning works for the assignment performed in the \verb+strlen+ syntax as well.
+
+As it turns out, the two other important functions we normally perform with strings, accepting and displaying them, are both easier than performing the same operations on numerical arrays.
+
+Accepting strings with \verb+scanf+ is likely the easiest method \cbox{scanf ( "%s" , identifier ) ;} but has a crippling problem. Recall how you would conveniently enter two numerical inputs as, say, \verb+7 8+ in your previous programs. The \verb+scanf+ statement would treat the space between your two inputs as a separator and call the input before the space as the first one and the input after the space as the second.
+
+The same logic, unfortunately, is extended to strings as well and breaks down for obvious reasons: whereas \verb+scanf+ for the input \verb+Physics+ works great, the input \verb+Condensed matter physics+ sees only \verb+Condensed+ being accepted and the \verb+scanf+ statement ends as soon as it encounters a space. This (mis)behaviour can be worked around using \cbox{scanf(" %[^\n]",identifier);} which accepts all inputs until the first new line \verb+\n+ character. (Note the space before \verb+%+.)
+
+The most convenient method of accepting (or \textit{getting}) a string from the user is with the \verb+gets+ function: \synt{gets ( identifier ) ;} accepts and stores a string from the user up to the new line character (i.e. until the user hits the Enter/Return key on their keyboard), mimicking the behaviour of \verb+%[^\n]+ but with much more elegant code.
+
+Finally, we are left with printing the strings we have in memory. This is done with the usual \verb+printf+ command, this time without much trouble: \cbox{printf ( "%s", identifier ) ;} does it. Here is an example program where we ask the user for the multiple or submultiple of units and return the corresponding scaling factor.
+\begin{lstlisting}
+#include<stdio.h>
+#include<string.h> // For strings
+#include<stdlib.h> // For exiting
+
+int main() {
+    
+    // Defining unit as an array of strings
+    const char *unit[19]; // Pointer called unit (*@\label{pointer_declaration}@*)
+    unit[0] = "nano"; unit[1]="\0"; unit[2]="\0";
+    unit[3] = "micro"; unit[4]="\0"; unit[5]="\0";
+    unit[6] = "milli"; unit[7] = "centi"; unit[8] = "deci";
+    unit[9] = "the unit itself"; unit[10] = "deka";
+    unit[11] = "hecto"; unit[12] = "kilo"; unit[13]="\0";
+    unit[14]="\0"; unit[15] = "mega"; unit[16]="\0";
+    unit[17]="\0"; unit[18] = "giga";
+    
+    // Defining other variables
+    char old_unit[20], new_unit[25];
+    char option[10], prefix[20];
+    int i;
+    printf("\nDo you know the (a) order or (b) prefix?\t");
+    scanf(" %[^\n]",option);
+    
+    switch (option[0]) {
+      case 'a':case 'A':case 'o':
+        printf("\nEnter power (-9 to +9):\t");
+        scanf("%d",&i);
+        i=i+9;
+        if( (0 <= i ) && ( i <= 18)) { // Within bounds of *unit
+            if( (strcmp(unit[i],unit[1])) ) { // Exists in *unit
+                printf("\nEnter unit:\t");
+                scanf(" %[^\n]",old_unit);
+                strcpy(new_unit,unit[i]); // Copy and append as we
+                strcat(new_unit,old_unit); // cannot append to array
+                printf("\nThe new unit is %1s.\n\n",new_unit);
+            }
+            else {
+                printf("\nSomething seems to be wrong.\n");
+		printf("(Enter powers as multiples of three.)\n\n");
+                exit(0);  // In case of error in second if
+            }
+        }
+        else {
+            printf("\nSomething seems to be wrong.\n");
+	    printf("(Enter powers between -9 and +9.)\n\n");
+            exit(0); // In case of error in first if
+        }
+        break;
+            
+      case 'b':case 'B':case 'p':
+            printf("\nEnter the prefix:\t");
+            //fgets(prefix,100,stdin);
+            scanf(" %[^\n]",prefix);
+            for(i=0; i<=18; i++) {
+                if(!(strcmp(prefix,unit[i]))) { (*@\label{boolean_strcmp}@*)
+                    i = i-9;
+                    printf("\nThe order is %d.\n\n",i);
+                    break; // Without break, for loop runs again
+                }
+            }
+            break;
+    }
+}
+\end{lstlisting}
+
+You may not fully understand what line \ref{pointer_declaration} is doing just yet but you should be able to make an educated guess. Observe certain other lines, though, where we accept strings, output strings, and even compare them. Particularly note how we use \verb+if(!(strcmp()))+ on line \ref{boolean_strcmp} to compare strings and get a Boolean answer regarding their equivalence.
+
+\subsection{Building larger programs}\label{sec:building-larger-programs}
+
+We previously declared global variables whenever we wanted to use them between functions since any variable declared inside a function can be accessed only within that function.
+
+The trouble with global variables is obvious: you may redeclare a variable with the same name elsewhere in your program (especially as your program gets longer) and end up overwriting it inadvertently, or you may lose track of how and where you have manipulated a global variable. On the processor side, looking up global variables takes longer than local ones\footnote{This is only a matter of tiny fractions of a second, but it can add up on longer programs.}. Global variables can also be a security risk as they can be accessed by other programs using the \cbox{extern} keyword.
+
+When we want to cross-reference variables across functions, we can use \textbf{static variables} as a fairly good alternative to global variables. They differ from global variables in some important ways: firstly, static variables are only initialised once, at the start of the program; secondly, like a global variable, we can declare static global variables too; thirdly, unlike local variable, a static local variable can be accessed by other functions so long as one of the two functions cross-referencing it is the function inside which the variable is declared.
+
+Declaring and initialising static variables is done in the same manner as any other variable but with the \cbox{static} keyword prepended: \synt{static int x = 7;} creates a variable identified by \verb+x+ with the initial value \verb+7+ that can be manipulated by any function in conjunction with the parent function of \verb+x+ and its value can be modified in any manner but never reset or reinitialised.
+
+Execute the example program below to understand static variables. Try to reason out what the output of the program will be before executing it.
+\begin{lstlisting}
+#include <stdio.h>
+void parent() {
+    int i=0;             // i is just another int variable
+    static int j=0;      // j is a static variable of type int
+    printf("i = %d\tj = %d\n", i++, j++);
+    return;              // Function of type void returns nothing
+}
+int main() {
+    for(int n=-1;n<5;n++)
+        parent();
+    return 0;
+}
+\end{lstlisting}
+
+Notice that the static variable \verb+j+ remains untouched. In effect, you can use static variables if you want to remember their values across functions, sort of like memory storage variables. Here are ideas for further exploration: What happens if you declare \verb+static int j+ globally? What, if any, is the difference between a global static variable and a global regular variable if you declare another variable \verb+int j+ only inside your \verb+main()+ function? This next paragraph may help you answer better, so return to these questions later.
+
+Like a static variable, you can declare a static function too: \synt{static data_type name(){}} creates a function that can only be used inside its own \verb+c+ file. By definition, all functions are global and can be used across c files. Let us look at an example of how this works for variables and functions. The following directory tree is assumed:\\[-0.25cm]
+\DTsetlength{-0.1em}{2em}{0.4em}{0.8pt}{3.2pt}
+\setlength{\DTbaselineskip}{20pt}
+\dirtree{%
+.1 Calculator\DTcomment{\textit{ Main directory}}. 
+.2 variables.h\DTcomment{\textit{ Header file (extern)}}. 
+.2 calc.c\DTcomment{\textit{ c file (arithmetic)}}. 
+.2 operator.c\DTcomment{\textit{ c file (organisational)}}. 
+.2 main.c\DTcomment{\textit{ c file (main function)}}. 
+}
+\vspace*{0.75cm}
+Like any other example program in this book, to understand this program, it would help if you typed these files as well as compiled and executed \verb+main.c+ and followed the explanations given below. To start off, note that the four files listed above have the following contents:
+\begin{multicols}{2}
+\noindent\textbf{\texttt{<< variables.h >>}}\vspace{-0.5cm}
+\begin{lstlisting}
+extern int a, b, choice, x; (*@\label{calc_start}@*)
+extern void input();
+extern void selection();
+extern int add();
+extern int mul();
+extern void output();
+\end{lstlisting}
+%\columnbreak
+\textbf{\texttt{<< calc.c >>}}\vspace{-0.5cm}
+\begin{lstlisting}
+#include <stdio.h>
+#include "variables.h"
+int x;
+int add() {
+    x=a+b;
+    return (x);
+}
+int mul() {
+    x=a*b;
+    return (x);
+}
+\end{lstlisting}
+%\end{multicols}
+%\vspace{-0.75cm}
+%\begin{multicols}{2}
+\textbf{\texttt{<< operator.c >>}}\vspace{-0.5cm}
+\begin{lstlisting}
+#include <stdio.h>
+#include <stdlib.h>
+#include "variables.h"
+int a, b, choice;
+void input() {
+printf("\nEnter two nos: ");
+scanf("%d %d",&a,&b);
+return;
+}(*@\columnbreak %\vspace*{0.27cm}
+@*)
+void selection() {
+printf("\n\nPick one:\n");
+printf("1. Add \t\t 2. Multiply\n");
+scanf(" %d",&choice);
+switch (choice) {
+   case 1:
+       output(add());
+       break;
+   case 2:
+       output(mul());
+       break;
+   default:
+       printf("\n Error.\n");
+       exit (0);
+   }
+return;
+}
+void output(x) {
+    printf("\n\n%d\n\n",x);
+    return;
+}
+\end{lstlisting}
+%\vspace*{0.5cm}
+\textbf{\texttt{<< main.c >>}}\vspace{-0.5cm}
+\begin{lstlisting}
+#include <stdio.h>
+#include "variables.h"
+int main() {
+    input();
+    selection();
+    return 0;
+} (*@\label{calc_end}@*)
+\end{lstlisting}
+\end{multicols}
+\vspace*{-0.5cm}
+These files are quite interesting even if their working may not be straightforward at first glance. First of all, observe how we included our own header file. We can include any number of \verb+c+ files \textit{without} a \verb+main()+ function inside a \verb+c+ file \textit{with} a \verb+main()+ function this way too. This involves the \verb+#include+ command as we discussed way back on p.\,\pageref{cmd:include}, but within inverted commas rather than angle brackets since we are referring to a file we created \textit{within the same directory} as the file with the \verb+main()+ function. When running, ensure you execute the file with the \verb+main()+ function since your program starts with it. Specifically, once you have navigated to the \verb+Calculator+ directory, the following commands in the terminal should compile it for you:
+
+\begin{lstlisting}
+$ gcc -Wall main.c operator.c calc.c -o exe && ./exe
+\end{lstlisting}
+
+The \verb+-Wall+ option provided by \verb+gcc+ turns on some useful warning flags that, if your program is erroneous, should help you debug it. Of course, the command will work without \verb+-Wall+ too; and you can name the executable \verb+exe+ file whatever you wish. You can also compile each \verb+.c+ file separately, creating machine-readable \textbf{object files} (\verb+.o+) that contain compilation-level output data:
+
+\begin{lstlisting}
+$ gcc -c calc.c -o calc.o
+$ gcc -c operator.c -o operator.o
+$ gcc -c main.c -o main.o
+$ gcc -c calc.c -o calc.o
+$ gcc calc.o operator.o main.o -o exe && ./exe
+\end{lstlisting}
+
+This way (and especially if you include \verb+-Wall+ now) you will be able to pinpoint the source file/s with any error/s. But let us understand how such an arrangement of files would work harmoniously. It should give you a better idea of variables and functions on a local and global scale. Particularly, we will not be using \verb+static+ here (try it: the compiler will throw an error). We will be focusing on fetching variables and using functions across \verb+c+ files using \verb+extern+ instead.
+\vspace{-0.2cm}
+\begin{enumerate}
+\itemsep-0.3em
+\item The \verb+variables.h+ file co\"{o}rdinates a list of variables and functions defined in other files. The use of the \verb+extern+ keyword makes a promise to the compiler that said variable or function is defined elsewhere and need not be created.
+\item The actual variable may be referenced by any number of different files (e.g. the variable \verb+a+ is used in \verb+operator.c+ and \verb+calc.c+) but it must only be defined in one file to prevent conflicts (e.g. \verb+a+, \verb+b+ and \verb+choice+ are defined only by \verb+operator.c+ like usual variables, and, likewise, \verb+x+ is defined only by \verb+calc.c+). In fact, our \verb+main.c+ file with the \verb+main()+ function is the smallest file and simply calls other functions defined in other files.
+\item The usage is as follows:\vspace{-0.3cm}
+\begin{itemize}
+\renewcommand\labelitemi{---}
+\itemsep-0.2em
+\item \verb+main.c+ calls \verb+input()+ which, \verb+variables.h+ tell us, is in \verb+operator.c+
+\item \verb+input()+ accepts two numbers
+\item \verb+main.c+ calls \verb+selection()+ which, \verb+variables.h+ file tells us again, is in \verb+operator.c+
+\item \verb+selection()+ calls \verb+add()+ and \verb+mul()+ in turn from \verb+calc.c+, operates and displays results
+\item \verb+main.c+ signals that the program has ended
+\end{itemize}
+\end{enumerate}
+\vspace{-0.25cm}
+It must be emphasised that the \verb+extern+ keyword does \textit{not} create a memory location for the variable; instead, it tells the compiler that such a variable (or, indeed, function) exists elsewhere. The variable itself must be compiled elsewhere and strictly only once.
+
+The usefulness of \verb+extern+ and custom header files becomes apparent when you realise that the next time you want to accept two variables, you can simply turn to the \verb+variables.h+ and \verb+operator.c+ files rather than writing the same code again. By taking things a beyond just function blocks within a single file, we have created a simple yet effective method to write extremely large programs with clean, reusable code that is easy to understand and debug. To safely limit the \textbf{scope} of a variable to a single file, remember to declare it as \verb+static+.
+
+\section*{Exercise \theexercise}\label{ex:if}\stepcounter{exercise}
+\begin{enumerate}[label=\arabic*.]
+\item \label{prog:elementary-particles}This is a lighthearted program to appreciate the use of arrays for purposes other than in a matrix. Store the mass, charge and spin properties (and any others you can think of) of electrons, protons and neutrons (and any other favourite particles you may have) in individual \textit{global} arrays and write a program that asks the user up to three questions about the properties of these particles and, based on the inputs, guesses which particle it may be.
+
+\item Use arrays, functions and any other capabilities of a C program you have learnt so far to improve your earlier program coded for problem 2 in exercise 2 to determine the smallest and largest of five numbers provided by the user. You should now be able to make it considerably simpler than last time.
+
+Once that is done, improve your program so that, in addition to what it does now, it also displays the five numbers in ascending order and in descending order. Make sure your program works under these \textbf{use cases}: the numbers are already input in ascending or descending order; two or a few of the numbers are equal; the numbers are all equal.
+
+\item Use arrays and functions to ask the user the elements of a 3 $\times$ 2 matrix \verb+A+ and a 2 $\times$ 3 matrix \verb+B+, then prove that \verb+A+$\cdot$\verb+B+ $\neq$ \verb+B+$\cdot$\verb+A+. Remember to display any results/outputs as matrices.
+
+Next, use the global functions from this program to write another program that computes the determinant of a matrix that the user provides.
+
+\item You were instructed to declare global variables in program \ref{prog:elementary-particles} Now use those to write a simple program that calculates the specific charge of your choice of elementary particles. Make any changes necessary, use \verb+extern+, and ensure your program is descriptive and makes complete sense to the user. In fact, this last point is something you should keep in mind for \textit{any} program you ever write.\\
+\end{enumerate}
+
+\textit{The next six programs are general-purpose and not necessarily restricted to section \ref{sec:arrays-and-strings}.}
+
+\begin{enumerate}
+\setcounter{enumi}{4}
+\item Compute the \verb+n+$^\textrm{th}$ root of a number given by the user. Let the user choose \verb+n+ too.
+
+{\footnotesize\sffamily\addfontfeatures{LetterSpace=7} HINT} The \verb+pow+ operation works, but will using an integral expression such as \verb+1/3+ work? Recall that \verb+1/3+ evaluated as an integer is not \verb+0.333+ but simply \verb+0+. Use \verb+float+ expressions like \verb+1.0/3.0+ instead.
+
+\item Add $x^{-3} \; \forall \; 1 \leq x \leq 10 \; ; \; x \in \mathbb{Z}$ and display the result. If you are confident you can do this, start off with this modification: compute the same function for $1 \leq x \leq n \; ; \; x \in \mathbb{Z}$ in steps of $m$, where the user gives you both $n$ and $m$.
+
+\item Produce a neat table of the three basic trigonometric functions for $0^\circ$, $30^\circ$, $45^\circ$, $60^\circ$, $90^\circ$.
+
+\item Add, subtract, scalar multiply, and check for orthogonality, parallelism or obliqueness, two three-dimensional vectors given by the user.
+
+\item The Maclaurin series of $e^x$ is given by $$e^x = \sum\displaylimits_{n=0}^\infty {x^n \over n!}$$Compute this up to $n$ terms as the user desires. You are \textit{not} allowed to use the \verb+math.h+ function \verb+exp(identifier)+ anywhere in your program. (Use it only to verify your result.)
+
+\item Complete the calculator program from our example above (lines \ref{calc_start}--\ref{calc_end}). Make sure it performs all the basic operations of a scientific calculator and any more you can think of.
+\end{enumerate}
+
+\section{File handling}\label{sec:file-handling}
+
+While a C program can be self-sufficient the convenience of automating using a program is best seen when the program can read and write to other files. We saw quite a specific example of this in \ref{sec:building-larger-programs} but our communication there was between other program-oriented files. What if we have a regular text file or a data file output from another program or experiment?
+
+The purpose of file handling is to allow a C program to read from or write to another file. Files of most generic types have reasonable support here (for example, it is still foolish to want to edit a pdf file) and file permissions remain as important as elsewhere in the system. However, before we discuss how files are handled we will have to take a moment to understand the notion of \textbf{pointers}, a special type of variable used in C and several other languages, which can find powerful use in several instances. (Following this should also help you fully appreciate line \ref{pointer_declaration} that you had probably guessed your way through earlier.)
+
+\subsection{Pointers}
+
+Test\\
+
+\noindent{\normalsize \textbf{*} \scriptsize \textbf{\sffamily \addfontfeatures{LetterSpace=7} EXERCISE }} Enter a list of numbers into an \verb+input.txt+ file, one on each row. Then write a program to read that data from the file (ask the user for the file name and number of rows of data) and output the sum of those numbers and the average.
+
+
+
+\section{Further reading}\label{sec:further-reading}
+
+\clearpage
+\section{Solutions to coursework programs}\label{prg:exam-solutions}
+\stoptocentries
+\subsection{Finding the roots of a quadratic equation}
+\begin{lstlisting}[firstnumber=1]
+#include<stdio.h>
+#include<math.h>
+#include<stdlib.h>
+
+int main() {
+    
+    float a,b,c;
+    float d,root1,root2;
+    
+    system("clear");
+    
+    printf("\n\nEnter a, b and c of quadratic equation ax^2 + bx + c below: \n\n");
+    scanf("%f%f%f",&a,&b,&c);
+    
+    d = b * b - 4 * a * c;
+    
+    if(d < 0) {
+        printf("\n\nThe equation has complex roots: ");
+        printf("%.3f%+.3fi",-b/(2*a),sqrt(-d)/(2*a));
+        printf("and %.3f%+.3fi.\n\n",-b/(2*a),-sqrt(-d)/(2*a));
+        
+        return 0;
+    } 
+    else if(d==0) {
+        printf("The equation has two equal roots.\n\n");
+        root1 = -b /(2* a);
+        printf("They are both %.3f.\n\n",root1);
+        
+        return 0;
+    } 
+    else {
+        printf("The equation has are real roots.\n\n");
+        root1 = ( -b + sqrt(d)) / (2* a);
+        root2 = ( -b - sqrt(d)) / (2* a);
+        printf("They are %.3f and %.3f.\n\n",root1,root2);
+        
+        return 0;
+    }
+}
+\end{lstlisting}
+
+\clearpage
+\stoptocentries
+\subsection{Finding the roots of an equation by bisection}
+\begin{lstlisting}[firstnumber=1]
+#include<stdio.h>
+#include<stdlib.h>
+#include<math.h>
+#define error 0.0001
+
+double functionOf(double x) {
+    // Code in the required function below
+    return (3*x*x*x - 9*x - 5); // 1 and 2 are good guesses here
+}
+
+int main()
+{
+    double guess_one,guess_two,guess,solution,soln_one,soln_two,previous;
+    int root_exists=0,root_found=0,i=0,decor;
+    double f(double);
+    
+    system("clear");
+    
+    printf("\n\nThe equation being used is 3x^(3) - 9x - 5 = 0\n\n");
+    printf("\nEnter two guesses:\t ");
+    
+    while(root_exists==0) // Check guesses
+    {
+        scanf("%lf %lf",&guess_one,&guess_two);
+        soln_one=functionOf(guess_one);
+        soln_two=functionOf(guess_two);
+        if(soln_one*soln_two>0)
+        {
+            root_exists=0;
+            printf("\n\nThe root does not lie between %lf and %lf.\n",guess_one,guess_two);
+            printf("\nPlease enter two new guesses:\t ");
+        }
+        else
+            root_exists=1;
+    }
+    printf("\n\nThere is a real root which lies between %lf and %lf.\n\n",guess_one,guess_two);
+    while(root_found==0) // Solve till a root is found
+    {
+        printf("\nIteration %d\n",i);
+        for(decor=0; decor<=12; decor++)
+            printf("=");
+        printf("\n\na[%d](-ve) \tb[%d](+ve) \tx[%d] \t\tf(x[%d])\n",i,i,i+1,i+1);
+        printf("%lf\t",guess_one);
+        printf("%lf\t",guess_two);
+        guess=(guess_one+guess_two)/2;
+        solution=functionOf(guess);
+        printf("%lf\t",guess);
+        printf("%lf\n\n",solution);
+        if(solution < 0)
+            guess_one=guess;
+        else
+            guess_two=guess;
+        if(fabs(previous-solution) < error)
+            root_found=1;
+        else
+            previous=solution;
+        i=i+1;
+    }
+    printf("\n\nThe root of f(x) is %lf to an accuracy of %f\n\n",guess,error);
+    
+    return 0;
+}
+\end{lstlisting}
+
+\clearpage
+\stoptocentries
+\subsection{Generating the first n elements of the Fibonacci sequence}
+\begin{lstlisting}[firstnumber=1]
+#include<stdio.h>
+
+int main() {
+    
+    int a=0, b=1, c, n, counter=0;
+    
+    printf("\nEnter a limit:\t");
+    scanf("%d",&n);
+    n-=2;
+    printf("%d \t",a);
+    
+    do {
+        printf("%d \t",b);
+        c=a+b;
+        a=b;
+        b=c;
+        counter++;
+    } while ( counter <= n ) ;
+    
+    printf("\n");
+    
+    return 0;
+}
+\end{lstlisting}
+
+\clearpage
+\stoptocentries
+\subsection{Approximating the roots of an ordinary differential equation using RK4}
+\begin{lstlisting}[firstnumber=1]
+#include<stdio.h>
+#include<stdlib.h>
+#include<math.h>
+
+float functionOf(float x, float y){
+    // Code in the required function below
+    return (y+x)/(y*x);
+}
+
+int main(){
+    
+    float K, K1, K2, K3, K4;
+    float x0 , y0, x, y, i, interval;
+    int j, n;
+    
+    system("clear");
+    
+    printf("\n\nSuggest any initial value for x:\t");
+    scanf("%f", &x0);
+    printf("\n\nSuggest any initial value for y:\t");
+    scanf("%f", &y0);
+    printf("\n\nEnter the number of iterations needed:\t");
+    scanf("%d", &n);
+    printf("\n\nEnter the skip between interations:\t");
+    scanf("%f", &interval);
+    
+    printf("\n\n");
+    
+    x = x0;
+    y = y0;
+    for(i = x+interval, j = 0; j < n; i += interval, j++){
+        K1 = interval * functionOf(x , y);
+        K2 = interval * functionOf(x+interval/2, y+K1/2);
+        K3 = interval * functionOf(x+interval/2, y+K2/2);
+        K4 = interval * functionOf(x+interval, y+K3);
+        K = (K1 + 2*K2 + 2*K3 + K4)/6;
+        x = i;
+        y = y + K;
+        
+        printf("\t\t\t x = %.2f \t y = %.4f\n", x, y);
+       
+        // NaN is an error about which we need provide an explanation to the user (also, inf means infinity)
+        if( isnan(x) || isnan(y) )
+            printf("\nThere seems to be an error in line %d. \nCheck your suggested initial values \nsince not all initial values work \nfor all functions.",j);
+    }
+    
+    printf("\n\n");
+    
+    return 0;
+}
+\end{lstlisting}
+
+\clearpage
+\stoptocentries
+\subsection{Approximating definite integrals using the Trapezoidal rule}
+\begin{lstlisting}[firstnumber=1]
+#include<stdio.h>
+#include<stdlib.h>
+#include<math.h>
+
+float functionOf(float x){
+    // Code in the required function below
+    return(pow(x,4));
+}
+
+int main()
+{
+    int i,n;
+    float x0,xn,h,t,y[20],so,se,ans,x[20];
+    
+    system("clear");
+    
+    printf("\n\nEnter the two limits:\t");
+    scanf("%f%f",&x0,&xn);
+    printf("\n\nEnter the width of an interval:\t");
+    scanf("%f",&h);
+    
+    if(xn<x0){
+        t=xn;
+        xn=x0;
+        x0=t;
+    }
+    
+    n=(xn-x0)/h;
+    if(n%2==1)
+    {
+        n=n+1;
+    }
+    h=(xn-x0)/n;
+    
+    system("clear");
+        
+    printf("\n\n\nSummary:\nUpper limit = %f\nLower limit = %f\nNumber of intervals = %d\nWidth of an interval ~ %f",xn,x0,n,h);
+    printf("\n\nThe values of y are\n");
+    for(i=0; i<=n; i++)
+    {
+        x[i]=x0+i*h;
+        y[i]=functionOf(x[i]);
+        printf("\t\t\ty%d = %f\n",i,y[i]);
+    }
+    so=0;
+    se=0;
+    for(i=1; i<n; i++)
+    {
+        if(i%2==1)
+        {
+            so=so+y[i];
+        }
+        else
+        {
+            se=se+y[i];
+        }
+    }
+    ans=h/3*(y[0]+y[n]+4*so+2*se);
+    printf("\nThe integration yields %f\n\n",ans);
+    
+    return 0;
+}
+\end{lstlisting}
+
+\clearpage
+\stoptocentries
+\subsection{Calculating the sum and average of data stored in a file}
+\begin{lstlisting}
+#include<stdio.h>
+
+int main()
+{
+    FILE *input;
+    int n,i;
+    float x[20],sum=0,avg;;
+    char name[20];
+    
+    printf("\n\nEnter the name of the input file: \t");
+    scanf("%s", name);
+    
+    printf("\n\nEnter the number of rows of data:\t");
+    scanf("%d",&n);
+    
+    input = fopen(name,"r");
+    
+    for(i=0; i<n; i++){
+	fscanf(input,"%f",&x[i]);
+	sum=sum +x[i];
+    }
+    
+    fclose(input);
+    
+    printf("\n\nThe sum is %3.2f.",sum);
+    printf("\n\nThe average is %3.2f.\n\n",sum/i);
+    
+    return 0;
+}
+\end{lstlisting}
+
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,176 @@
+\documentclass[english,seminar]{lecture}
+
+\usepackage{amsmath}
+\newcommand{\diff}{\;\textrm{d}}
+
+\title{Mathematical preliminaries, part 1}
+\subtitle{Special and General Relativity}
+\shorttitle{Co-ordinates}
+%\ccode{}
+\subject{Physics}
+\speaker{V.H. Belvadi}
+\spemail{vh@belvadi.com}
+%\author{}
+%\email{}
+%\flag{}
+%\season{}
+%\date{}{}{}
+%\dateend{}{}{}
+%\conference{}
+%\place{}
+%\attn{}
+\morelink{vhbelvadi.com/teaching}
+
+\begin{document}
+
+\noindent\runin{An important preliminary} requirement for the study of relativity is a good understanding of how co-ordinate systems work. This is best understood in hindsight: general relativity is primarily a geometric description of spacetime and, as a result, relies heavily on co-ordinates.
+
+\section{Spherical co-ordinates}
+Conventionally a spherical polar co-ordinate system in three dimensions consists of a linear distance measure from the origin $r$, an azimuthal angle swept between the x- and y-axes $\phi$, and a polar angle swept up from the xy-plane to the z-axis $\theta$. \margintext{Mathematicians do things differently: their $\phi$ is the polar angle and is between $z$ and $\mathbf{r}$ while their azimuthal angle $\theta$ lies on the xy-plane.} If such a co-ordinate system were placed with its origin in line with the corner of a room, the simplest way to understand this would be to imagine the x- and y-axes along the floor and the z-axis pointing to the ceiling. The right-hand rule would apply: if the right-hand index finger were extended along the direction of the x-axis, the middle finger would point along the y-axis and the thumb along the z-axis. Every point in space can in this way be represented in terms of $(r, \theta, \phi)$.
+
+Recall that the relationship between Cartesian $(x,y,z)$ and spherical co-ordinates is as follows:
+\[
+x = r\sin\theta\cos\phi \qquad\qquad
+y = r\sin\theta\sin\phi \qquad\qquad
+z = r\cos\theta
+\]
+Also, much like how a vector $\mathbf{V}$ may be expressed in terms of its Cartesian components, it may also be expanded using spherical polar components:
+\[
+V_x \hat{x} + V_y \hat{y} + V_z \hat{z} = \mathbf{V} = V_r \hat{r} + V_\theta \hat{\theta} + V_\phi \hat{\phi}
+\]
+It is here that we notice the first change between Cartesian systems and spherical polar systems. For any pair of points in Cartesian space, the co-ordinate origin may be shifted so that $\hat{x}$, $\hat{y}$ and $\hat{z}$ always point in the same mutually perpendicular set of three directions.
+
+However, for the same two points their $\hat{r}$, $\hat{\theta}$ and $\hat{\phi}$ values do \textit{not} point in the same direction. It is easy to see how the direction of $\hat{r}$ changes, so use that to consider that $\hat{\theta}$ and $\hat{\phi}$ are drawn corresponding to $\hat{r}$ in order to keep the three co-ordinates mutually perpendicular. This means the direction of at least two of the three, if not all three, is always different across two points.
+
+\subsection{The line element}
+The first question that arises, having made this observation, has to do with the line element $\diff s$---by how much does the line element change if an infinitesimal change $\diff r$ is made in the orientation of $r$?
+
+We may reason as follows:
+\begin{enumerate}
+	\item Any change in $r$ is reflected as-is in the $r$-component of $\diff s$ i.e. $\diff s_r = \diff r$.
+	\item Any change in the $\theta$-component causes $r$ to sweep an arc over an angle $\diff \theta$, an arc described by $r\diff \theta$ since the angle is small i.e. $\diff s_\theta = r\diff \theta$.
+	\item The new $r$ now has a projection $r\sin\theta$ which, in case of any change in the $\phi$-component, causes the projection $r\sin\theta$ to sweep an arc over an angle $\diff \phi$, an arc described by $r\sin\theta\diff \phi$ since $\diff \phi$ is a small angle i.e. $\diff s_\phi = r\sin\theta\diff\phi$.
+\end{enumerate}
+Consequently the change $\diff s$ is given by
+\begin{align*}
+\diff s &= \diff s_r\hat{r} + \diff s_\theta \hat{\theta} + \diff s_\phi \hat{\phi} \\
+&= \diff r\hat{r} + r\diff\theta	\hat{\theta} + r\sin\theta\diff\phi \hat{\phi}
+\end{align*}
+
+\subsection{The area and volume elements}
+The area and volume elements are given by similar reasoning. First, the area element on the surface of a sphere is given by the product of the areas within a pair of curves that sweep the azimuthal angle and a pair of curves that sweep the polar angle. In other words,
+\[
+\diff \mathbf{A} = \diff s_\theta \diff s_\phi = r^2\sin\theta\diff\theta\diff\phi \hat{r}
+\]
+where the $\hat{r}$ indicates that the area is in the direction of $\hat{r}$, directed away from the centre of the sphere.
+
+The volume element is given by the product of all three possible dimensions (since we are in three-dimensional space) which means
+\[
+\diff \tau = \diff s_r \diff s_\theta \diff s_\phi = r^2\sin\theta\diff r\diff\theta\diff\phi
+\]
+
+\subsection{Unit vectors}
+Next, let us make note of what the typical basis vectors would look in spherical co-ordinate systems. To find these we simply need to consider that $\mathbf{r} = r\sin\theta\cos\phi\hat{x} + r\sin\theta\sin\phi\hat{y} + r\cos\theta\hat{z}$ and $\hat{r} = \sin\theta\cos\phi\hat{x} + \sin\theta\sin\phi\hat{y} + \cos\theta\hat{z}$ as we discussed before and compute each unit vector as follows:
+\begin{align*}
+\hat{i}_r = {{ \partial \mathbf{r} \over \partial r }\over \bigr|{ \partial \mathbf{r} \over \partial r }\bigr|} &= {\sin\theta\cos\phi\hat{x} + \sin\theta\sin\phi\hat{y} + \cos\theta\hat{z} \over \sqrt{\sin^2\theta\cos^2\phi + \sin^2\theta\sin^2\phi + \cos^2\theta}} = \sin\theta\cos\phi\hat{x} + \sin\theta\sin\phi\hat{y} + \cos\theta\hat{z} \\
+\hat{j}_\theta = {{ \partial \mathbf{r} \over \partial \theta }\over \bigr|{ \partial \mathbf{r} \over \partial \theta }\bigr|} &= {r\left(\cos\theta\cos\phi\hat{x} + \cos\theta\sin\phi\hat{y} - \sin\theta\hat{z}\right) \over \sqrt{r^2\left(\cos^2\theta\cos^2\phi + \cos^2\theta\sin^2\phi - \sin^2\theta\right)}} = \cos\theta\cos\phi\hat{x} + \cos\theta\sin\phi\hat{y} - \sin\theta\hat{z}\\
+\hat{k}_\phi = {{ \partial \mathbf{r} \over \partial \phi }\over \bigr|{ \partial \mathbf{r} \over \partial \phi }\bigr|} &= {r\left(-\sin\theta\sin\phi\hat{x} + \sin\theta\cos\phi\hat{y} \right) \over \sqrt{r^2\left(\sin^2\theta\sin^2\phi + \sin^2\theta\cos^2\phi\right)}} =  -\sin\phi\hat{x} + \cos\phi\hat{y}
+\end{align*}
+
+These could have be rewritten in terms of $\hat{r}$, $\hat{\theta}$ and $\hat{\phi}$ as well if we had worked out in the same manner but in reverse:
+\begin{align*}
+\hat{i}_x &= \sin\theta\cos\phi\hat{r} + \cos\theta\cos\phi\hat{\theta} - \sin\phi\hat{\phi} \\
+\hat{j}_y &= \sin\theta\sin\phi\hat{r} + \cos\theta\sin\phi\hat{\theta} + \cos\phi\hat{\phi} \\
+\hat{k}_z &= \cos\theta\hat{r} - \sin\theta\hat{\theta}
+\end{align*}
+Another way of arriving at this, for example in case of $\hat{i}_x$, is to consider the dot product of that component with each of the other three i.e. $\hat{x}\cdot\hat{r} = \sin\theta\cos\phi$, $\hat{x}\cdot\hat{\theta} = \cos\theta\cos\phi$ and $\hat{x}\cdot\hat{\phi} = -\sin\phi$ so that, as in the equation for $\hat{i}_x$ above, we get $\hat{i}_x = \sin\theta\cos\phi\hat{r} + \cos\theta\cos\phi\hat{\theta} - \sin\phi\hat{\phi}$. The other two work similarly.
+
+We will use these results to understand some fundamental co-ordinate mathematics. But as one last step before we continue, let us put our results into a beautiful matrix just for fun:
+
+\[
+\begin{bmatrix}
+	\hat{i}_r \\ \hat{j}_\theta \\ \hat{k}_\phi
+\end{bmatrix}
+=
+\begin{bmatrix}
+	\sin\theta\cos\phi & \sin\theta\sin\phi & \cos\theta \\
+	\cos\theta\cos\phi & \cos\theta\sin\phi & -\sin\theta \\
+	-\sin\phi & \cos\phi & 0
+\end{bmatrix}
+\begin{bmatrix}
+	\hat{i}_x \\ \hat{j}_y \\ \hat{k}_z
+\end{bmatrix}
+\]
+
+\subsection{The gradient}
+The gradient of a scalar (and divergence of a vector) depend on operators of the form $\partial/\partial x$ in three dimensions. We can work these out as follows:
+\begin{align*}
+{\partial\over\partial x} &= {\partial r\over\partial x}{\partial\over\partial r} + {\partial \theta \over \partial x}{\partial\over\partial \theta} + {\partial \phi \over \partial x}{\partial\over\partial \phi}\\
+&= \left({x\over\sqrt{x^2+y^2+z^2}} \right){\partial\over\partial r} + \left( {xz \over \left(x^2+y^2+z^2\right) \sqrt{x^2+y^2}} \right){\partial\over\partial\theta} + \left( {-y\over x^2+y^2} \right){\partial\over\partial\phi}\\
+\therefore {\partial\over\partial x} &= \left(\sin\theta\cos\phi\right){\partial\over\partial r} + \left({\cos\theta\cos\phi\over r}\right){\partial\over\partial \theta} - \left({\sin\phi\over r\sin\theta}\right){\partial\over\partial \phi}
+\end{align*}
+Similarly we can work out
+\begin{align*}
+	{\partial\over\partial y} &= \left(\sin\theta\sin\phi\right){\partial\over\partial r} + \left({\cos\theta\sin\phi\over r}\right){\partial\over\partial\theta} + \left({\cos\phi\over r\sin\theta}\right){\partial\over\partial\phi} \\
+	\textrm{and} \quad {\partial\over\partial z} &= \left(\cos\theta\right){\partial\over\partial r} - \left({\sin\phi\over r}\right){\partial\over\partial\theta}
+\end{align*}
+
+We are now in a position to define the gradient operator using $\hat{x} \equiv \hat{i}_x$ etc. from our previous discussion as follows:
+\[
+	\boldsymbol{\nabla} = \hat{x}{\partial\over\partial x} + \hat{y}{\partial\over\partial y} + \hat{z}{\partial\over\partial z}
+\]
+where
+\begin{align*}
+\hat{x}{\partial\over\partial x} = &\left[ \sin\theta\cos\phi\hat{r} + \cos\theta\cos\phi\hat{\theta} - \sin\phi\hat{\phi} \right] \\
+&\left[ \left(\sin\theta\cos\phi\right){\partial\over\partial r} + \left({\cos\theta\cos\phi\over r}\right){\partial\over\partial \theta} - \left({\sin\phi\over r\sin\theta}\right){\partial\over\partial \phi}\right]
+\end{align*}
+and we similarly have expressions for the $y$ and $z$ components too. Solving this gives us the gradient operator as
+\begin{equation}
+	\boldsymbol{\nabla} = \hat{r}{\partial\over\partial r} + {1\over r}\hat{\theta}{\partial\over\partial \theta} + {1\over r\sin\theta}\hat{\phi}{\partial\over\partial \phi} \label{eq:gradient-op}
+\end{equation}
+
+\subsection{The divergence}
+Out of interest and curiosity, we may employ an alternate method to compute the divergence. \margintext{The use of $h_i$ and $q_i$ to write general forms of co-ordinate equations is also known as writing the gradient, divergence, laplacian and curl in `arbitrary co-ordinates' since the cylindrical and Cartesian forms too can be written based on these formulae.} In our discussion of the volume element $\diff \tau$ we combined the three components $\diff s_r$, $\diff s_\theta$ and $\diff s_\phi$. Normally these are also labelled $h_1$, $h_2$ and $h_3$ so that 
+\[
+h_1 = 1 \qquad h_2 = r \qquad h_3 = r\sin\theta
+\]
+Additionally the co-ordinates are also labelled $q_1$, $q_2$ and $q_3$ so that
+\[
+q_1 = r \qquad q_2 = \theta \qquad q_3 = \phi
+\]
+This allows for direct substitution into the general divergence formula:
+\begin{align}
+	\boldsymbol{\nabla\cdot V} &= {1\over h_1h_2h_3} \left[ {\partial\over\partial q_1} (V_1h_2h_3) + {\partial\over\partial q_2} (V_2h_3h_1) + {\partial\over\partial q_3} (V_3h_1h_2) \right] \nonumber\\
+	\therefore \boldsymbol{\nabla\cdot V} &= {1\over r^2\sin\theta}\left[ \sin\theta {\partial\over\partial r} (r^2V_r) + r {\partial\over\partial \theta} (\sin\theta V_\theta) + r {\partial V_\phi\over\partial\phi} \right] \label{eq:divergence-op}
+\end{align}
+
+Observe that the general formula
+\[
+\boldsymbol{\nabla} = \sum_i \hat{q}_i {1\over h_i}{\partial\over\partial q_i}
+\]
+could have helped us arrive at eq. \eqref{eq:gradient-op} too but it was important that we worked at least one of them out from first principles. Also, while we speak of the divergence it is also worth noting the scalar Laplacian:
+\begin{align}
+	\nabla^2 &= {1\over h_1h_2h_2}\left[ {\partial\over\partial q_1} \left( {h_2h_3\over h_1}{\partial\over\partial q_1} \right)_{\textrm{cyc}} \right] \nonumber\\
+	\therefore \nabla^2 &= {1\over r^2\sin\theta} \left[ \sin\theta {\partial\over\partial r}\left( r^2 {\partial\over\partial r}\right) + {\partial\over\partial \theta} \left(\sin\theta {\partial\over\partial\theta} \right) + {1\over\sin\theta} {\partial^2\over\partial \phi^2} \right] \label{eq:laplacian}
+\end{align}
+
+\subsection{The curl}
+The curl too can be arrived at using the general formula:
+\begin{align}
+	\boldsymbol{\nabla \times V} &= {1\over h_1h_2h_3}
+	\begin{vmatrix}
+		\hat{q_1}h_1 & \hat{q_2}h_2 & \hat{q_3}h_3 \\
+		{\partial\over\partial q_1} & {\partial\over\partial q_2} & {\partial\over\partial q_3} \\
+		h_1V_1 & h_2V_2 & h_3V_3
+	\end{vmatrix} \nonumber\\
+	\therefore \boldsymbol{\nabla\times V} &= {1\over r^2\sin\theta}
+	\begin{vmatrix}
+		\hat{r} & r\hat{\theta} & r\sin\theta\hat{\phi} \\
+		{\partial\over\partial r} & {\partial\over\partial \theta} & {\partial\over\partial \phi} \\
+		V_r & rV_\theta & r\sin\theta V_\phi
+	\end{vmatrix} \label{eq:curl-op}
+\end{align}
+
+These discussions have set us up to properly discuss relativity. A familiarity with them will help us better understand general relativity without letting co-ordinates trip us up.
+
+\end{document}

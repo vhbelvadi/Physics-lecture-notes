@@ -1,0 +1,29 @@
+\contentsline {section}{\numberline {1}Introduction}{1}{section.1}
+\contentsline {subsection}{\numberline {1.1}History}{1}{subsection.1.1}
+\contentsline {subsection}{\numberline {1.2}Using this handbook}{2}{subsection.1.2}
+\contentsline {section}{\numberline {2}Overview of a C program}{3}{section.2}
+\contentsline {section}{\numberline {3}Compiling and executing}{4}{section.3}
+\contentsline {section}{\numberline {4}Variables, data types and reserved words}{7}{section.4}
+\contentsline {subsection}{\numberline {4.1}Printing things on screen}{7}{subsection.4.1}
+\contentsline {subsection}{\numberline {4.2}Accepting inputs from the user}{9}{subsection.4.2}
+\contentsline {subsection}{\numberline {4.3}Commenting and defining constants}{10}{subsection.4.3}
+\contentsline {subsection}{\numberline {4.4}Characters and the Boolean data type}{15}{subsection.4.4}
+\contentsline {subsection}{\numberline {4.5}Keywords and system commands}{16}{subsection.4.5}
+\contentsline {section}{\numberline {5}Decision making with \texttt {\relax \fontsize {12}{14}\selectfont \lowercase {if}} and \texttt {\relax \fontsize {12}{14}\selectfont \lowercase {else}}}{18}{section.5}
+\contentsline {subsection}{\numberline {5.1}Arithmetic operators}{18}{subsection.5.1}
+\contentsline {subsection}{\numberline {5.2}Jumping to a line}{20}{subsection.5.2}
+\contentsline {subsection}{\numberline {5.3}Relational operators}{20}{subsection.5.3}
+\contentsline {subsection}{\numberline {5.4}Logical operators}{23}{subsection.5.4}
+\contentsline {section}{\numberline {6}Functions and loops}{25}{section.6}
+\contentsline {subsection}{\numberline {6.1}Functions simplify programs}{25}{subsection.6.1}
+\contentsline {subsection}{\numberline {6.2}Looping with \texttt {\relax \fontsize {12}{14}\selectfont \lowercase {do}} and \texttt {\relax \fontsize {12}{14}\selectfont \lowercase {while}}}{29}{subsection.6.2}
+\contentsline {subsection}{\numberline {6.3}More robust loops with \texttt {\relax \fontsize {12}{14}\selectfont \lowercase {for}}}{31}{subsection.6.3}
+\contentsline {subsection}{\numberline {6.4}Switching things around}{33}{subsection.6.4}
+\contentsline {section}{\numberline {7}Arrays and strings}{34}{section.7}
+\contentsline {subsection}{\numberline {7.1}Handling numerical data sets}{34}{subsection.7.1}
+\contentsline {subsection}{\numberline {7.2}Handling words and sentences}{37}{subsection.7.2}
+\contentsline {subsection}{\numberline {7.3}Building larger programs}{38}{subsection.7.3}
+\contentsline {section}{\numberline {8}File handling}{44}{section.8}
+\contentsline {subsection}{\numberline {8.1}Pointers}{44}{subsection.8.1}
+\contentsline {section}{\numberline {9}Further reading}{44}{section.9}
+\contentsline {section}{\numberline {10}Solutions to coursework programs}{45}{section.10}

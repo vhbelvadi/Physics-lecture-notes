@@ -1,0 +1,590 @@
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%% YCM %%%%%%%%%%
+%%%%% C SOLUTIONS %%%%%%
+%%%% V.H. BELVADI %%%%%%
+%%%%%%%% 2020 %%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+% Download a copy at %%%
+% vhbelvadi.com/teaching
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+% Compile with XeLaTeX % <-----
+%% Charter and Avenir %% <-----
+%% Next fonts needed %%% <-----
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+% Alright, let’s begin %
+%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[11pt,oneside]{article}
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%% PACKAGES
+%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[a4paper, margin=1in,top=1.2in,bottom=1.25in,left=1.05in]{geometry}
+\usepackage{listings}
+\usepackage[most]{tcolorbox}
+\usepackage{xltxtra}
+\usepackage[small]{titlesec}
+\usepackage{hyperref}
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%% REWRITING COMMANDS
+%%%%%%%%%%%%%%%%%%%%%%%%
+\renewcommand{\baselinestretch}{1.35}
+\renewcommand{\lstlistingname}{Program}
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%% TCBoxes
+%%%%%%%%%%%%%%%%%%%%%%%%
+\DeclareTotalTCBox{\synt}{ v }{verbatim, colframe=black,left=0em,right=0em,sharpish corners,colback=black!20!white,boxrule=.2mm}{#1}
+\newtcolorbox{infobox}{colback=black!10!white, colframe=black!10!white,left=0.5em,right=0.5em,before skip=.75em,middle=0em,sharpish corners,oversize}
+%%%%%%%%%%%%%%%%%%%%%%%%
+% SETTING UP CODE BLOCKS
+%%%%%%%%%%%%%%%%%%%%%%%%
+\lstset{language=C,basicstyle=\ttfamily,numbers=left,numbersep=22pt,numberstyle=\ttfamily\color{black!50!white},firstnumber=last,showspaces=false,showstringspaces=false,belowskip=1.5em,aboveskip=1.5em,breaklines=true,xleftmargin=1.55em,frame=lr,framesep=8pt,framerule=0pt,captionpos=b,escapeinside={(*@}{@*)}}
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%% TYPEFACES
+%%%%%%%%%%%%%%%%%%%%%%%%
+\setmainfont{Charter}
+\setsansfont{Avenir Next Medium}
+\setsansfont[BoldFont=Avenir Next Bold]{Avenir Next Bold}
+%%%%%%%%%%%%%%%%%%%%%%%%
+%% DEFINING NEW COMMANDS
+%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\info}[1]{\textbf{\scriptsize{\sffamily\addfontfeatures{LetterSpace=7} #1\\[.35em]}}}
+\newcommand{\LetterSpaced}{\addfontfeatures{LetterSpace=7}}
+%%%%%%%%%%%%%%%%%%%%%%%%
+%% DEFINING TITLE FORMAT
+%%%%%%%%%%%%%%%%%%%%%%%%
+\titleformat{\section}{\small\sffamily\bfseries}{\thesection.}{1em}{\LetterSpaced\MakeUppercase }
+%%%%%%%%%%%%%%%%%%%%%%%%
+% LET’S BEGIN FOR REAL %
+%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+%
+% TITLE
+%
+{\centering
+\textsf{\textbf{YPH 205}}
+
+\textsf{{\large\MakeUppercase{Solutions to prescribed C programs}}}
+
+}
+%
+% Raw file notice
+%
+\vspace{0.25cm}
+\noindent \small{This document was typeset using ${\LaTeX}$. If you are interested, you can download and examine the \verb+.tex+ file at \href{https://vhbelvadi.com/teaching}{\texttt{vhbelvadi.com/teaching}}, suggest edits and alternate solutions and more. Updated 27.01.2020.}
+%
+% EXECUTION INSTRUCTIONS
+%
+\vspace*{-0.75ex}
+\begin{infobox}
+\info{\MakeUppercase{Execution instructions}}
+1. Open Terminal, Command Prompt or equivalent Command Line Interface.
+
+2. Create a new folder with \synt{mkdir <folderName>}. \textbf{Use new folders for each program.}
+
+3. Open the new folder with \synt{cd <folderName>} and type \synt{vi <name>.c} to open a new file.
+
+4. Type your program in the file. Use \synt{I} to start typing and \synt{Esc} to stop typing.
+
+5. After typing, hit \synt{Esc} then save the program with \synt{:w} and quit with \synt{:q}, or just use \synt{:wq}.
+
+6. Compile the program with \synt{clang -o <name> <name>.c} or use \synt{gcc} instead of \synt{clang}.
+
+7. Execute the program using \synt{./<name>}.
+
+\textit{In all cases above, replace} \synt{<...>} \textit{with a name of your choice (obviously). Try to avoid spaces.}
+\end{infobox}
+%
+% 1. Finding the roots of a quadratic equation
+%
+\section{Finding the roots of a quadratic equation}
+\begin{lstlisting}
+#include<stdio.h>
+#include<math.h>
+#include<stdlib.h>
+
+int main(){    
+
+    float a,b,c;
+    float d,root1,root2;
+    
+    printf("Enter a, b and c of quadratic equation ax^2 + bx + c below: \n\n");
+    scanf("%f%f%f",&a,&b,&c);
+    
+    system("clear");
+    
+    d = b * b - 4 * a * c;
+    
+    if(d < 0){
+        printf("\nThe equation has complex roots.\n");
+        
+        printf("They are ");
+        printf("%.3f+%.3fi",-b/(2*a),sqrt(-d)/(2*a));
+        printf("and %.3f+%.3fi.\n\n",-b/(2*a),-sqrt(-d)/(2*a));
+        
+        return 0;
+    }
+    else if(d==0){
+        printf("The equation has two equal roots.\n");
+        
+        root1 = -b /(2* a);
+        printf("They are both %.3f.\n\n",root1);
+        
+        return 0;
+    }
+    else{
+        printf("The equation has are real roots.\n");
+        
+        root1 = ( -b + sqrt(d)) / (2* a);
+        root2 = ( -b - sqrt(d)) / (2* a);
+        printf("They are %.3f and %.3f.\n\n",root1,root2);
+    }
+
+    return 0;
+}
+\end{lstlisting}
+\vspace{0.5cm}
+\begin{infobox}
+\info{\MakeUppercase{Compiling instructions}}
+Since we are using \synt{#include<math.h>} in this program, we need to add a special flag \synt{-lm} to tell the compiler to include the mathematics library. Therefore, for such a program the combined compilation and execution statements would be \synt{clang -o <name> <name>.c -lm && ./<name>}
+\end{infobox}
+\pagebreak
+%
+% 2. Least square fitting a co-ordinate data set from a file
+%
+\section{Least square fitting a co-ordinate data set from a file}
+\begin{infobox}
+\info{\MakeUppercase{Special instructions}}
+\textit{Before starting this program, create a new folder and follow these instructions:}
+
+1. Create a new text file using \synt{vi input.txt} or equivalent.
+
+2. Enter tab-separated values of your choice, preferably a linear data set with minor errors, e.g.
+\begin{align*}
+	&\texttt{2} \qquad \texttt{5} \\
+	&\texttt{3} \qquad \texttt{7} \\
+	&\texttt{4} \qquad \texttt{8} \\
+	&\texttt{5} \qquad \texttt{11}
+\end{align*}%
+3. Save and quit with \synt{:wq} and, optionally, use \synt{ls} to ensure the file exists.
+
+4. Type and execute your C program in the same folder as usual.
+\end{infobox}
+\begin{lstlisting}
+#include<stdio.h>
+#include<stdlib.h>
+#include<math.h>
+
+int main() {
+
+    FILE *input;
+    int n,i,x[20],y[20],sumx=0,sumy=0,sumxy=0,sumx2=0;
+    float m,c;
+    char name[20];
+    
+    system("clear");
+    
+    printf("\n\nEnter the name of the input file: \t");
+    scanf("%s", name);
+    
+    printf("\n\nEnter the number of rows of data:\t");
+    scanf("%d",&n);
+    
+    input = fopen(name,"r");
+    
+    for(i=0; i<n; i++)
+        fscanf(input,"%d\t%d\n",&x[i],&y[i]);
+    
+    fclose(input);
+    
+    for(i=0;i<n;i++)
+    {
+        sumx=sumx +x[i];
+        sumx2=sumx2 +x[i]*x[i];
+        sumy=sumy +y[i];
+        sumxy=sumxy +x[i]*y[i];
+        
+    }
+    
+    c=((sumx2*sumy -sumx*sumxy)*1.0/(n*sumx2-sumx*sumx)*1.0);
+    m=((n*sumxy-sumx*sumy)*1.0/(n*sumx2-sumx*sumx)*1.0);
+    printf("\n\nThe line of best fit is y=%3.3fx +%3.3f \n\n",m,c);
+    
+    return 0;
+}
+\end{lstlisting}
+\pagebreak
+%
+% 3. Numerical integration by trapezoidal rule
+%
+\section{Numerical integration by trapezoidal rule}
+\begin{lstlisting}
+#include<stdio.h>
+#include<stdlib.h>
+#include<math.h>
+
+float functionOf(float x) {
+    // Replace the y = x^4 function as required below
+    return(pow(x,4));
+}
+
+int main() {
+    int i,n;
+    float x0,xn,h,t,y[20],so,se,ans,x[20];
+    
+    system("clear");
+    
+    printf("\n\nEnter the two limits:\t");
+    scanf("%f%f",&x0,&xn);
+    printf("\n\nEnter the width of an interval:\t");
+    scanf("%f",&h);
+    
+    if(xn<x0){
+        t=xn;
+        xn=x0;
+        x0=t;
+    }
+    
+    n=(xn-x0)/h;
+    if(n%2==1)
+    {
+        n=n+1;
+    }
+    h=(xn-x0)/n;
+    
+    system("clear");
+        
+    printf("\n\n\nSummary:\nUpper limit = %f\nLower limit = %f\nNumber of intervals = %d\nWidth of an interval ~ %f",xn,x0,n,h);
+    printf("\n\nThe values of y are\n");
+    for(i=0; i<=n; i++)
+    {
+        x[i]=x0+i*h;
+        y[i]=functionOf(x[i]);
+        printf("\t\t\ty%d = %f\n",i,y[i]);
+    }
+
+    so=0;
+    se=0;
+
+    for(i=1; i<n; i++)
+    {
+        if(i%2==1)
+        {
+            so=so+y[i];
+        }
+        else
+        {
+            se=se+y[i];
+        }
+    }
+    ans=h/3*(y[0]+y[n]+4*so+2*se);
+    printf("\nThe integration yields %f\n\n",ans);
+    
+    return 0;
+}
+\end{lstlisting}
+\pagebreak
+%
+% 4. Numerical solution of an ordinary differential equation by Runge--Kutta method
+%
+\section{Numerical solution of an ordinary differential equation by Runge--Kutta method}
+\begin{lstlisting}
+#include<stdio.h>
+#include<stdlib.h>
+#include<math.h>
+
+float functionOf(float x, float y){ // Replace function as required below
+    return (y+x)/(y*x);
+}
+
+int main(){
+    float K, K1, K2, K3, K4;
+    float x0 , y0, x, y, i, interval;
+    int j, n;
+    
+    system("clear");
+    
+    printf("\n\nSuggest any initial value for x:\t");
+    scanf("%f", &x0);
+    printf("\n\nSuggest any initial value for y:\t");
+    scanf("%f", &y0);
+    printf("\n\nEnter the number of iterations needed:\t");
+    scanf("%d", &n);
+    printf("\n\nEnter the skip between iterations:\t");
+    scanf("%f", &interval);
+    printf("\n\n");
+    
+    x = x0;
+    y = y0;
+    for(i = x+interval, j = 0; j < n; i += interval, j++){
+        K1 = interval * functionOf(x , y);
+        K2 = interval * functionOf(x+interval/2, y+K1/2);
+        K3 = interval * functionOf(x+interval/2, y+K2/2);
+        K4 = interval * functionOf(x+interval, y+K3);
+        K = (K1 + 2*K2 + 2*K3 + K4)/6;
+        x = i;
+        y = y + K;
+        printf("\t\t\t x = %.2f \t y = %.4f\n", x, y);
+        
+// inf means infinity, NaN is an error for which we provide an explanation
+        if( isnan(x) || isnan(y) )
+            printf("\nThere seems to be an error in line %d. \nCheck your suggested initial values \nsince not all initial values work \nfor all functions.",j);
+    }
+    
+    printf("\n\n");
+    return 0;
+}
+\end{lstlisting}
+\pagebreak
+%
+% 5. Projectile motion, including string and file handling with automatic gnuplot output
+%
+\section{Projectile motion, including string and file handling with automatic gnuplot output}
+\begin{lstlisting}
+#include<stdio.h>
+#include<stdlib.h>
+#include<math.h>
+#include<unistd.h>
+#include<string.h>
+
+FILE *output;
+float deg, v, g=9.81, d, x[100], y[100];
+float rad, t1, t2, max, f=0.75;
+float s[100],h[100];
+int i=0, j=0, k=0, l=0, m=0, n=0, p=0;
+int Y, N;
+char filename[100], opt;
+char * commandsForGnuplot[] = {"plot 'plot.temp' w linespoints"};
+
+float angle(float deg){
+    rad=deg*M_PI/180;
+    return(rad);
+}
+
+float distance(float v, float rad){
+    d=v*v*sin(2*rad)/g;
+    return(d);
+}
+
+float height(float v, float rad){
+    max=v*v*sin(rad)*sin(rad)/(2*g);
+    return(max);
+}
+
+int main() {
+    
+    system("clear");
+    
+    printf("\n\nEnter the angle of throw:\t");
+    scanf("%f",&deg);
+    printf("\n\nEnter the velocity of throw:\t");
+    scanf("%f",&v);
+ASK:printf("\n\nPlease pick a filename to output data into:\t");
+    scanf("%s",filename);
+    if(0 == access(filename, 0)){
+       printf("\n\nThis file exists. Do you want to add data to it (Y) or create a new file (N)?\t");
+CHOICE:scanf(" %c",&opt); // The space before %c here is extremely important.
+        Y=strncmp(&opt,"Y",1);
+        N=strncmp(&opt,"N",1);
+        if(Y==0){
+            
+        }
+        else if(N==0){
+            goto ASK;
+        }
+        else {
+            printf("\n\nUnrecognised command. Please choose Y or N:\t");
+            goto CHOICE;
+        }
+    }
+    
+    FILE * temp = fopen("plot.temp", "w");
+    output=fopen(filename,"a+");
+    
+    system("clear");
+    
+    rad=angle(deg);
+    d=distance(v,rad);
+    max=height(v,rad);
+    t1=tan(rad);
+    t2=g/(2*v*v*cos(rad)*cos(rad));
+    
+    j=0;
+    while(x[k]<=d){
+        x[k]=j*d/100;
+        y[k]=x[k]*t1-x[k]*x[k]*t2;
+        if(y<0)
+            break;
+        fprintf(output, "%10.6f\t%15.6f\n",x[k],y[k]);
+        fprintf(temp, "%10.6f\t%15.6f\n",x[k],y[k]);
+        j++;
+    }
+    l=j;
+    
+    printf("\n\nAngle of throw in radian = %0.5f",rad);
+    printf("\n\nMaximum height = %0.3f",max);
+    printf("\n\nRange of the projectile = %0.3f",d);
+    
+    fclose(output);
+    printf("\n\nThe output has been written to %s.\n\n",filename);
+    
+    FILE * gnuplotPipe = popen ("gnuplot -persistent", "w");
+    fprintf(gnuplotPipe, "%s \n", commandsForGnuplot[i]);
+    
+    return 0;
+}
+\end{lstlisting}
+\pagebreak
+%
+% 6. Pascal’s triangle
+%
+\section{Generate Pascal's triangle}
+\begin{infobox}
+\info{\MakeUppercase{Special instructions}}
+There are multiple versions of output possible for this program. Some output only half-a-triangle (right-angled) while others, such as this solution, output a full and proper triangle. However, due to spacing constraints the structure of the triangle breaks down if you attempt to output 17 or more rows. Furthermore, although the structure is intact, there is still a lack of spacing and the triangle becomes illegible if you attempt to output 14 or more rows.
+\end{infobox}
+\begin{lstlisting}
+#include<stdio.h>
+
+int main() {
+
+    int rows, coef=1, space, i, j;
+    
+    printf("Enter number of rows: ");
+    scanf("%d", &rows);
+    
+    for (i=0; i<rows; i++) {
+        for (space=1; space <= rows-i; space++)
+            printf("  ");
+        for (j=0; j<=i; j++) {
+            if (j==0 || i==0)
+                coef = 1;
+            else
+                coef=coef*(i-j+1)/j;
+            printf("%4d", coef);
+        }
+        printf("\n");
+    }
+    
+    return 0;
+}
+\end{lstlisting}
+\pagebreak
+%
+% 7. Multiplying two mxn matrices
+%
+\section{Multiplying two m\,x\,n matrices}
+\begin{infobox}
+\info{\MakeUppercase{Note}}
+This program can be slightly misleading. You might get an output without any errors but that does not mean your output is correct. Always multiply your input matrices by hand and use that result to cross-check your output. If you find it is incorrect, you might want to check line \ref{probable-error}.
+\end{infobox}
+\begin{lstlisting}
+#include<stdio.h>
+
+int main() {
+
+    int matrixA[10][10], matrixB[10][10], matrixC[10][10] = {0};
+    int rowsA, rowsB, colsA, colsB, i, j, k;
+    
+    // First, ask for number of rows and columns in the matrices
+    printf("\n\nEnter the number of rows and columns in matrix A:\n");
+    scanf("%d%d", &rowsA, &colsA);
+    printf("\n\nEnter the number of rows and columns in matrix B:\n");
+    scanf("%d%d", &rowsB, &colsB);
+
+    // Handle error if columns in matrix A is not equal to rows in B
+    while(colsA != rowsB) {
+	printf("\n\nMatrix B (%dx%d) is incompatible with matrix A (%dx%d).\nPlease re-enter the number of rows and columns in matrix B:\n", rowsB, colsB, rowsA, colsA);
+	scanf("%d%d", &rowsB, &colsB);
+    }
+
+    // Second, ask for elements of the matrices
+    printf("\n\nEnter elements of matrix A as asked:\n");
+    for(i = 0; i < rowsA; i++) {
+	for(j = 0; j < colsA; j++) {
+	    printf("Enter element A%d%d:\t", i, j);
+	    scanf("%d", &matrixA[i][j]);
+	}
+    }
+    printf("\n\nEnter elements of matrix B as asked:\n");
+    for(i = 0; i < rowsB; i++) {
+	for(j = 0; j < colsB; j++) {
+	    printf("Enter element B%d%d:\t", i, j);
+	    scanf("%d", &matrixB[i][j]);
+	}
+    }
+    
+    // Multiply the two matrices
+    for(i = 0; i < rowsA; i++) {
+	for(j = 0; j < colsB; j++) {
+	    for(k = 0; k < colsA; k++) {
+		matrixC[i][j] += matrixA[i][k] * matrixB[k][j]; (*@\label{line:matrix-multiplication-error}@*)
+	    }
+	}
+    }
+
+    // Output the result
+    printf("\n\nThe product is:\n");
+    for(int i = 0; i < rowsA; i++) {
+	for(int j = 0; j < colsB; j++) {
+	    printf("%d\t", matrixC[i][j]);
+	    if(j == colsB - 1) {
+		printf("\n");
+	    }
+	}
+    }
+
+    return 0;
+}
+\end{lstlisting}
+\pagebreak
+%
+% 8. Finding the sum and average of data stored in a file
+%
+\section{Finding the sum and average of data stored in a file}
+\begin{infobox}
+\info{\MakeUppercase{Special instructions}}
+\textit{Before starting this program, create a new folder and follow these instructions:}
+
+1. Create a new text file using \synt{vi data.txt} or equivalent.
+
+2. Enter a column of numbers of your choice i.e. enter one number per line.
+
+3. Save and quit with \synt{:wq} and, optionally, use \synt{ls} to ensure the file exists.
+
+4. Type and execute your C program in the same folder as usual.
+\end{infobox}
+\begin{lstlisting}
+#include<stdio.h>
+
+int main()
+{
+    FILE *input;
+    int n,i;
+    float x[20],sum=0,avg;
+    char name[20];
+    
+    printf("\n\nEnter the name of the input file with extension: \t");
+    scanf("%s", name);
+    
+    printf("\n\nEnter the number of rows of data:\t");
+    scanf("%d",&n);
+    
+    input = fopen(name,"r");
+    
+    for(i=0; i<n; i++){
+	fscanf(input,"%f",&x[i]);
+	sum=sum +x[i];
+    }
+    
+    fclose(input);
+    
+    printf("\n\nThe sum is %3.2f.",sum);
+    printf("\n\nThe average is %3.2f.\n\n",sum/i);
+    
+    return 0;
+}
+\end{lstlisting}
+\end{document}
