@@ -1,0 +1,251 @@
+\documentclass[english,seminar]{lecture}
+
+\usepackage{amsmath}
+\newcommand{\diff}{\,\textrm{d}}
+\newcommand{\lag}{\mathscr{L}}
+\newcommand{\E}{\mathscr{E}}
+
+\title{Four vectors}
+\subtitle{Special and General Relativity}
+%\shorttitle{}
+%\ccode{}
+\subject{Physics}
+\speaker{V.H. Belvadi}
+\spemail{vh@belvadi.com}
+%\author{}
+%\email{}
+%\flag{}
+%\season{}
+%\date{}{}{}
+%\dateend{}{}{}
+%\conference{}
+%\place{}
+%\attn{}
+\morelink{vhbelvadi.com/teaching}
+
+\begin{document}
+\noindent\noindent\runin{There are two} ironically \textit{absolute} truths to special relativity. We call these the postulates of special relativity:
+\begin{enumerate}
+	\item{\textbf{The principle of relativity.}} No experiment can measure the absolute velocity of an observer.
+	\item{\textbf{The speed of light is universal.}} The speed of light relative to any unaccelerated frame of reference is $3\times 10^8\,\textrm{ms}^{-1}$, regardless of its motion relative to an observer.
+\end{enumerate}
+The first of these comes from Galileo while the second comes from Einstein. The second postulate can also be stated in a more interesting manner: \textit{there is no frame of reference in which light is at rest}. We will soon see how this works.
+
+\section{Four vectors}
+
+The vectors you have come across so far look like $\mathbf{V} \equiv (V_x, V_y, V_z)$ and have three dimensions. Now we generalise it to $V^\mu \equiv (V^0, V^1, V^2, V^3)$ with four coordinates to get what is known as a \textbf{four-vector}. The usual three-dimensional vectors are called `three-vectors', but this is not a term you will come across too often. In special relativity, working in Minkowski spacetime like we have been doing all this while, we will almost always use four-vectors.\margintext{It might take you a while to quickly see how equations with indices translate into more familiar algebraic equations. It helps to keep in mind that the choice of indices is not special. You can choose to replace one index by another and, so long as you replace that index similarly everywhere in your equation, the meaning of the equation itself does not change. Practise by writing out expanded equations with numbered indices then converting them into general forms and vice versa.} We will also refer to specific four-vectors with the prefix `four-', e.g. four-momentum, four-velocity etc. There are three things to note before we begin:
+\begin{enumerate}
+	\item Four-vectors have four components, all of which must carry the same dimensions or must all be dimensionless.
+	\item Four-vectors add just like three-vectors, so the triangle rule, the parallelogram rule etc. are all still valid here too.
+	\item You can always split a four-vector $V^\mu$ into two terms as $V^\mu \equiv (V^0, V^i)$, the 'temporal' component plus the 'spatial' three-vector, called so despite their dimensions being alike.
+\end{enumerate}
+
+\noindent\runin{Just like you} have $\hat{i} \equiv (1, 0, 0)$, $\hat{j}\equiv(0,1,0)$ and $\hat{k}\equiv(0,0,1)$ as the unit vectors, or basis vectors or basis set or simply basis, of the standard three-dimensional Cartesian space, there are also four-dimensional basis vectors $e^0 \equiv (1,0,0,0)$ etc. You will notice that, taking into account a negative sign for $ct$, each row of the metric $\eta_{\mu\nu}$ simply corresponds to a basis four-vector. You can represent \textit{the components} of a basis vector more simply using the Kronecker delta function. For $e^\beta$ the components are given by
+\[e_\alpha^\beta \equiv \delta_\alpha^\beta \,;\,\alpha = \lbrace 0, 1, 2, 3 \rbrace \]\label{page:eta-bases}%
+which means, for some $e^1_\alpha \equiv (e_0^1, e_1^1, e_2^1, e_3^1)$ the term $e_1^1 = 1$ while all others terms are zeroes, leaving us with $e^1 \equiv (0,1,0,0)$ as expected, corresponding to the row $\eta_{1\nu}$ of our metric tensor\margintext{A reminder again: these indices are just notational superscripts, \textit{not powers}.}. Another way to look at the \textbf{Minkowski tensor} $\eta$ is to think in terms of these basis vectors. That is, the $n^\textrm{th}$ row of $\eta$ corresponds to $e^n$.
+
+There is another relationship between select three-vectors and four-vectors that will be of great use to us in the future\margintext{You probably know this result as the phenomenon called \textbf{time dilation}, where coordinate time lags behind proper time by $\gamma$.}. We can write down the proper time in a frame as follows:
+\begin{align}
+	\diff \tau^2 &= \diff t^2 - \left( \diff x^2 + \diff y^2 + \diff z^2 \right) \nonumber\\
+				&= \diff t^2 \left( 1 - v^2 \right)
+				\nonumber\\
+	\implies {\diff t \over \diff \tau } &= \gamma \label{eq:t-tau-gamma}
+\end{align}%
+Remember that $\gamma$ is a function of the three-velocity and not the four-velocity, a term we will encounter later, but one that can nonetheless confuse those who are new to this field of study.
+
+\subsection{Four-velocity}
+
+The velocity four-vector, or simply the \textbf{four-velocity}, is the the proper-time derivative of the Minkowski coordinate $x^\mu$. This works because $x^\mu$ transforms like a four-vector under Lorentz transformations. We define
+\begin{equation}
+	U^\mu = {\diff x^\mu \over \diff \tau} \label{eq:4-velocity}
+\end{equation}%
+where $U^\mu$ is the four-velocity described by the usual $\mu = 0 \ldots 3$ four-vector components. Subsequently the quantity $\diff U^\mu / \diff \tau$ is called the four-acceleration. Further, we can relate this to the three-velocity rather quickly using eq. \eqref{eq:t-tau-gamma} as follows:
+\begin{equation}
+U^\mu = {\diff x^\mu \over \diff \tau} = \left( {\diff x^\mu \over \diff t} \right) {\diff t \over \diff \tau} = \left( {\diff ct\over\diff t}, {\diff x^i\over\diff t}\right) \gamma = \left(c,\mathbf{v}\right) \gamma \label{eq:four-velocity}
+\end{equation}
+Besides the result also pay attention to the notation here: we will use the pair form $(\; , \; )$ to refer to the zeroeth (or \textit{timelike}) component separated from the three-dimensional (or spatial) components, $x, y, z$. In this case $(c,\mathbf{v})$ suggests the \textit{timelike} component is $c$ while the \textit{spatial} component is $\mathbf{v}$. Note, we dropped natural units here, for the time being, in favour of clarity.
+
+\subsection{Four-acceleration}
+
+What about acceleration as a four-vector then? The same technique works with that too---and we will employ our shorthand again now:
+\[
+A^\mu = {\diff U^\mu \over \diff \tau} = \left[ {\diff U^\mu \over \diff t} \right] \gamma = \left[ {\diff \over \diff t} \gamma (c, \mathbf{v}) \right] \gamma = \left( c{\diff \gamma \over \diff t}, \mathbf{v} {\diff \gamma \over \diff t} + \mathbf{a} \gamma \right) \gamma
+\]
+where $\mathbf{a} = \diff \mathbf{v} / \diff t$ is the three-acceleration and $\gamma$ is the usual Lorentz factor. Keep in mind, $\gamma$ is explicitly a function of the three-velocity alone i.e. $\gamma \equiv \gamma (v)$ and \textit{not} $\gamma (U^\mu)$.
+
+There is an interesting relationship between the four-velocity and the four-acceleration. For a particle at rest note that $U^\mu = (c,0)$ and $A^\mu = (0,\mathbf{a})$. The former is obvious: $\mathbf{v}= 0$ for a particle at rest but information from it continues to travel at $c$; for the latter observe that photons at $c$ cannot accelerate so there is no (or zero) acceleration for something already moving at $c$. Consequently we have
+\begin{equation}
+	U^\mu A_\mu = 0 \label{eq:UA-invariance}
+\end{equation}
+as another invariant quantity. Geometrically this can be hard to visualise instinctively: this equation tells us that the four-velocity and four-acceleration of a particle are orthogonal to each other. In relation to a spacetime diagram, the velocity is tangential to the world line of a particle and the acceleration is perpendicular to that velocity.
+
+\subsection{Four-momentum and the mass-energy-momentum equivalence}
+
+Our next topic of discussion is the important idea of relativistic energy, or the mass-energy-momentum equivalence. En route we will also talk about four-momentum\margintext{On 30 June 1905 Albert Einstein published his famous paper on special relativity titled `On the electrodynamics of moving bodies' in \textit{Annalen der Physik}. This paper is simple enough for you to understand and I urge you to read it: see \cite{einstein1905}.}. The four-momentum $p^\mu$ is simply the product of mass and four-velocity much like the three-momentum you are already familiar with.
+\begin{equation}
+	p^\mu = m_0U^\mu = \gamma m_0 (c, \mathbf{v}) \label{eq:4-momentum}
+\end{equation}%
+Focus on our use of $m_0$ for mass instead of just $m$; this refers to a quantity similar to proper and coordinate times but for masses. That mass of an object which is invariant across all frames of reference is called the \textbf{invariant mass} or \textbf{rest mass} and is usually denoted by $m_0$, the variant mass or \textbf{relativistic mass} is denoted by simply $m$. We will, henceforth, have to be careful about which mass we are referring to\margintext{Note the term `lab frame' or `laboratory frame of reference'. This is the reference frame of our `lab' or room, which means we, and the `lab', are still in this frame and other objects are moving relative to this. It is in the lab frame that measurements are usually made.}. A quick way to remember is that $m_0$ is what Newtonian mechanics measures as the absolute mass i.e. the mass of an object according to an observer who is moving along with that object, or the mass in the lab frame. By contrast the relativistic mass changes with velocity and the observer is external and not moving with the object in question. Invariant mass and relativistic mass are related as
+\begin{equation}
+	m = \gamma m_0 \label{eq:relativisticMass}
+\end{equation}%
+Keep in mind, all our measurements are made in the lab frame. Although we stated the four-momentum above we will now derive the same, along with a description of relativistic energy, from first principles. We will then end up with a slightly different form of eq. \eqref{eq:4-momentum}, one that is written in terms of relativistic energy. To do this we will have to return to the principle of least action discussed as part of analytical mechanics.
+ 
+\noindent\runin{By now we} ought to be familiar with the action integral\margintext{To help you recall, the principle of least action states that for every mechanical system there exists an integral $S$ called the action integral which has a minimum value for the actual path of motion. In our case now we do not concern ourselves with the minima specifically; we just seek an extremum value.} given by
+$$
+	S = -\alpha \int_a^b \diff s
+$$
+where the integral is along the world line of an object and maxes out along a straight world line, i.e. for photons. Along a curved world line it has a smaller (but still positive) value and we use a negative sign to further push it towards a minimum. The term $\alpha$ is simply a parameter that characterises the system---we will determine what this is presently. First we will try to write this equation in a more familiar format, i.e. with an integral against $\diff t$ rather than $\diff s$. From eq. \eqref{eq:t-tau-gamma} we have
+\[\diff \tau = {\diff s \over c} = {\diff t \over \gamma}\]
+which means our action integral can be written in terms of $\diff t$ as $$S = \int_{t_1}^{t_2} -{\alpha c\over \gamma} \diff t$$ Compare this with the familiar action integral expression over time $$S = \int_{t_1}^{t_2} \lag \diff t$$ and we get our Lagrangian $\lag$ as $$\lag = -{\alpha c \over \gamma}$$ If we now expand $\gamma^{-1}$ (approximately) as $$\gamma^{-1} = \left( 1 - {v^2 \over c^2} \right)^{1/2} = 1 - {v^2 \over 2c^2}$$ and neglect higher order terms as they become too small, we get $$\lag = -\alpha c + {\alpha v^2 \over 2 c}$$ we realise that the second term looks like $\lag = mv^2/2$, the classical energy expression, giving us $\alpha = mc$ so, substituting in $\lag = -\alpha c/\gamma$,
+\begin{equation}
+	\lag = -{mc^2\over\gamma} \label{eq:lagrangian}
+\end{equation}%
+From this point on the momentum is easy enough to arrive at. (Feel free to use to $\gamma^{-1}$ approximation again.) Recall that $\mathbf{p} = \partial \lag / \partial v$ giving us\margintext{It is left to you to solve the partial differential $\partial \lag / \partial v$ as an exercise and arrive at eq. \eqref{eq:3-momentum}.}
+\begin{equation}
+	\mathbf{p} = \gamma m_0 \mathbf{v} \label{eq:3-momentum}
+\end{equation}%
+which is nothing but the three-momentum term in eq. \eqref{eq:4-momentum}. We get the $p^0$ term as expected by simply demanding that $v\rightarrow c$ in eq. \eqref{eq:3-momentum}.
+
+Classically, the energy\margintext{We will maintain the notation $\E$ to refer to the relativistic/total energy of a system and the usual $E$ for the purely non-relativistic energy term, although we will almost never use the latter.} of a system is defined as $$\E = \mathbf{p\cdot v} - \lag$$ which, upon substitution from eq. \eqref{eq:lagrangian} and \eqref{eq:3-momentum}, gives us\margintext{This simple substitution too is left as an exercise. Try to square both sides of the previous equation for $\E$ after substitution and then expand $\gamma$ to get the square of eq. \eqref{eq:rest-energy-gamma}.}
+\begin{equation}
+	\E = \gamma m_0 c^2 \label{eq:rest-energy-gamma}	
+\end{equation}%
+This \textbf{relativistic energy} term is a particularly interesting one which shows us an important fact: the energy of a system does not go to zero even if the system is at rest. That is to say when $v=0$ we have $\gamma = 1$ and we are left with
+$$
+\E = m_0 c^2
+$$
+We will return to this equation to make an important observation that tells us, at best, that this equation by itself is somewhat meaningless, i.e. that it only holds under certain extremely important conditions and is by no means general. Let us refer to this henceforth as the \textbf{rest energy} of our system.
+
+For now we return our attention to eq.  and expand $\gamma = \left( 1 - v^2/c^2 \right)^{-1/2} = 1 + v^2/2c^2$, along the same lines as our previous expansion, to get
+$$
+\E = m_0c^2 + {1\over 2} m_0 v^2
+$$
+which tells us that all is well: the total energy of a system is its rest energy plus its classical kinetic energy.
+
+Lastly, comparing eq. \eqref{eq:3-momentum} and \eqref{eq:rest-energy-gamma} will give us an important relation\margintext{Another exercise: try to write eq. \protect\eqref{eq:3-momentum} in terms of $v^2$ then substitute this to get $\gamma$ in terms of $p^2$, then substitute $\gamma$ into eq. \protect\eqref{eq:rest-energy-gamma} to finally get the mass-energy-momentum relation.} known as the \textbf{mass-energy-momentum equivalence}:
+\begin{equation}
+	\E^2 = p^2c^2 + m_0^2 c^4 \label{eq:mass-energy-momentum}
+\end{equation}%
+This energy is also known as the Hamiltonian\margintext{While reading other sources you will eventually come across the term $ict$ used instead of $ct$  for the temporal component. This appears in Minkowski's original solution but we have chosen not to use it here as it does not play well with General Relativity, which is what we will ultimately discuss in this course. The use of $ct$ is thus more pragmatic.} of the system and is sometimes written as $\mathscr{H} = c\sqrt{p^2 + m_0^2c^2}$ but we will not find the need to use this particular format in our course. Observe that in natural units this tells us that energy, mass and momentum have like dimensions: $\E^2 = p^2 + m_0^2$.
+
+By comparing eq. \eqref{eq:3-momentum} and \eqref{eq:rest-energy-gamma} we can draw another relationship: $$\mathbf{p} = \E {\mathbf{v}\over c^2}$$ This does not interfere with our three-momentum, however, since we have already established that to be $\gamma m_0 \mathbf{v}$, which means our \textit{timelike} component $p^0$ is when $v = c$ and is therefore simply $\E / c$. We therefore end up with our contravariant four-momentum components as
+\begin{equation}
+	p^\mu = \left( {\E\over c},\mathbf{p} \right)
+\end{equation}%
+
+\subsection{Four-force}
+
+Our discussion on four-vectors culminates in the four-force term. This is sometimes also known as the \textbf{relativistic Lorentz force}. The motivation for defining this arises from the principle of relativity which, as we stated earlier, requires that the laws of physics be same in all reference frames.
+
+Just as with three-momentum and Newton's classical second law we can define four-force as the proper-time derivative of four-momentum,
+\begin{equation}
+	F^\mu = {\diff p^\mu \over \diff \tau} = \gamma \, {\diff p^\mu \over \diff t} \label{eq:4-force}
+\end{equation}%
+Likewise we can also define four-force as $F^\mu = m_0 A^\mu$ in terms of the four-acceleration. This gives us
+\begin{align}
+	F^\mu &= m_0\left( c{\diff \gamma \over \diff t}, \mathbf{v}{\diff \gamma \over \diff t}+\mathbf{a}\gamma \right)\gamma \nonumber\\
+		  &= \left( {1\over c}{\diff (\gamma m_0c^2) \over \diff t}, {\diff (\gamma m_0 \mathbf{v}) \over \diff t} + \gamma m_0 \mathbf{a} \right) \gamma \nonumber\\
+		  &= \left( \gamma\, {\mathbf{F\cdot v} \over c} , \gamma \, \mathbf{F} \right) \label{eq:4-force-acceleration} \quad \textrm{or} \quad \left( \gamma \, {\diff E \over \diff t}, \gamma \, {\diff \mathbf{p} \over \diff t} \right)
+\end{align}
+However, keep in mind that for this relation to be valid in general $m_0$ would have to be constant in proper time. The use of $\diff p^\mu/\diff \tau$, though, is valid everywhere.
+
+This brings us to an important observation. Recall four-velocity from eq. \eqref{eq:4-velocity}. Whereas $U^\mu A_\mu = 0$ the magnitude of the four-velocity, given by $U^\mu U_\mu$, is one. This is quite easy to see:\margintext{To go from $U^\mu$ to $U_\mu$ use the Minkowski metric tensor shown before: $U^\mu = \eta_\mu^\nu U_\nu$.}
+\begin{align*}
+	U^\mu U_\mu &= \sqrt{\sum_\mu \left( \gamma U^\mu \right)^2 } \\
+				&= \sqrt{\gamma^2c^2 + \gamma^2v_x^2 + \gamma y_y^2 + \gamma v_z^2 } \\
+				&= \gamma \sqrt{c^2 + v^2} \\
+				&= \gamma c \sqrt{1 + {v^2\over c^2}} \\
+\implies U^\mu U_\mu &= c := 1
+\end{align*}%
+The definition of orthogonality must be clear by now. If we have vectors defined by $(t^1,x^1,y^1,z^1)$ and $(t^2,x^2,y^2,z^2)$ we say they are orthogonal iff they satisfy $$t^1t^2 + x^1x^2 + y^1y^2 + z^1z^2 = 0$$ So if you have a purely \textit{timelike} vector and a purely \textit{spacelike} vector you can see that they must necessarily be orthogonal to each other.
+
+Now that we have got that out of the way let us return to the four-force. We can show that four-force is orthogonal to the four-velocity. Follow these steps carefully as they also serve as an explainer of the orthogonality of four vectors:
+\begin{align*}
+	F^\mu U_\mu &= {\diff p^\mu \over \diff \tau} U_\mu \\
+				&= m {\diff U^\mu \over \diff \tau} U_\mu \\
+				&= m {\diff U^\mu U_\mu \over \diff \tau} \\
+				&= 0
+\end{align*}
+
+\subsection{Photons}
+
+Since light plays a particularly important part in relativity, including in how we describe spacetime diagrams, it is worth paying attention to what specifically happens to photons under the conditions we have discussed so far.
+
+\\\textbf{Four-velocity.} The second postulate of relativity tells us that light is never at rest in any frame of reference. Further, we can never travel at $c$ which means there is no MCRF\margintext{An MCRF is a \textit{Momentarily co-moving reference frame}, which is just another name for an Instantaneously Co-moving Frame or ICF.} for a photon. Mathematically then $\diff x\cdot\diff x = 0$ which promptly puts it on the null line in a spacetime diagram as we expect.
+
+\\\textbf{Four-momentum.} For a photon, like for any particle, the four-momentum is essentially a description of the energy and classical momentum of the particle in a given frame. If the zeroth component of four-momentum $p^0 = \E$ then, for a photon moving in, say, just the x-direction, $p^x = \E$ to ensure that it remains parallel to the null or lightlike world line. Consequently,
+\[
+p^0\cdot p^x = -\E\cdot \E = 0
+\]
+the four-momentum of a photon is null. The main takeaway here of course is that photons have a spatial momentum equal to their energy, their timelike component of momentum having already been determined to be $\E$.
+
+\\\textbf{Rest mass.} Any particle with zero four-momentum also has zero rest mass and the photon is no different (to say nothing of the fact that it is the only massless particle we know). Consider that its mass is given by
+\[
+p^\mu\cdot p^\mu = mU^\mu \cdot mU^\mu = -m^2
+\quad\textrm{so that}\quad
+m^2 = -p^\mu\cdot p^\mu = 0
+\]
+which turns out to be just as we had expected.
+
+\section{Vectors and tensors}
+
+Tensor formalism\margintext{This section is best read with support from the handout on tensors.} is an important part of relativity. Although there are ways to study relativity without tensors the use of tensors helps us keep our expressions compact which, in turn, lets us handle expressions across primed and unprimed reference frames\margintext{When we speak of primed and unprimed reference frames we refer to two frames viewed from the perspective of a third observer in our hypothetical lab. According to this lab frame one of the frames is at rest---this is the unprimed frame---while another is in motion---this is the primed frame. We represent these without and with a prime ($'$) respectively.} with considerable ease. Remember that this review of tensors is just that, a review, and not a detailed look at why these results are true\margintext{The root of most of these results would have been covered in Paper 102 on mathematical methods.}.
+
+Before we begin, there are three things to keep in mind. These are important enough that we will number them here.
+\begin{enumerate}
+	\item When a tensor $T$ transforms we mean that the unprimed and primed frames transform into each other. When this occurs the new tensor will still be called $T$ but with or without a prime depending on where we started.
+	\item Whenever a tensor transforms or, to broaden the rule, whenever any operation is performed on a tensor it is important to change its indices. Use any greek letter of your choice (for four components, or latin for three as has been our rule till now). Whether the new index is the same as the old index is secondary---they may, in fact, be equal---but we cannot make that assumption outright.
+	\item The indices themselves do not matter as much as their positions. So keep an eye on primed and unprimed notations and the positions of the indices and do not obsess over the actual greek letter used. For all purposes, unless otherwise mentioned, writing $T^\alpha_\beta$ is no different from writing $T_\rho^\sigma$ but it \textit{is} different from writing, for example, $T'^\alpha_\beta$ or $T^\alpha\beta$.
+\end{enumerate}
+
+\section{Scalar product and covectors}
+
+As a last stop we will discuss the nature of tensors and why we call some 'covariant' and others 'contravariant' first. We already discussed the idea of a basis. Think of the basis $\mathbf{e}_\alpha$, with $\alpha$ taking values $0, 1, 2, 3$ as usual. Let us define two vectors $\mathbf{A}$ and $\mathbf{B}$ in this bases as\margintext{This is of course a general way of writing an example that you are probably more familiar with. Think of $\mathbf{A}$ as being a vector in cartesian space. Its components would then be $A^x$, $A^y$ and $A^z$, and the bases of Cartesian space we know are $e_1 = \hat{i}$, $e_2 = \hat{j}$ and $e_3 = \hat{k}$. Consequently we see that our definition of $\mathbf{A}$ above essentially means $\mathbf{A} = A^q \mathbf{e}_q$ or $\sum_q A^q \mathbf{e}_q = A^1 \mathbf{e_1} + A^2 \mathbf{e_2} + A^3 \mathbf{e_3}$ which is simply $A^x\hat{i} + A^y\hat{j} + A^z\hat{k}$, an expression you are already quite familiar with.}
+$$
+\mathbf{A} = A^\alpha \mathbf{e}_\alpha \qquad\qquad \mathbf{B} = B^\beta \mathbf{e}_\beta
+$$
+In these definitions $A^\alpha$ is a component of $\mathbf{A}$ and $\mathbf{e}_\alpha$ is an appropriate basis vector. The fact that, on the right-hand side, one index is above and one below means we must sum over the repeating index $\alpha$. The \textbf{scalar product}, sometimes called the dot product, is defined as
+\begin{align}
+	\mathbf{A\cdot B} &= A^\alpha B^\beta \mathbf{e_\alpha \cdot e_\beta} \nonumber\\
+	&= A^\alpha B^\beta \eta_{\alpha\beta} \nonumber\\
+	&= -A^0B^0 + A^1B^1 + A^2B^2 + A^3B^3 \label{eq:scalar-product}
+\end{align}
+from our definition of $\eta$ the components of the Minkowski metric tensor and from its bases $e$ described on p.\pageref{page:eta-bases}. The scalar product serves another function: \textit{it helps us determine the components of a tensor if we simply multiply its bases}. For example, consider the metric tensor $\eta$ with bases $\mathbf{e}_\alpha$ and $\mathbf{e}_\beta$ and consider their dot product: $\mathbf{e}_\alpha \cdot \mathbf{e}_\beta = \eta_{\alpha\beta}$ which gives back the components of $g$.
+
+\\\runin{The next topic} of discussion is that of \textbf{covectors}, also known as \textbf{one forms} or \textbf{covariant tensors}. Our primary intention here is to see why they are called `covariant', but we will also try to understand their general nature. We proceed with the understanding that a tensor is like a function that takes $n$ vectors and produces one scalar real number in return. First of all recall that a basis $\mathbf{e}_{\alpha '}$ transforms as follows:
+\begin{equation}
+	\mathbf{e}_{\alpha '} = \Lambda^\beta_{\alpha '} \mathbf{e}_\beta \label{eq:basis-transformation}
+\end{equation}%
+and that a one-form\margintext{Remember that any covector $p$, along with another covector $q$ and scalar $alpha$, must satisfy the following rules: a linear combination like $p + q$ must yield another covector, and a scalar multiplication like $\alpha p$ too must yield a covector.} or covector $p$ when supplied with a vector will output a real number. As described above if we must determine the components of this tensor $p$ we need only use its bases as arguments. So for the base $\mathbf{e}_\alpha$ we have $p(\mathbf{e}_\alpha) = p_\alpha$ (say) so that when we use some vector $\mathbf{A}$, and use the definition of $\mathbf{A}$ stated at the beginning of this section, as the argument we get
+$$ p(\mathbf{A}) = p(A^\alpha\mathbf{e}_\alpha) =	 A^\alpha p_\alpha = A^0p_0 + A^1p_1 + A^2p_2 + A^3p_3 $$
+Notice that, unlike the scalar product of two vectors, the output of a one-form is a scalar number without the metric tensor components; that is to say, the signs are not $(-,+,+,+)$ as in eq. \eqref{eq:scalar-product} but rather just $(+,+,+,+)$ giving a real number. Now what if we start with the $\mathbf{e}_{\alpha '}$ bases and wish to transform to the $\mathbf{e}_{\beta}$ bases? We might do something like this:
+\begin{align*}
+	p_{\alpha '} &= p(\mathbf{e}_{\alpha '}) \\
+				&= p(\Lambda^\beta_{\alpha '} \mathbf{e}_\beta) \\
+\implies p_{\alpha '} &= \Lambda^\beta_{\alpha '} p_\beta
+\end{align*}%
+Compare this result with equation \eqref{eq:basis-transformation} and you notice the similarities immediately. The fact that a one-form $p$ transforms exactly like its bases is why we say it is a \textbf{covariant tensor}, i.e. one that varies `co' or `similarly to' its bases. By contrast contravariant vector components transform inversely to a covector. To see this consider the transformation of a one-form or covector $p_\alpha$ and some contravariant vector $A^\alpha$ in the following manner: $A^{\alpha '}p_{\alpha '} \rightarrow A^\beta p_\beta$.
+\begin{align*}
+	A^{\alpha '}p_{\alpha '} &= \Lambda^{\alpha '}_\beta A^\beta \Lambda^\gamma_{\alpha '} p_\gamma \\
+				&= \delta^\gamma_\beta A^\beta p_\gamma \\
+\implies A^{\alpha '}p_{\alpha '} &= A^\beta p_\beta
+\end{align*}%
+Observe that we have made use of the $\delta$ function (Kronecker) first as per its definition and then used the fact that a delta function $\delta^\mu_\nu$ vanishes everywhere except when $\mu = \nu$ and therefore we have imposed that condition on our equation too. \margintext{Generally, covariant and contravariant vectors are known now as `vectors' and `dual vectors' as these terms are less confusing.}More importantly, in the first step, observe that our contravariant tensor $A^\mu$ does not transform like the basis $\mathbf{e}_\alpha$ would, or like the covector $p_\beta$; instead it transforms with the position of its indices inverted. Lastly, as is evident from the end result of our transformation above, the consequence of all this is that the product of a covariant and a contravariant tensor, like $A^{\alpha '}p_{\alpha '}$, always remains frame-independent.
+
+\noindent\runin{final thoughts:} We started with two frames of reference moving relative to each other with uniform velocity and established a transformation across these frames that ensures the validity of all laws of physics and, more important, that ensures that observers across such frames agree with each other as to the outcome of any event.
+
+However we note that this theory is far from complete. For instance what if the frames are not moving with uniform relative velocity but are accelerating instead? Or what if the space in these frames is not flat but curved instead? Is all this only a specific case of a much wider, global theory of relativity? We will address these questions and discover more about non-inertial frames of reference, the curvature of spacetime and gravity as geometry in the next part of this course when we discuss the general theory of relativity.
+
+\begin{thebibliography}{99}
+	\bibitem{chappell}
+	Chappell JM, Hartnett JG, Iannella N, Iqbal A, and Abbott D. Exploring the origin of Minkowski spacetime. \href{https://arxiv.org/abs/1501.04857}{\ttfamily arXiv:1501.04857}
+	\bibitem{schutz}
+	Schutz B. A first course in general relativity. Cambridge University Press. 2nd edition, 2009.
+	\bibitem{Landau}
+	Landau L, Lifshitz E. The classical theory of fields. Pergamon Press.
+	\bibitem{Weinberg}
+	Weinberg S. Gravitation and cosmology: principles and applications of the general theory of relativity. Wiley.
+\end{thebibliography}
+
+\end{document}

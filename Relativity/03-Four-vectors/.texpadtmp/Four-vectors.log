@@ -1,10 +1,10 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.11.24)  2 FEB 2020 22:45
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.11.24)  10 FEB 2020 09:42
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**00-Coordinates.tex
-(./00-Coordinates.tex
+**Four-vectors.tex
+(./Four-vectors.tex
 LaTeX2e <2018-12-01>
 (/Users/vhbelvadi/LaTeX-lecture-notes-class/lecture.cls
 Document Class: lecture 
@@ -1509,51 +1509,51 @@ Package csquotes Info: Checking for multilingual support...
 Package csquotes Info: ... found 'babel' package.
 Package csquotes Info: Adjusting default style.
 Package csquotes Info: Redefining alias 'default' -> 'english'.
- (/Users/vhbelvadi/Physics-lecture-notes/Relativity/00-Coordinates/.texpadtmp/00-Coordinates.aux)
-\openout1 = `00-Coordinates.aux'.
+ (/Users/vhbelvadi/Physics-lecture-notes/Relativity/03-Four-vectors/.texpadtmp/Four-vectors.aux)
+\openout1 = `Four-vectors.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/jkpw/m/it on input line 24.
-LaTeX Font Info:    Try loading font information for OML+jkpw on input line 24.
+LaTeX Font Info:    Checking defaults for OML/jkpw/m/it on input line 26.
+LaTeX Font Info:    Try loading font information for OML+jkpw on input line 26.
  (/usr/local/texlive/2019/texmf-dist/tex/latex/kpfonts/omljkpw.fd
 File: omljkpw.fd 2006/08/15 v1.0
 )
-LaTeX Font Info:    ... okay on input line 24.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 24.
-LaTeX Font Info:    ... okay on input line 24.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 24.
-LaTeX Font Info:    ... okay on input line 24.
-LaTeX Font Info:    Checking defaults for OMS/jkpw/m/n on input line 24.
-LaTeX Font Info:    Try loading font information for OMS+jkpw on input line 24.
+LaTeX Font Info:    ... okay on input line 26.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 26.
+LaTeX Font Info:    ... okay on input line 26.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 26.
+LaTeX Font Info:    ... okay on input line 26.
+LaTeX Font Info:    Checking defaults for OMS/jkpw/m/n on input line 26.
+LaTeX Font Info:    Try loading font information for OMS+jkpw on input line 26.
  (/usr/local/texlive/2019/texmf-dist/tex/latex/kpfonts/omsjkpw.fd
 File: omsjkpw.fd 2006/08/15 v1.0
 )
-LaTeX Font Info:    ... okay on input line 24.
-LaTeX Font Info:    Checking defaults for OMX/jkp/m/n on input line 24.
-LaTeX Font Info:    Try loading font information for OMX+jkp on input line 24.
+LaTeX Font Info:    ... okay on input line 26.
+LaTeX Font Info:    Checking defaults for OMX/jkp/m/n on input line 26.
+LaTeX Font Info:    Try loading font information for OMX+jkp on input line 26.
  (/usr/local/texlive/2019/texmf-dist/tex/latex/kpfonts/omxjkp.fd
 File: omxjkp.fd 2006/08/15 v1.0
 )
-LaTeX Font Info:    ... okay on input line 24.
-LaTeX Font Info:    Checking defaults for U/jkpexa/m/n on input line 24.
-LaTeX Font Info:    Try loading font information for U+jkpexa on input line 24.
+LaTeX Font Info:    ... okay on input line 26.
+LaTeX Font Info:    Checking defaults for U/jkpexa/m/n on input line 26.
+LaTeX Font Info:    Try loading font information for U+jkpexa on input line 26.
  (/usr/local/texlive/2019/texmf-dist/tex/latex/kpfonts/ujkpexa.fd
 File: ujkpexa.fd 2006/08/15 v1.0
 )
-LaTeX Font Info:    ... okay on input line 24.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 24.
-LaTeX Font Info:    ... okay on input line 24.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 24.
-LaTeX Font Info:    Try loading font information for TS1+cmr on input line 24.
+LaTeX Font Info:    ... okay on input line 26.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 26.
+LaTeX Font Info:    ... okay on input line 26.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 26.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 26.
  (/usr/local/texlive/2019/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 24.
-LaTeX Font Info:    Try loading font information for OT1+jkp on input line 24.
+LaTeX Font Info:    ... okay on input line 26.
+LaTeX Font Info:    Try loading font information for OT1+jkp on input line 26.
  (/usr/local/texlive/2019/texmf-dist/tex/latex/kpfonts/ot1jkp.fd
 File: ot1jkp.fd 2007/08/30 Fontinst v1.928 font definitions for OT1/jkp.
 )
 \AtBeginShipoutBox=\box83
-Package hyperref Info: Link coloring ON on input line 24.
+Package hyperref Info: Link coloring ON on input line 26.
  (/usr/local/texlive/2019/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
  (/usr/local/texlive/2019/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
@@ -1561,12 +1561,12 @@ Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
 \c@section@level=\count348
 )
-LaTeX Info: Redefining \ref on input line 24.
-LaTeX Info: Redefining \pageref on input line 24.
-LaTeX Info: Redefining \nameref on input line 24.
- (/Users/vhbelvadi/Physics-lecture-notes/Relativity/00-Coordinates/.texpadtmp/00-Coordinates.out) (/Users/vhbelvadi/Physics-lecture-notes/Relativity/00-Coordinates/.texpadtmp/00-Coordinates.out)
+LaTeX Info: Redefining \ref on input line 26.
+LaTeX Info: Redefining \pageref on input line 26.
+LaTeX Info: Redefining \nameref on input line 26.
+ (/Users/vhbelvadi/Physics-lecture-notes/Relativity/03-Four-vectors/.texpadtmp/Four-vectors.out) (/Users/vhbelvadi/Physics-lecture-notes/Relativity/03-Four-vectors/.texpadtmp/Four-vectors.out)
 \@outlinefile=\write4
-\openout4 = `00-Coordinates.out'.
+\openout4 = `Four-vectors.out'.
 
  ABD: EveryShipout initializing macros (/usr/local/texlive/2019/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -1595,7 +1595,7 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 )) (/usr/local/texlive/2019/texmf-dist/tex/latex/ucs/ucsencs.def
 File: ucsencs.def 2011/01/21 Fixes to fontencodings LGR, T3
 )
-LaTeX Info: Redefining \microtypecontext on input line 24.
+LaTeX Info: Redefining \microtypecontext on input line 26.
 Package microtype Info: Generating PDF output.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using default protrusion set `alltext'.
@@ -1652,33 +1652,33 @@ babelbib: Set language for keywords in the bibliography fixed to english
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-LaTeX Font Info:    Try loading font information for U+jkpmiaw on input line 24.
+LaTeX Font Info:    Try loading font information for U+jkpmiaw on input line 26.
 (/usr/local/texlive/2019/texmf-dist/tex/latex/kpfonts/ujkpmiaw.fd
 File: ujkpmiaw.fd 2006/08/15 v1.0
 )
-LaTeX Font Info:    Try loading font information for U+msa on input line 24.
+LaTeX Font Info:    Try loading font information for U+msa on input line 26.
  (/usr/local/texlive/2019/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 ) (/usr/local/texlive/2019/texmf-dist/tex/latex/microtype/mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 24.
+LaTeX Font Info:    Try loading font information for U+msb on input line 26.
  (/usr/local/texlive/2019/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) (/usr/local/texlive/2019/texmf-dist/tex/latex/microtype/mt-msb.cfg
 File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 )
-LaTeX Font Info:    Try loading font information for U+jkpsyc on input line 24.
+LaTeX Font Info:    Try loading font information for U+jkpsyc on input line 26.
  (/usr/local/texlive/2019/texmf-dist/tex/latex/kpfonts/ujkpsyc.fd
 File: ujkpsyc.fd 2006/08/15 v1.0
 )
-LaTeX Font Info:    Try loading font information for U+rsfs on input line 24.
+LaTeX Font Info:    Try loading font information for U+rsfs on input line 26.
  (/usr/local/texlive/2019/texmf-dist/tex/latex/jknapltx/ursfs.fd
 File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 )
-LaTeX Font Info:    Try loading font information for U+stmry on input line 24.
+LaTeX Font Info:    Try loading font information for U+stmry on input line 26.
  (/usr/local/texlive/2019/texmf-dist/tex/latex/stmaryrd/Ustmry.fd)
-LaTeX Font Info:    Try loading font information for OT1+jkpk on input line 24.
+LaTeX Font Info:    Try loading font information for OT1+jkpk on input line 26.
  (/usr/local/texlive/2019/texmf-dist/tex/latex/kpfonts/ot1jkpk.fd
 File: ot1jkpk.fd 2007/08/30 Fontinst v1.928 font definitions for OT1/jkpk.
 )
@@ -1686,7 +1686,7 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `jkpk' (encoding: OT1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
-LaTeX Font Info:    Try loading font information for TS1+jkp on input line 24.
+LaTeX Font Info:    Try loading font information for TS1+jkp on input line 26.
  (/usr/local/texlive/2019/texmf-dist/tex/latex/kpfonts/ts1jkp.fd
 File: ts1jkp.fd 2007/08/30 Fontinst v1.928 font definitions for TS1/jkp.
 )
@@ -1698,7 +1698,7 @@ Package microtype Info: Loading generic protrusion settings for font family
 
 LaTeX Warning: No \author given.
 
-LaTeX Font Info:    Try loading font information for OT1+jkptt on input line 24.
+LaTeX Font Info:    Try loading font information for OT1+jkptt on input line 26.
 (/usr/local/texlive/2019/texmf-dist/tex/latex/kpfonts/ot1jkptt.fd
 File: ot1jkptt.fd 2007/01/26 Fontinst v1.928 font definitions for OT1/jkptt.
 )
@@ -1709,15 +1709,14 @@ Package microtype Info: Loading generic protrusion settings for font family
  [1
 
 {/usr/local/texlive/2019/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+Underfull \hbox (badness 3323) in paragraph at lines 47--47
+\OT1/jkp/m/it/9 (+20) sult as the phe-nomenon
+ []
+
 
 Package amsmath Warning: Foreign command \over;
 (amsmath)                \frac or \genfrac should be used instead
-(amsmath)                 on input line 78.
-
-
-Overfull \hbox (63.60632pt too wide) detected at line 78
-[]
- []
+(amsmath)                 on input line 53.
 
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -1725,42 +1724,107 @@ Make it at least 13.59999pt.
 We now make it that large for the rest of the document.
 This may cause the page layout to be inconsistent, however.
 
-[2] [3]
+[2]
 
-LaTeX Font Warning: Font shape `U/stmry/b/n' undefined
-(Font)              using `U/stmry/m/n' instead on input line 120.
+LaTeX Warning: Citation `einstein1905' on page 3 undefined on input line 84.
+
+[3]
+Underfull \hbox (badness 1931) in paragraph at lines 94--94
+\OT1/jkp/m/it/9 (+20) with the min-ima specif-i-
+ []
 
 
-Underfull \vbox (badness 3108) has occurred while \output is active []
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [4] [5]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 176.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 176.
- (/Users/vhbelvadi/Physics-lecture-notes/Relativity/00-Coordinates/.texpadtmp/00-Coordinates.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 176.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 176.
-Package rerunfilecheck Info: File `00-Coordinates.out' has not changed.
+ [4]
+
+LaTeX Warning: Marginpar on page 5 moved.
+
+
+Underfull \vbox (badness 3189) has occurred while \output is active []
+
+ [5]
+Underfull \hbox (badness 4036) in paragraph at lines 126--126
+[]\OT1/jkp/m/it/9 (+20) Another ex-er-cise: try to
+ []
+
+
+LaTeX Warning: Marginpar on page 6 moved.
+
+[6]
+Underfull \hbox (badness 1331) in paragraph at lines 153--153
+\OT1/jkp/m/it/9 (+20) sor shown be-fore: $\OML/jkpw/m/it/9 U[] \OT1/jkp/m/n/9 (+20) =
+ []
+
+[7]
+Underfull \hbox (badness 1275) in paragraph at lines 193--193
+[]\OT1/jkp/m/it/9 (+20) This sec-tion is best read
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 193--193
+\OT1/jkp/m/it/9 (+20) and un-primed ref-er-ence
+ []
+
+
+Underfull \hbox (badness 4048) in paragraph at lines 193--193
+\OT1/jkp/m/it/9 (+20) frames we re-fer to two
+ []
+
+
+Underfull \hbox (badness 4505) in paragraph at lines 193--193
+\OT1/jkp/m/it/9 (+20) frames viewed from the
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 193--193
+\OT1/jkp/m/it/9 (+20) per-spec-tive of a third
+ []
+
+
+LaTeX Warning: Marginpar on page 8 moved.
+
+[8] [9]
+Underfull \hbox (badness 3168) in paragraph at lines 234--234
+[]\OT1/jkp/m/it/9 (+20) Generally, co-vari-ant and
+ []
+
+
+Underfull \hbox (badness 2103) in paragraph at lines 234--234
+\OT1/jkp/m/it/9 (+20) con-travari-ant vec-tors are
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [10] [11]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 251.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 251.
+ (/Users/vhbelvadi/Physics-lecture-notes/Relativity/03-Four-vectors/.texpadtmp/Four-vectors.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 251.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 251.
+Package rerunfilecheck Info: File `Four-vectors.out' has not changed.
 (rerunfilecheck)             Checksum: <no file>.
 
 
-LaTeX Font Warning: Some font shapes were not available, defaults substituted.
+LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 36650 strings out of 492616
- 701023 string characters out of 6129480
- 857334 words of memory out of 5000000
- 39691 multiletter control sequences out of 15000+600000
- 620450 words of font info for 315 fonts, out of 8000000 for 9000
+ 36815 strings out of 492616
+ 702270 string characters out of 6129480
+ 854083 words of memory out of 5000000
+ 39677 multiletter control sequences out of 15000+600000
+ 632682 words of font info for 420 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 62i,15n,69p,998b,416s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 62i,14n,69p,1208b,536s stack positions out of 5000i,500n,10000p,200000b,80000s
 pdfTeX warning (dest): name{Hfootnote.1} has been referenced but does not exist, replaced by a fixed one
 
-{/usr/local/texlive/2019/texmf-dist/fonts/enc/dvips/kpfonts/kpfonts-expert.enc}{/usr/local/texlive/2019/texmf-dist/fonts/enc/dvips/base/8r.enc}{/usr/local/texlive/2019/texmf-dist/fonts/enc/dvips/kpfonts/kpfonts-large-sc.enc}</usr/local/texlive/2019/texmf-dist/fonts/type1/public/kpfonts/jkpbn8a.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/kpfonts/jkpbsy.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/kpfonts/jkpex.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/kpfonts/jkpkmsc.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/kpfonts/jkpmi.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/kpfonts/jkpmia.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/kpfonts/jkpmit8a.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/kpfonts/jkpmite.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/kpfonts/jkpmn8a.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/kpfonts/jkpmnc.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/kpfonts/jkpmne.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/kpfonts/jkpmsc8a.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/kpfonts/jkpsy.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/kpfonts/jkpttmn8a.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb>
-Output written on /Users/vhbelvadi/Physics-lecture-notes/Relativity/00-Coordinates/.texpadtmp/00-Coordinates.pdf (5 pages, 130457 bytes).
+{/usr/local/texlive/2019/texmf-dist/fonts/enc/dvips/kpfonts/kpfonts-expert.enc}{/usr/local/texlive/2019/texmf-dist/fonts/enc/dvips/base/8r.enc}{/usr/local/texlive/2019/texmf-dist/fonts/enc/dvips/kpfonts/kpfonts-large-sc.enc}</usr/local/texlive/2019/texmf-dist/fonts/type1/public/kpfonts/jkpbit8a.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/kpfonts/jkpbn8a.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/kpfonts/jkpex.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/kpfonts/jkpkmsc.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/kpfonts/jkpmi.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/kpfonts/jkpmia.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/kpfonts/jkpmit8a.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/kpfonts/jkpmite.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/kpfonts/jkpmn8a.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/kpfonts/jkpmnc.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/kpfonts/jkpmne.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/kpfonts/jkpmsc8a.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/kpfonts/jkpsy.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/kpfonts/jkpttmn8a.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/rsfs/rsfs10.pfb>
+Output written on /Users/vhbelvadi/Physics-lecture-notes/Relativity/03-Four-vectors/.texpadtmp/Four-vectors.pdf (11 pages, 167691 bytes).
 PDF statistics:
- 141 PDF objects out of 1000 (max. 8388607)
- 117 compressed objects within 2 object streams
- 21 named destinations out of 1000 (max. 500000)
- 73285 words of extra memory for PDF output out of 74296 (max. 10000000)
+ 219 PDF objects out of 1000 (max. 8388607)
+ 189 compressed objects within 2 object streams
+ 48 named destinations out of 1000 (max. 500000)
+ 74325 words of extra memory for PDF output out of 89155 (max. 10000000)
 

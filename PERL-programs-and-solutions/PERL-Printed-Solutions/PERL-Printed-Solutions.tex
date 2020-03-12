@@ -1,0 +1,258 @@
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%% YCM %%%%%%%%%%
+%%% PERL SOLUTIONS %%%%%
+%%%% V.H. BELVADI %%%%%%
+%%%%%%%% 2020 %%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+% Download a copy at %%%
+% vhbelvadi.com/teaching
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+% Compile with XeLaTeX % <-----
+%% Charter and Avenir %% <-----
+%% Next fonts needed %%% <-----
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+% Alright, let’s begin %
+%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[11pt,oneside]{article}
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%% PACKAGES
+%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[a4paper, margin=1in,top=1.2in,bottom=1.25in,left=1.05in]{geometry}
+\usepackage{listings}
+\usepackage[most]{tcolorbox}
+\usepackage{xltxtra}
+\usepackage[small]{titlesec}
+\usepackage{hyperref}
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%% REWRITING COMMANDS
+%%%%%%%%%%%%%%%%%%%%%%%%
+\renewcommand{\baselinestretch}{1.35}
+\renewcommand{\lstlistingname}{Program}
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%% TCBoxes
+%%%%%%%%%%%%%%%%%%%%%%%%
+\DeclareTotalTCBox{\synt}{ v }{verbatim, colframe=black,left=0em,right=0em,sharpish corners,colback=black!20!white,boxrule=.2mm}{#1}
+\newtcolorbox{infobox}{colback=black!10!white, colframe=black!10!white,left=0.5em,right=0.5em,before skip=.75em,middle=0em,sharpish corners,oversize}
+%%%%%%%%%%%%%%%%%%%%%%%%
+% SETTING UP CODE BLOCKS
+%%%%%%%%%%%%%%%%%%%%%%%%
+\lstset{language=C,basicstyle=\ttfamily,numbers=left,numbersep=22pt,numberstyle=\ttfamily\color{black!50!white},firstnumber=last,showspaces=false,showstringspaces=false,belowskip=1.5em,aboveskip=1.5em,breaklines=true,xleftmargin=1.55em,frame=lr,framesep=8pt,framerule=0pt,captionpos=b,escapeinside={(*@}{@*)}}
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%% TYPEFACES
+%%%%%%%%%%%%%%%%%%%%%%%%
+\setmainfont{Charter}
+\setsansfont{Avenir Next Medium}
+\setsansfont[BoldFont=Avenir Next Bold]{Avenir Next Bold}
+%%%%%%%%%%%%%%%%%%%%%%%%
+%% DEFINING NEW COMMANDS
+%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\info}[1]{\textbf{\scriptsize{\sffamily\addfontfeatures{LetterSpace=7} #1\\[.35em]}}}
+\newcommand{\LetterSpaced}{\addfontfeatures{LetterSpace=7}}
+%%%%%%%%%%%%%%%%%%%%%%%%
+%% DEFINING TITLE FORMAT
+%%%%%%%%%%%%%%%%%%%%%%%%
+\titleformat{\section}{\small\sffamily\bfseries}{\thesection.}{1em}{\LetterSpaced\MakeUppercase }
+%%%%%%%%%%%%%%%%%%%%%%%%
+% LET’S BEGIN FOR REAL %
+%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+%
+% TITLE
+%
+{\centering
+\textsf{\textbf{YPH 205}}
+
+\textsf{{\large\MakeUppercase{Solutions to prescribed PERL programs}}}
+
+}
+%
+% Raw file notice
+%
+\vspace{0.25cm}
+\noindent \small{This document was typeset using ${\LaTeX}$. If you are interested, you can download and examine the \verb+.tex+ file at \href{https://vhbelvadi.com/teaching}{\texttt{vhbelvadi.com/teaching}}, suggest edits and alternate solutions and more. Updated 09.02.2020.}
+%
+% EXECUTION INSTRUCTIONS
+%
+\vspace*{-0.75ex}
+\begin{infobox}
+\info{\MakeUppercase{Execution instructions for all programs}}
+1. Open Terminal, Command Prompt or equivalent Command Line Interface.
+
+2. Create a new folder with \synt{mkdir <folderName>}. \textbf{Use new folders for each program.}
+
+3. Open the new folder with \synt{cd <folderName>} and type \synt{vi <name>.pl} to open a new file.
+
+4. Type your program in the file. Use \synt{I} to start typing and \synt{Esc} to stop typing.
+
+5. After typing, hit \synt{Esc} then save the program with \synt{:w} and quit with \synt{:q}, or just use \synt{:wq}.
+
+6. Run the program with \synt{perl <name>.pl}.
+
+\textit{In all cases above, replace} \synt{<...>} \textit{with a name of your choice (obviously). Avoid spaces in file names.}
+\end{infobox}
+%
+% 1. Finding the roots of a quadratic equation
+%
+\section{Searching for a pattern in a string}
+\begin{infobox}
+\info{\MakeUppercase{Special instructions for this program}}
+1. Create a text file \synt{vi input.txt} with three lines of data e.g.:
+
+\qquad\qquad This is a sample
+
+\qquad\qquad text file used
+
+\qquad\qquad for PERL programs.
+
+2. Create a perl file \synt{vi pattern-match.pl} and type the program below.
+\end{infobox}
+\begin{lstlisting}
+#! /usr/bin/perl -w
+
+open (FILE, 'input.txt') or die "$!";
+while (<FILE>) {
+	if (m/text file/) {
+		for (1..10) {
+			<FILE>;
+		}
+		print;
+		last;
+	}
+}
+close FILE;
+\end{lstlisting}
+%
+% 2. Counting lines, words and characters in a file
+%
+\section{Counting lines, words and characters in a file}
+\begin{infobox}
+\info{\MakeUppercase{Special instructions for this program}}
+Use the same input file as in the previous program.
+\end{infobox}
+\begin{lstlisting}
+#!/usr/bin/perl -w
+open(FILE, "textfile.txt") or die "Could not open file: $!";
+
+my ($lines, $words, $chars) = (0,0,0);
+
+while (<FILE>) {
+    $linecount++;
+    $charcount += length($_);
+    $wordcount += scalar(split(/\s+/, $_));
+}
+
+print ("Total number of lines: $linecount \n");
+print ("Total number of words: $wordcount \n");
+print ("Total number of characters: $charcount \n");
+\end{lstlisting}
+%
+% 3. Sorting strings
+%
+\section{Sorting strings}
+\begin{lstlisting}
+#!/usr/bin/perl -w
+my @strings = qw(quantum relativistic classical);
+my @sorted = sort @strings;
+print "\nSorted strings:\n";
+print join "\n", @sorted;
+\end{lstlisting}
+%
+% 4. Checking for prime numbers
+%
+\vspace{0.5cm}
+\section{Checking for prime numbers}
+\begin{lstlisting}
+#! /usr/bin/perl -w
+print "Enter a number:\t";
+$number = <>;
+$divisor = 0;
+$flag = 0;
+if ($number != 2) {
+	for ($divisor = 2; $divisor < $number ; $divisor++) {
+		if ($number % $divisor == 0) {
+			$flag = 1;
+			last;
+		}
+	}
+} else {
+	$flag = 1;
+}
+if ($flag != 1) {
+	print "The number is prime.\n";
+} else {
+	print "The number is composite.\n";
+}
+\end{lstlisting}
+%
+% 5. Finding the roots of a quadratic equation
+%
+\vspace{0.5cm}
+\section{Finding the roots of a quadratic equation}
+\begin{lstlisting}
+#! /usr/bin/perl -w
+use Math::Complex;
+INPUT:
+print "\nEnter the three non-zero co-efficients of ax^2 + bx + c:\n";
+chomp($a=<>, $b=<>, $c=<>);
+if ($a == 0) {
+	print "The co-efficient a cannot be zero. Try again.\n";
+	goto INPUT;
+}
+($x1, $x2) = solveQuad($a,$b,$c);
+print "Root 1 = $x1, Root 2 = $x2\n\n";
+sub solveQuad {
+	my ($a, $b, $c) = @_;
+	my $root = sqrt($b**2 - 4*$a*$c);
+	return (-$b + $root)/(2*$a), (-$b-$root)/(2*$a);
+}
+\end{lstlisting}
+\pagebreak
+%
+% 6. Least square fitting data from a file
+%
+\section{Least square fitting data from a file}
+\begin{infobox}
+\info{\MakeUppercase{Special instructions for this program}}
+Create a tab-separated input file with two columns (x and y) of numbers.
+\end{infobox}
+\begin{lstlisting}
+#! /usr/bin/perl -w
+
+print "\nEnter the name of the input file:\t";
+$file = <>;
+print "Enter the number of rows of data:\t";
+$rows = <>;
+
+open (INPUT,$file) or die "Could not open the file";
+# @line;
+@arrayX = ();
+@arrayY = ();
+$counter = 0;
+
+($i, $sumx, $sumy, $sumxy, $sumx2) = (0, 0, 0, 0, 0);
+
+while(<INPUT>){
+    @line = split(/\t/,$_);
+    $arrayX[$counter]=$line[0];
+    $arrayY[$counter]=$line[1];
+    $counter++;
+}
+
+for($i=0;$i<$rows;$i++)
+    {
+        $sumx = $sumx + $arrayX[$i];
+        $sumx2 = $sumx2 + $arrayX[$i]*$arrayX[$i];
+        $sumy = $sumy + $arrayY[$i];
+        $sumxy = $sumxy + $arrayX[$i]*$arrayY[$i];
+        
+    }
+    
+$c = (($sumx2*$sumy - $sumx*$sumxy)*1.0/($rows*$sumx2-$sumx*$sumx)*1.0);
+$m = (($rows*$sumxy-$sumx*$sumy)*1.0/($rows*$sumx2-$sumx*$sumx)*1.0);
+print "\n\nThe line of best fit is y=$m x + $c \n\n";
+\end{lstlisting}
+\end{document}
